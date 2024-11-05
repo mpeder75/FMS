@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.Api", "FMS.Api\FMS.Api.csproj", "{ADB356A9-D350-4DD9-9929-66A9245A790C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.Application", "FMS.Application\FMS.Application.csproj", "{2589C8C8-C11D-44E1-AEB2-96360962AADF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.Domain", "FMS.Domain\FMS.Domain.csproj", "{12417FC9-2656-477B-A927-214CE858A974}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.Domain.Test", "FMS.Domain.Test\FMS.Domain.Test.csproj", "{828B79D0-0813-47F0-AC8D-1001A3BC7CF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.Infrastructure", "FMS.Infrastructure\FMS.Infrastructure.csproj", "{D8F1D4EC-D6EF-4F18-8B73-CB86F5A9D304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FMS.DatabaseMigration", "FMS.DatabaseMigration\FMS.DatabaseMigration.csproj", "{FAFB3825-7596-4CDC-A259-3F440823FCFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADB356A9-D350-4DD9-9929-66A9245A790C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB356A9-D350-4DD9-9929-66A9245A790C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB356A9-D350-4DD9-9929-66A9245A790C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB356A9-D350-4DD9-9929-66A9245A790C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2589C8C8-C11D-44E1-AEB2-96360962AADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2589C8C8-C11D-44E1-AEB2-96360962AADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2589C8C8-C11D-44E1-AEB2-96360962AADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2589C8C8-C11D-44E1-AEB2-96360962AADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12417FC9-2656-477B-A927-214CE858A974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12417FC9-2656-477B-A927-214CE858A974}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12417FC9-2656-477B-A927-214CE858A974}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12417FC9-2656-477B-A927-214CE858A974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828B79D0-0813-47F0-AC8D-1001A3BC7CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828B79D0-0813-47F0-AC8D-1001A3BC7CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828B79D0-0813-47F0-AC8D-1001A3BC7CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828B79D0-0813-47F0-AC8D-1001A3BC7CF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8F1D4EC-D6EF-4F18-8B73-CB86F5A9D304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8F1D4EC-D6EF-4F18-8B73-CB86F5A9D304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8F1D4EC-D6EF-4F18-8B73-CB86F5A9D304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8F1D4EC-D6EF-4F18-8B73-CB86F5A9D304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAFB3825-7596-4CDC-A259-3F440823FCFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAFB3825-7596-4CDC-A259-3F440823FCFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAFB3825-7596-4CDC-A259-3F440823FCFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAFB3825-7596-4CDC-A259-3F440823FCFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
