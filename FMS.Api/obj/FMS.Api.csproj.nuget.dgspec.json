@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Api\\FMS.Api.csproj": {}
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Api\\FMS.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Api\\FMS.Api.csproj": {
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Api\\FMS.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Api\\FMS.Api.csproj",
+        "projectUniqueName": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Api\\FMS.Api.csproj",
         "projectName": "FMS.Api",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Api\\FMS.Api.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Api\\obj\\",
+        "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Api\\FMS.Api.csproj",
+        "packagesPath": "C:\\Users\\pils6\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pils6\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,23 +26,24 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj"
               },
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj"
               },
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj"
               },
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
               }
             }
           }
@@ -105,24 +106,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj": {
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj",
+        "projectUniqueName": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj",
         "projectName": "FMS.Application",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\obj\\",
+        "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj",
+        "packagesPath": "C:\\Users\\pils6\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pils6\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -131,14 +132,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj"
               }
             }
           }
@@ -174,24 +176,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
+        "projectUniqueName": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
         "projectName": "FMS.DatabaseMigration",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\obj\\",
+        "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
+        "packagesPath": "C:\\Users\\pils6\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.DatabaseMigration\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pils6\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -200,14 +202,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
               }
             }
           }
@@ -253,24 +256,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj",
         "projectName": "FMS.Domain",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\obj\\",
+        "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj",
+        "packagesPath": "C:\\Users\\pils6\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pils6\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -279,6 +282,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -318,24 +322,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
+    "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
         "projectName": "FMS.Infrastructure",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\pils6\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\pils6\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -344,17 +348,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Application\\FMS.Application.csproj"
               },
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj"
+              "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
+                "projectPath": "C:\\Users\\pils6\\OneDrive\\Datamatiker\\Programmering\\3. Semester\\FMS\\FMS.Domain\\FMS.Domain.csproj"
               }
             }
           }
@@ -404,7 +409,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.1.24452.12/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
