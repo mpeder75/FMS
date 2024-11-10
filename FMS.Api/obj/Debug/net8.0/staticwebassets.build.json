@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "h8KTmq06isSYePE4wbxwOVOg9WxNGq13xOCkDQhliKY=",
+  "Source": "FMS.Api",
+  "BasePath": "_content/FMS.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
