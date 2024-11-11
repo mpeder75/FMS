@@ -18,3 +18,23 @@ C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.DatabaseMi
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.DatabaseMigration\obj\Debug\net8.0\refint\FMS.DatabaseMigration.dll
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.pdb
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.DatabaseMigration\obj\Debug\net8.0\ref\FMS.DatabaseMigration.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.DatabaseMigration.deps.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.DatabaseMigration.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.DatabaseMigration.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Application.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Infrastructure.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Infrastructure.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Application.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\bin\Debug\net8.0\FMS.Domain.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.csproj.AssemblyReference.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.AssemblyInfoInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.AssemblyInfo.cs
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.csproj.CoreCompileInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.sourcelink.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.Data.779EAD83.Up2Date
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\refint\FMS.DatabaseMigration.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\FMS.DatabaseMigration.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.DatabaseMigration\obj\Debug\net8.0\ref\FMS.DatabaseMigration.dll

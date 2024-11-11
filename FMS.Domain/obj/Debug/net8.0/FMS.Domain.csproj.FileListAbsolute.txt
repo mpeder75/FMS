@@ -10,3 +10,15 @@ C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\refint\FMS.Domain.dll
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.pdb
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\ref\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\bin\Debug\net8.0\FMS.Domain.deps.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\bin\Debug\net8.0\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\bin\Debug\net8.0\FMS.Domain.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.AssemblyInfoInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.AssemblyInfo.cs
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.csproj.CoreCompileInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.sourcelink.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\refint\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\FMS.Domain.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Domain\obj\Debug\net8.0\ref\FMS.Domain.dll

@@ -14,3 +14,19 @@ C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Applicatio
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Application\obj\Debug\net8.0\refint\FMS.Application.dll
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Application\obj\Debug\net8.0\FMS.Application.pdb
 C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Application\obj\Debug\net8.0\ref\FMS.Application.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\bin\Debug\net8.0\FMS.Application.deps.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\bin\Debug\net8.0\FMS.Application.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\bin\Debug\net8.0\FMS.Application.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\bin\Debug\net8.0\FMS.Domain.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\bin\Debug\net8.0\FMS.Domain.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.csproj.AssemblyReference.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.AssemblyInfoInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.AssemblyInfo.cs
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.csproj.CoreCompileInputs.cache
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.sourcelink.json
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Appl.5AEEEDF2.Up2Date
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\refint\FMS.Application.dll
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\FMS.Application.pdb
+C:\Datamatiker\3. Semester semesterprojekt\Projekt\FMS.Application\obj\Debug\net8.0\ref\FMS.Application.dll
