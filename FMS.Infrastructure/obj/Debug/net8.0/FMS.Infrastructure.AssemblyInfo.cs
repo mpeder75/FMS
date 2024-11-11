@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FMS.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6e6f100cc73a1ca2d8358c35003a346a971c083")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e6ff9be4969bd28e0ffd28f5cc2cda10248626e8")]
 [assembly: System.Reflection.AssemblyProductAttribute("FMS.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FMS.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

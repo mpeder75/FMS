@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yqrcf3I+4t4=",
+  "dgSpecHash": "TShM7A6yO8E=",
   "success": true,
   "projectFilePath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
   "expectedPackageFiles": [
@@ -62,6 +62,12 @@
     "C:\\Users\\Frederik\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1902",
       "level": "Warning",

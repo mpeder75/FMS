@@ -1,0 +1,12 @@
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\bin\Debug\net8.0\FMS.Domain.deps.json
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\bin\Debug\net8.0\FMS.Domain.dll
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\bin\Debug\net8.0\FMS.Domain.pdb
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.AssemblyInfoInputs.cache
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.AssemblyInfo.cs
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.csproj.CoreCompileInputs.cache
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.sourcelink.json
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.dll
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\refint\FMS.Domain.dll
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\FMS.Domain.pdb
+C:\Users\pils6\OneDrive\Datamatiker\Programmering\3. Semester\FMS\FMS.Domain\obj\Debug\net8.0\ref\FMS.Domain.dll
