@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {}
+    "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj": {
+    "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\FMS.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj",
+        "projectUniqueName": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\FMS.Application.csproj",
         "projectName": "FMS.Application",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\obj\\",
+        "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\FMS.Application.csproj",
+        "packagesPath": "C:\\Users\\Frederik\\.nuget\\packages\\",
+        "outputPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Frederik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj"
+              "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj": {
+                "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj"
               }
             }
           }
@@ -73,20 +73,20 @@
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
+    "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
+        "projectUniqueName": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
         "projectName": "FMS.DatabaseMigration",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.DatabaseMigration\\obj\\",
+        "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\FMS.DatabaseMigration.csproj",
+        "packagesPath": "C:\\Users\\Frederik\\.nuget\\packages\\",
+        "outputPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.DatabaseMigration\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Frederik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,8 +101,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
+              "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
+                "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\FMS.Infrastructure.csproj"
               }
             }
           }
@@ -152,20 +152,20 @@
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
+    "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj",
+        "projectUniqueName": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj",
         "projectName": "FMS.Domain",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\obj\\",
+        "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj",
+        "packagesPath": "C:\\Users\\Frederik\\.nuget\\packages\\",
+        "outputPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Frederik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -217,20 +217,20 @@
         }
       }
     },
-    "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
+    "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\FMS.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
         "projectName": "FMS.Infrastructure",
-        "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\mpede\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Infrastructure\\obj\\",
+        "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\FMS.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Frederik\\.nuget\\packages\\",
+        "outputPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\mpede\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Frederik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -245,11 +245,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Application\\FMS.Application.csproj"
+              "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\FMS.Application.csproj": {
+                "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Application\\FMS.Application.csproj"
               },
-              "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj": {
-                "projectPath": "C:\\Users\\mpede\\source\\repos\\FMS\\FMS.Domain\\FMS.Domain.csproj"
+              "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj": {
+                "projectPath": "C:\\Datamatiker\\3. Semester semesterprojekt\\Projekt\\FMS.Domain\\FMS.Domain.csproj"
               }
             }
           }
