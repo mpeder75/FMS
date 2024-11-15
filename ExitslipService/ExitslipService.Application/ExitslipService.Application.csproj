@@ -4,12 +4,6 @@
     <ProjectReference Include="..\ExitslipService.Domain\ExitslipService.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Command\CommandDto\" />
-    <Folder Include="Query\QueryDto\" />
-    <Folder Include="UnitOfWork\" />
-  </ItemGroup>
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
