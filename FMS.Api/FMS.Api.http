@@ -1,6 +1,0 @@
-@FMS.Api_HostAddress = http://localhost:5145
-
-GET {{FMS.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
