@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SharedKernel\SharedKernel.csproj" />
     <ProjectReference Include="..\FeedbackService.Application\FeedbackService.Application.csproj" />
     <ProjectReference Include="..\FeedbackService.Domain\FeedbackService.Domain.csproj" />
     <ProjectReference Include="..\FeedbackService.Infrastructure\FeedbackService.Infrastructure.csproj" />
