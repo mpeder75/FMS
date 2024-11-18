@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.Api", "CRMSyncService.Api\CRMSyncService.Api.csproj", "{2F8DAE81-F2E4-4963-AACB-C0B8210F3324}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.Application", "CRMSyncService.Application\CRMSyncService.Application.csproj", "{6E305A1C-20DB-4BD9-AAB7-EE3DA6063CE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.Domain", "CRMSyncService.Domain\CRMSyncService.Domain.csproj", "{7A5471B3-544F-4184-929D-A2241409B13F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.Domain.Test", "CRMSyncService.Domain.Test\CRMSyncService.Domain.Test.csproj", "{37638BB3-5F54-4368-9DD1-CF3E73FE1527}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.Infrastructure", "CRMSyncService.Infrastructure\CRMSyncService.Infrastructure.csproj", "{4A39359E-C34C-4F87-AD8E-5619C38817F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSyncService.DatabaseMigration", "CRMSyncService.DatabaseMigration\CRMSyncService.DatabaseMigration.csproj", "{AB96C973-93E5-414E-AAD1-EE6287F038E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F8DAE81-F2E4-4963-AACB-C0B8210F3324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8DAE81-F2E4-4963-AACB-C0B8210F3324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8DAE81-F2E4-4963-AACB-C0B8210F3324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8DAE81-F2E4-4963-AACB-C0B8210F3324}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E305A1C-20DB-4BD9-AAB7-EE3DA6063CE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E305A1C-20DB-4BD9-AAB7-EE3DA6063CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E305A1C-20DB-4BD9-AAB7-EE3DA6063CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E305A1C-20DB-4BD9-AAB7-EE3DA6063CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A5471B3-544F-4184-929D-A2241409B13F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A5471B3-544F-4184-929D-A2241409B13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A5471B3-544F-4184-929D-A2241409B13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A5471B3-544F-4184-929D-A2241409B13F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37638BB3-5F54-4368-9DD1-CF3E73FE1527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37638BB3-5F54-4368-9DD1-CF3E73FE1527}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37638BB3-5F54-4368-9DD1-CF3E73FE1527}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37638BB3-5F54-4368-9DD1-CF3E73FE1527}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A39359E-C34C-4F87-AD8E-5619C38817F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A39359E-C34C-4F87-AD8E-5619C38817F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A39359E-C34C-4F87-AD8E-5619C38817F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A39359E-C34C-4F87-AD8E-5619C38817F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB96C973-93E5-414E-AAD1-EE6287F038E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB96C973-93E5-414E-AAD1-EE6287F038E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB96C973-93E5-414E-AAD1-EE6287F038E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB96C973-93E5-414E-AAD1-EE6287F038E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
