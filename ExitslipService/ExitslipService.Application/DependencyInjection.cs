@@ -1,6 +1,14 @@
 ﻿namespace ExitslipService.Application;
 
-public class DependencyInjection
+public static class ServiceCollectionExtension
 {
+    //scope into the Api here.
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+        services.AddScoped<IAccommodationCommand, AccommodationCommand>();
+        services.AddScoped<IReviewCommand, ReviewCommand>();
+        return services;
+    }
 
 }
+    
