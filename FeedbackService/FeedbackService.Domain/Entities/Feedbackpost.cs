@@ -25,6 +25,7 @@ namespace FeedbackService.Domain.Entities
             Feedback = feedback;
             Likes = 0;
             Dislikes = 0;
+            CreatedAt = DateTime.Now;
         }
 
         public Student Author { get; protected set; }
@@ -33,6 +34,7 @@ namespace FeedbackService.Domain.Entities
         public int Likes { get; protected set; }
         public int Dislikes { get; protected set; }
         public Room Room { get; protected set; }
+        public DateTime CreatedAt { get; protected set; }
         public List<DateTime> EditedTimes => _editedTimes;
         public IReadOnlyCollection<Comment> Comments => _comments;
         public IReadOnlyCollection<Question> History => _history;

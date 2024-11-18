@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FeedbackService.Application.Command;
+using FeedbackService.Application;
 using FeedbackService.Domain.Entities;
 
 namespace FeedbackService.Infrastructure.Repositories
@@ -23,6 +23,9 @@ namespace FeedbackService.Infrastructure.Repositories
             await _db.SaveChangesAsync();
         }
 
-
+        void IFeedbackpostRepository.UpdateFeedbackpostAsync(Feedbackpost post, byte[] rowversion)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
