@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FeedbackService.Domain.ValueObjects;
 using SharedKernel.Entities;
 
 namespace FeedbackService.Domain.Entities

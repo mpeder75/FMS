@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeedbackService.Domain.ValueObjects
+namespace FeedbackService.Domain.Entities
 {
     public class Comment
     {
