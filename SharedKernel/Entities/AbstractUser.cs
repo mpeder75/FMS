@@ -2,7 +2,7 @@
 
 namespace SharedKernel.Entities
 {
-    public abstract class User
+    public class User
     {
         public int Id { get; protected set; }
         public string FirstName { get; protected set; }
