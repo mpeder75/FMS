@@ -17,15 +17,15 @@ namespace FeedbackService.Domain.Entities
 
         }
 
-        private Feedbackpost(Student originalPoster, string title, Room room, Question feedback)
+        private Feedbackpost(Student author, string title, Room room, Question feedback)
         {
-            OriginalPoster = originalPoster;
+            Author = author;
             Title = title;
             Room = room;
             Feedback = feedback;
         }
 
-        public Student OriginalPoster { get; protected set; }
+        public Student Author { get; protected set; }
         public string Title { get; protected set; }
         public Question Feedback { get; protected set; }
         public int Likes { get; protected set; }
