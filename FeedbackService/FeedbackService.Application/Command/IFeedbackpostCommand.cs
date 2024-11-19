@@ -1,4 +1,6 @@
-﻿namespace FeedbackService.Application.Command;
+﻿using FeedbackService.Application.Command.CommandDto;
+
+namespace FeedbackService.Application.Command;
 
 public interface IFeedbackpostCommand
 {

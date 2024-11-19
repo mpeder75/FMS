@@ -2,6 +2,5 @@
 
 public record DeleteFeedbackpostDto
 {
-    public Guid Id { get; set; }
-    public byte[] RowVersion { get; set; } = null!;
+    public Guid Id { get; init; }
 }
