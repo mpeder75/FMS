@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExitslipService.Application.Command.CommandDto
 {
-    internal class Class1
+    public class CreateDTO
     {
+
     }
 }
