@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ExitslipService.Application.Query.QueryDto
 {
-    internal class Class1
+    public class Class1
     {
+
     }
 }
