@@ -19,15 +19,8 @@ namespace FeedbackService.Infrastructure.Repositories
         }
         async Task<Feedbackpost> IFeedbackpostRepository.GetAsync(Guid id)
         {
-            try
-            {
-                return await _db.Feedbackposts.FirstOrDefaultAsync(x => x.Id == id);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+
+            return await _db.Feedbackposts.FirstOrDefaultAsync(x => x.Id == id);
         }
 
         async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackposts()
@@ -37,18 +30,29 @@ namespace FeedbackService.Infrastructure.Repositories
 
         async Task IFeedbackpostRepository.AddAsync(Feedbackpost feedbackpost)
         {
-            throw new NotImplementedException();
+            await _db.Feedbackposts.AddAsync(feedbackpost);
+            await _db.SaveChangesAsync();
         }
 
         async Task IFeedbackpostRepository.DeleteAsync(Guid postId)
         {
-            throw new NotImplementedException();
-        }
+            var feedbackpost = await _db.Feedbackposts.FirstOrDefaultAsync(x => x.Id == postId);
 
+            if (feedbackpost != null)
+            {
+                _db.Feedbackposts.Remove(feedbackpost);
+                await _db.SaveChangesAsync();
+            }
+        }
 
         async Task IFeedbackpostRepository.UpdateAsync(Feedbackpost post, byte[] rowversion)
         {
-            throw new NotImplementedException();
+            var existingPost = await _db.Feedbackposts.FirstOrDefaultAsync(x => x.Id == post.Id);
+            if (existingPost != null)
+            {
+                _db.Entry(existingPost).CurrentValues.SetValues(post);
+                await _db.SaveChangesAsync();
+            }
         }
 
         async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
