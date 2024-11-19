@@ -12,11 +12,7 @@ namespace FeedbackService.Domain.Entities
         private readonly List<DateTime> _editedTimes;
         private readonly List<Comment> _comments;
         private readonly List<Question> _history;
-        protected Feedbackpost()
-        {
-
-        }
-
+       
         protected Feedbackpost(Student author, string title, Room room, Question feedback)
         {
             Author = author;
@@ -35,7 +31,7 @@ namespace FeedbackService.Domain.Entities
         public int Dislikes { get; protected set; }
         public Room Room { get; protected set; }
         public DateTime CreatedAt { get; protected set; }
-        public List<DateTime> EditedTimes => _editedTimes;
+        public IReadOnlyCollection<DateTime> EditedTimes => _editedTimes;
         public IReadOnlyCollection<Comment> Comments => _comments;
         public IReadOnlyCollection<Question> History => _history;
 
@@ -51,5 +47,24 @@ namespace FeedbackService.Domain.Entities
             _comments.Add(comment);
         }
 
+        public void IncrementLikes()
+        {
+            Likes++;
+        }
+
+        public void DecrementLikes()
+        {
+            Likes--;
+        }
+
+        public void IncrementDislikes()
+        {
+            Dislikes++;
+        }
+
+        public void DecrementDislikes()
+        {
+            Dislikes--;
+        }
     }
 }
