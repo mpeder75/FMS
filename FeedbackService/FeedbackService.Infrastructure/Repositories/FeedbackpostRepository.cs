@@ -16,14 +16,28 @@ namespace FeedbackService.Infrastructure.Repositories
         {
             _db = context;
         }
-
-        async Task IFeedbackpostRepository.AddFeedbackpostAsync(Feedbackpost feedbackpost)
+        Task<Feedbackpost> IFeedbackpostRepository.GetAsync(Guid id)
         {
-            await _db.Feedbackposts.AddAsync(feedbackpost);
-            await _db.SaveChangesAsync();
+            throw new NotImplementedException();
         }
 
-        void IFeedbackpostRepository.UpdateFeedbackpostAsync(Feedbackpost post, byte[] rowversion)
+        Task IFeedbackpostRepository.AddAsync(Feedbackpost feedbackpost)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IFeedbackpostRepository.DeleteAsync(Guid postId)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        Task IFeedbackpostRepository.UpdateAsync(Feedbackpost post, byte[] rowversion)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
         {
             throw new NotImplementedException();
         }

@@ -4,7 +4,7 @@ namespace FeedbackService.Application.Command;
 
 public interface IFeedbackpostCommand
 {
-    void Create(CreateFeedbackpostDto createFeedbackpostDto);
-    void Update(UpdateFeedbackpostDto updateFeedbackpostDto);
-    void Delete(DeleteFeedbackpostDto deleteFeedbackpostDto);
+    Task CreateAsync(CreateFeedbackpostDto createFeedbackpostDto);
+    Task UpdateAsync(UpdateFeedbackpostDto updateFeedbackpostDto);
+    Task DeleteAsync(DeleteFeedbackpostDto deleteFeedbackpostDto);
 }

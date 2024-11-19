@@ -1,9 +1,13 @@
 ﻿using FeedbackService.Domain.Entities;
+using SharedKernel.Entities;
 
 namespace FeedbackService.Application;
 
 public interface IFeedbackpostRepository
 {
-    Task AddFeedbackpostAsync(Feedbackpost feedbackpost);
-    void UpdateFeedbackpostAsync(Feedbackpost post, byte[] rowversion);
+    Task<Feedbackpost> GetAsync(Guid id);
+    Task<List<Feedbackpost>> GetFeedbackpostsByRoom(Guid roomId);
+    Task AddAsync(Feedbackpost feedbackpost);
+    Task UpdateAsync(Feedbackpost post, byte[] rowversion);
+    Task DeleteAsync(Guid postId);
 }

@@ -12,8 +12,8 @@ namespace FeedbackService.Domain.Entities
         private readonly List<DateTime> _editedTimes;
         private readonly List<Comment> _comments;
         private readonly List<Question> _history;
-       
-        protected Feedbackpost(Student author, string title, Room room, Question feedback)
+
+        protected Feedbackpost(User author, string title, Room room, Question feedback)
         {
             Author = author;
             Title = title;
@@ -24,7 +24,7 @@ namespace FeedbackService.Domain.Entities
             CreatedAt = DateTime.Now;
         }
 
-        public Student Author { get; protected set; }
+        public User Author { get; protected set; }
         public string Title { get; protected set; }
         public Question Feedback { get; protected set; }
         public int Likes { get; protected set; }
@@ -36,9 +36,14 @@ namespace FeedbackService.Domain.Entities
         public IReadOnlyCollection<Question> History => _history;
 
 
-        public static Feedbackpost CreateFeedbackpost(Student originalPoster, string title, Room room, Question feedback)
+        public static Feedbackpost Create(Student originalPoster, string title, Room room, Question feedback)
         {
             return new Feedbackpost(originalPoster, title, room, feedback);
+        }
+
+        public void Update(string title, Question question, Room room)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddComment(string commentString)
@@ -66,5 +71,6 @@ namespace FeedbackService.Domain.Entities
         {
             Dislikes--;
         }
+
     }
 }
