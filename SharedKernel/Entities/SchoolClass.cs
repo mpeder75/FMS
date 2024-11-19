@@ -11,6 +11,7 @@ namespace SharedKernel.Entities
 
         // ------------------------------------------ Properties -------------------------------------------------------------
         public Guid Id { get; protected set; }
+        public string Name { get; protected set; }
         public int Term { get; protected set; }
         public List<Student> Students { get; protected set; }
         public List<Room> Rooms { get; protected set; }

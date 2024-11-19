@@ -1,10 +1,15 @@
+using CRMSyncService.Application.IQueries.Dto;
+using CRMSyncService.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddHttpClient(); 
+// Application & Infrastructure services
+builder.Services.AddInfrastructure(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -16,29 +21,40 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-8.0&tabs=visual-studio
+app.MapGet("/ping", () => { return Results.Ok("Ping reply"); });
 
-app.MapGet("/weatherforecast", () =>
+// Add a route to call this method in your API.
+app.MapGet("/fetch", async (IHttpClientFactory clientFactory) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    var schoolClass = await FetchSchoolClassAsync(clientFactory);
+
+    //return schoolClass is not null
+    //    ? Results.Ok(schoolClass)
+    //    : Results.Problem("Failed to fetch data from the external API.");
+});
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+
+
+
+
+
+async Task<List<SchoolClassDto>> FetchSchoolClassAsync(IHttpClientFactory clientFactory)
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    var client = clientFactory.CreateClient();
+
+    // Send a GET request
+    var response = await client.GetAsync("https://run.mocky.io/v3/66695b6d-dcf5-4117-973b-824d6d907898");
+
+    if (response.IsSuccessStatusCode)
+    {
+        // Deserialize the response body to a SchoolClassDto
+        var schoolClasses = await response.Content.ReadFromJsonAsync<List<SchoolClassDto>>();
+        return schoolClasses;
+    }
+
+    // Return null if the request failed
+    return null;
 }

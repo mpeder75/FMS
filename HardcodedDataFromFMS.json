@@ -1,0 +1,113 @@
+[
+  {
+    "Id": "e4c32d59-98df-46a7-a5f9-6be8e4b8989f",
+    "Name": "Klasse A",
+    "Term": 2024,
+    "Students": [
+      {
+        "Id": "8a96158f-0d91-41ba-9f5e-df5a1e59a2e7",
+        "FirstName": "Alice",
+        "LastName": "Johnson",
+        "Email": "alice.johnson@example.com"
+      },
+      {
+        "Id": "2308fa26-d5d0-4e4c-a128-9471c8bcb7c2",
+        "FirstName": "Bob",
+        "LastName": "Carter",
+        "Email": "bob.carter@example.com"
+      },
+      {
+        "Id": "1dbe5325-d802-4c6e-9eeb-b3c3aaf6e45c",
+        "FirstName": "Charlie",
+        "LastName": "Davis",
+        "Email": "charlie.davis@example.com"
+      },
+      {
+        "Id": "2ea4a389-1923-4ea3-8b4d-523f4f1d6854",
+        "FirstName": "Diana",
+        "LastName": "Lee",
+        "Email": "diana.lee@example.com"
+      },
+      {
+        "Id": "e7c3d450-65b2-4f3f-899d-7e07c931f3eb",
+        "FirstName": "Ethan",
+        "LastName": "Green",
+        "Email": "ethan.green@example.com"
+      }
+    ]
+  },
+  {
+    "Id": "9d62e3b7-15f2-45e0-a8a4-3a00c4e96488",
+    "Name": "Klasse B",
+    "Term": 2025,
+    "Students": [
+      {
+        "Id": "48be70b7-501c-46d6-b04a-e992e1d4fb07",
+        "FirstName": "Fiona",
+        "LastName": "Hughes",
+        "Email": "fiona.hughes@example.com"
+      },
+      {
+        "Id": "da7924b5-f947-4872-b9e7-4b12e6525fc4",
+        "FirstName": "George",
+        "LastName": "Clark",
+        "Email": "george.clark@example.com"
+      },
+      {
+        "Id": "5c0d3ba4-9e08-41ed-8075-b5c127842ba6",
+        "FirstName": "Hannah",
+        "LastName": "Baker",
+        "Email": "hannah.baker@example.com"
+      },
+      {
+        "Id": "c27f446a-c6b3-4a72-8d88-836ae92d5d7b",
+        "FirstName": "Ian",
+        "LastName": "Wright",
+        "Email": "ian.wright@example.com"
+      },
+      {
+        "Id": "0f9f72f1-ff6a-4f82-9a30-84d49749c18f",
+        "FirstName": "Jenna",
+        "LastName": "Moore",
+        "Email": "jenna.moore@example.com"
+      }
+    ]
+  },
+  {
+    "Id": "2b02d882-46d8-49aa-b1f1-5c0a3f8b75c4",
+    "Name": "Klasse C",
+    "Term": 2026,
+    "Students": [
+      {
+        "Id": "db5a6f56-0e47-48df-9724-2f31f987d8ef",
+        "FirstName": "Kyle",
+        "LastName": "Young",
+        "Email": "kyle.young@example.com"
+      },
+      {
+        "Id": "f66e0a5d-c1f0-41c3-b083-d9a9df7b34f5",
+        "FirstName": "Luna",
+        "LastName": "Parker",
+        "Email": "luna.parker@example.com"
+      },
+      {
+        "Id": "4e758ed9-ff1f-4c84-b382-5e40f92e49d4",
+        "FirstName": "Mike",
+        "LastName": "Stone",
+        "Email": "mike.stone@example.com"
+      },
+      {
+        "Id": "ac212690-0737-4b12-8ae2-6c6b8e50ab9d",
+        "FirstName": "Nina",
+        "LastName": "Foster",
+        "Email": "nina.foster@example.com"
+      },
+      {
+        "Id": "7b8f93a5-27d5-4fdc-b849-079e95bc5b1e",
+        "FirstName": "Oscar",
+        "LastName": "King",
+        "Email": "oscar.king@example.com"
+      }
+    ]
+  }
+]
