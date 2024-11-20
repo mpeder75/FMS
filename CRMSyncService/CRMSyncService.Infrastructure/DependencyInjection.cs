@@ -1,10 +1,10 @@
-﻿using CRMSyncService.Application.IQueries;
-using CRMSyncService.Infrastructure.Queries;
+﻿using DummyDb.Application.IQueries;
+using DummyDb.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CRMSyncService.Infrastructure
+namespace DummyDb.Infrastructure
 {
     public static class DependencyInjection
     {
@@ -12,13 +12,11 @@ namespace CRMSyncService.Infrastructure
         {
             services.AddScoped<ISchoolClassQuery, SchoolClassQuery>();
 
-            // Add-Migration InitialMigration -Context CRMContext -Project CRMSyncService.DatabaseMigration
-            // Update-Database -Context CRMContext -Project CRMSyncService.DatabaseMigration
             services.AddDbContext<CRMContext>(options =>
             options.UseSqlServer(
                     configuration.GetConnectionString
                     ("LocalConnectionCRM"),
-                    x => x.MigrationsAssembly("CRMSyncService.DatabaseMigration")));
+                    x => x.MigrationsAssembly("DummyDb.DatabaseMigration")));
 
             return services;
         }

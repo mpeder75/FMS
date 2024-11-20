@@ -1,7 +1,6 @@
-﻿using CRMSyncService.Application.IQueries.Dto;
+﻿using DummyDb.Application.Dto;
 
-
-namespace CRMSyncService.Application.IQueries
+namespace DummyDb.Application.IQueries
 {
     public interface ISchoolClassQuery
     {

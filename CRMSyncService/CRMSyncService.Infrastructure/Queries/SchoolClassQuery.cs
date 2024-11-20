@@ -1,7 +1,8 @@
-﻿using CRMSyncService.Application.IQueries;
-using CRMSyncService.Application.IQueries.Dto;
+﻿using DummyDb.Application.Dto;
+using DummyDb.Application.IQueries;
+using Microsoft.EntityFrameworkCore;
 
-namespace CRMSyncService.Infrastructure.Queries
+namespace DummyDb.Infrastructure.Queries
 {
     public class SchoolClassQuery : ISchoolClassQuery
     {
@@ -19,7 +20,24 @@ namespace CRMSyncService.Infrastructure.Queries
 
         IEnumerable<SchoolClassDto> ISchoolClassQuery.GetSchoolClasses()
         {
-            throw new NotImplementedException();
+            var result = _db.SchoolClasses
+                .AsNoTracking()
+                .Include(c => c.Students)
+                .Select(c => new SchoolClassDto
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Term = c.Term,
+                    Students = c.Students.Select(s => new StudentDto
+                    {
+                        Id = s.Id,
+                        FirstName = s.FirstName,
+                        LastName = s.LastName,
+                        Email = s.Email
+                    }).ToList()
+                });
+
+            return result.ToList();
         }
     }
 }

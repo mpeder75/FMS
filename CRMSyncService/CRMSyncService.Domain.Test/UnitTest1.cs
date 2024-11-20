@@ -1,4 +1,4 @@
-namespace CRMSyncService.Domain.Test;
+namespace DummyDb.Domain.Test;
 
 public class UnitTest1
 {

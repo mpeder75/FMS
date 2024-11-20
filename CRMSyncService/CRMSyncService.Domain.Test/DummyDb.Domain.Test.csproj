@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Domain\CRMSyncService.Domain.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Domain\DummyDb.Domain.csproj" />
   </ItemGroup>
 
 </Project>

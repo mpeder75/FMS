@@ -1,5 +1,4 @@
-﻿
-namespace CRMSyncService.Application.Command
+﻿namespace DummyDb.Application.Command
 {
     public interface ISchoolClassCommand
     {

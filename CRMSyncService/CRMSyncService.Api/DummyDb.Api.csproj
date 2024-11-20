@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Application\CRMSyncService.Application.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Domain\CRMSyncService.Domain.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Infrastructure\CRMSyncService.Infrastructure.csproj" />
-    <ProjectReference Include="..\CRMSyncService.DatabaseMigration\CRMSyncService.DatabaseMigration.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Application\DummyDb.Application.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Domain\DummyDb.Domain.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Infrastructure\DummyDb.Infrastructure.csproj" />
+    <ProjectReference Include="..\CRMSyncService.DatabaseMigration\DummyDb.DatabaseMigration.csproj" />
   </ItemGroup>
 
 </Project>

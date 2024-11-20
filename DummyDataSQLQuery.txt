@@ -1,0 +1,77 @@
+-- Insert dummy data into SchoolClasses
+INSERT INTO SchoolClasses (Id, Name, Term) VALUES
+(NEWID(), 'Mathematics Class', 1),
+(NEWID(), 'Science Class', 1),
+(NEWID(), 'History Class', 2);
+
+-- Retrieve inserted SchoolClass IDs for relationships
+DECLARE @ClassId1 UNIQUEIDENTIFIER, @ClassId2 UNIQUEIDENTIFIER, @ClassId3 UNIQUEIDENTIFIER;
+SELECT TOP 1 @ClassId1 = Id FROM SchoolClasses WHERE Name = 'Mathematics Class';
+SELECT TOP 1 @ClassId2 = Id FROM SchoolClasses WHERE Name = 'Science Class';
+SELECT TOP 1 @ClassId3 = Id FROM SchoolClasses WHERE Name = 'History Class';
+
+-- Insert dummy data into Teachers
+INSERT INTO Teachers (Id, FirstName, LastName, Email) VALUES
+(NEWID(), 'John', 'Doe', 'john.doe@example.com'),
+(NEWID(), 'Jane', 'Smith', 'jane.smith@example.com'),
+(NEWID(), 'Emily', 'Johnson', 'emily.johnson@example.com');
+
+-- Retrieve inserted Teacher IDs for relationships
+DECLARE @TeacherId1 UNIQUEIDENTIFIER, @TeacherId2 UNIQUEIDENTIFIER, @TeacherId3 UNIQUEIDENTIFIER;
+SELECT TOP 1 @TeacherId1 = Id FROM Teachers WHERE FirstName = 'John';
+SELECT TOP 1 @TeacherId2 = Id FROM Teachers WHERE FirstName = 'Jane';
+SELECT TOP 1 @TeacherId3 = Id FROM Teachers WHERE FirstName = 'Emily';
+
+-- Insert dummy data into Rooms
+INSERT INTO Rooms (Id, Name, Description, SchoolClassId) VALUES
+(NEWID(), 'Room 101', 'Physics Lab', @ClassId1),
+(NEWID(), 'Room 202', 'Math Classroom', @ClassId2),
+(NEWID(), 'Room 303', 'History Hall', @ClassId3);
+
+-- Retrieve inserted Room IDs for relationships
+DECLARE @RoomId1 UNIQUEIDENTIFIER, @RoomId2 UNIQUEIDENTIFIER, @RoomId3 UNIQUEIDENTIFIER;
+SELECT TOP 1 @RoomId1 = Id FROM Rooms WHERE Name = 'Room 101';
+SELECT TOP 1 @RoomId2 = Id FROM Rooms WHERE Name = 'Room 202';
+SELECT TOP 1 @RoomId3 = Id FROM Rooms WHERE Name = 'Room 303';
+
+-- Insert dummy data into Students
+INSERT INTO Students (Id, FirstName, LastName, Email, SchoolClassId) VALUES
+(NEWID(), 'Alice', 'Brown', 'alice.brown@example.com', @ClassId1),
+(NEWID(), 'Bob', 'Davis', 'bob.davis@example.com', @ClassId2),
+(NEWID(), 'Charlie', 'Wilson', 'charlie.wilson@example.com', @ClassId3);
+
+-- Insert dummy data into Lessons
+INSERT INTO Lessons (Id, Date, TeacherId, RoomId) VALUES
+(NEWID(), GETDATE(), @TeacherId1, @RoomId1),
+(NEWID(), DATEADD(DAY, 1, GETDATE()), @TeacherId2, @RoomId2),
+(NEWID(), DATEADD(DAY, 2, GETDATE()), @TeacherId3, @RoomId3);
+
+-- Retrieve inserted Lesson IDs for relationships
+DECLARE @LessonId1 UNIQUEIDENTIFIER, @LessonId2 UNIQUEIDENTIFIER, @LessonId3 UNIQUEIDENTIFIER;
+SELECT TOP 1 @LessonId1 = Id FROM Lessons WHERE RoomId = @RoomId1;
+SELECT TOP 1 @LessonId2 = Id FROM Lessons WHERE RoomId = @RoomId2;
+SELECT TOP 1 @LessonId3 = Id FROM Lessons WHERE RoomId = @RoomId3;
+
+-- Insert dummy data into LessonSchoolClass
+INSERT INTO LessonSchoolClass (LessonsId, SchoolClassesId) VALUES
+(@LessonId1, @ClassId1),
+(@LessonId2, @ClassId2),
+(@LessonId3, @ClassId3);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////--- DROP ALL TABLES ---////////////////////////////////////////////////////////////////////
+
+-- Disable foreign key constraints temporarily
+EXEC sp_MSforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT ALL";
+
+-- Delete data from all tables
+DELETE FROM LessonSchoolClass;
+DELETE FROM Lessons;
+DELETE FROM Students;
+DELETE FROM Rooms;
+DELETE FROM Teachers;
+DELETE FROM SchoolClasses;
+
+-- Re-enable foreign key constraints
+EXEC sp_MSforeachtable "ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL";

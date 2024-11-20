@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SharedKernel.Entities;
+﻿using DummyDb.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 
-namespace CRMSyncService.Infrastructure
+namespace DummyDb.Infrastructure
 {
     public class CRMContext : DbContext
     {
@@ -16,3 +16,7 @@ namespace CRMSyncService.Infrastructure
         public DbSet<Teacher> Teachers { get; set; }
     }
 }
+
+// Set DummyApi as Startup project, then open Package Manager Console and run the commands:
+// Add-Migration InitialMigration -Context CRMContext -Project DummyDb.DatabaseMigration
+// Update-Database -Context CRMContext -Project DummyDb.DatabaseMigration

@@ -1,5 +1,4 @@
-﻿
-namespace CRMSyncService.Application.IQueries.Dto
+﻿namespace DummyDb.Application.Dto
 {
     public class SchoolClassDto
     {

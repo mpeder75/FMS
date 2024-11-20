@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Domain\CRMSyncService.Domain.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Application\CRMSyncService.Application.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Domain\DummyDb.Domain.csproj" />
+    <ProjectReference Include="..\CRMSyncService.Application\DummyDb.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -10,6 +10,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
   </ItemGroup>
 
   <PropertyGroup>

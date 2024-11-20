@@ -1,5 +1,4 @@
-﻿
-namespace CRMSyncService.Application
+﻿namespace DummyDb.Application
 {
     public class DependencyInjection
     {

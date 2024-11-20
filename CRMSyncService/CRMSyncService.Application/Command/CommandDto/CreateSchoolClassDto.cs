@@ -1,7 +1,6 @@
-﻿
-using CRMSyncService.Application.IQueries.Dto;
+﻿using DummyDb.Application.Dto;
 
-namespace CRMSyncService.Application.Command.Dto
+namespace DummyDb.Application.Command.Dto
 {
     public class CreateSchoolClassDto
     {
