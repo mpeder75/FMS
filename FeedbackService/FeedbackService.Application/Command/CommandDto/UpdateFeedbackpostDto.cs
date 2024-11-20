@@ -1,5 +1,4 @@
 ﻿using FeedbackService.Domain.Entities;
-using SharedKernel.Entities;
 
 namespace FeedbackService.Application.Command.CommandDto;
 

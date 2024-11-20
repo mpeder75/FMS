@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.Entities
+﻿namespace FeedbackService.Domain.Entities
 {
     public class Room
     {
