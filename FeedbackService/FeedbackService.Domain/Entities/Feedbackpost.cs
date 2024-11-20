@@ -1,6 +1,4 @@
-﻿using SharedKernel.Entities;
-
-namespace FeedbackService.Domain.Entities;
+﻿namespace FeedbackService.Domain.Entities;
 
 public class Feedbackpost : DomainEntity
 {
@@ -8,7 +6,7 @@ public class Feedbackpost : DomainEntity
     private readonly List<DateTime> _editedTimes;
     private readonly List<Question> _history;
 
-    public AbstractUser Author { get; protected set; }
+    public User Author { get; protected set; }
     public string Title { get; protected set; }
     public Question Feedback { get; protected set; }
     public int Likes { get; protected set; }
@@ -19,7 +17,7 @@ public class Feedbackpost : DomainEntity
     public IReadOnlyCollection<Comment> Comments => _comments;
     public IReadOnlyCollection<Question> History => _history;
 
-    protected Feedbackpost(AbstractUser author, string title, Room room, Question feedback)
+    protected Feedbackpost(User author, string title, Room room, Question feedback)
     {
         Author = author;
         Title = title;
