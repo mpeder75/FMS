@@ -4,7 +4,7 @@ public class Course
 {
     private readonly List<Lesson> _lessons;
 
-    private readonly Teacher teacher;
+    private readonly Teacher Teacher;
     public int Term { get; protected set; }
 
     public IReadOnlyCollection<Lesson> Lessons => _lessons;
@@ -12,7 +12,7 @@ public class Course
     private Course(int term, Teacher teacher)
     {
         Term = term;
-        this.teacher = teacher;
+        Teacher = teacher;
         _lessons = new List<Lesson>();
     }
 
