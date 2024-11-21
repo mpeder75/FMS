@@ -1,6 +1,6 @@
 ﻿using DummyDb.Application.Dto;
 
-namespace DummyDb.Application.Command.Dto
+namespace DummyDb.Application.Command.CommandDto
 {
     public class CreateSchoolClassDto
     {

@@ -15,8 +15,7 @@ namespace DummyDb.Infrastructure
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
     }
+    // Set DummyApi as Startup project, then open Package Manager Console and run the commands:
+    // Add-Migration InitialMigration -Context CRMContext -Project DummyDb.DatabaseMigration
+    // Update-Database -Context CRMContext -Project DummyDb.DatabaseMigration
 }
-
-// Set DummyApi as Startup project, then open Package Manager Console and run the commands:
-// Add-Migration InitialMigration -Context CRMContext -Project DummyDb.DatabaseMigration
-// Update-Database -Context CRMContext -Project DummyDb.DatabaseMigration
