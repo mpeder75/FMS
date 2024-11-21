@@ -5,8 +5,8 @@ public class Teacher : DomainEntity
     public string FirstName { get; protected set; } = null!;
     public string LastName { get; protected set; } = null!;
     public string Email { get; set; }
-    private readonly List<Course> _classes;
-    public IReadOnlyCollection<Course> Classes => _classes;
+    private readonly List<SchoolClass> _classes;
+    public IReadOnlyCollection<SchoolClass> Classes => _classes;
 
     protected Teacher() { }
 

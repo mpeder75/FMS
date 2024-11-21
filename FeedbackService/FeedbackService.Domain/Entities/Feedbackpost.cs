@@ -6,6 +6,7 @@ public class Feedbackpost : DomainEntity
     private readonly List<DateTime> _editedTimes;
     private readonly List<Question> _history;
 
+    public Student Student { get; protected set; }
     public User Author { get; protected set; }
     public string Title { get; protected set; }
     public Question Feedback { get; protected set; }
@@ -17,7 +18,7 @@ public class Feedbackpost : DomainEntity
     public IReadOnlyCollection<Comment> Comments => _comments;
     public IReadOnlyCollection<Question> History => _history;
 
-    protected Feedbackpost(User author, string title, Room room, Question feedback)
+    protected Feedbackpost(User author, string title, Room room, Question feedback, Student student)
     {
         Author = author;
         Title = title;
@@ -26,6 +27,7 @@ public class Feedbackpost : DomainEntity
         Likes = 0;
         Dislikes = 0;
         CreatedAt = DateTime.Now;
+        Student = student;
     }
 
 

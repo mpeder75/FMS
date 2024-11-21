@@ -3,17 +3,17 @@
 public class Lesson
 {
     public DateTime Date { get; protected set; }
-    private readonly Course _course;
-    public Course Course => _course;
+    private readonly SchoolClass _schoolClass;
+    public SchoolClass SchoolClass => _schoolClass;
 
-    private Lesson(DateTime date, Course course)
+    private Lesson(DateTime date, SchoolClass schoolClass)
     {
         Date = date;
-        _course = course;
+        _schoolClass = schoolClass;
     }
 
-    public static Lesson Create(DateTime date, Course course)
+    public static Lesson Create(DateTime date, SchoolClass schoolClass)
     {
-        return new Lesson(date, course);
+        return new Lesson(date, schoolClass);
     }
 }
