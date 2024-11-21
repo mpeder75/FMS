@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure
 {
-    internal class FeedbackContext : DbContext
+    public class FeedbackContext : DbContext
     {
         public FeedbackContext(DbContextOptions<FeedbackContext> options) : base(options)
         {
