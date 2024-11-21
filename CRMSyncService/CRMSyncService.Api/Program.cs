@@ -1,4 +1,3 @@
-using DummyDb.Application.Dto;
 using DummyDb.Application.IQueries;
 using DummyDb.Infrastructure;
 using DummyDb.Infrastructure.ExternalServices;
@@ -9,9 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-//builder.Services.AddHttpClient(); 
+
 // Application & Infrastructure services
 builder.Services.AddInfrastructure(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,16 +27,7 @@ app.MapGet("/ping", () => { return Results.Ok("Ping reply"); });
 app.MapGet("/SchoolClasses", (ISchoolClassQuery query) => query.GetSchoolClasses());
 app.MapGet("/SchoolClasses/{id}", (Guid id, ISchoolClassQuery query) => query.GetSchoolClassById(id));
 
-
-
-// Add a route to call this method in your API.
-//app.MapGet("/fetch", async (IHttpClientFactory clientFactory) =>
-//{
-//    var schoolClass = await FMSServiceProxy.FetchSchoolClassAsync(clientFactory);
-
-//    return schoolClass is not null
-//        ? Results.Ok(schoolClass)
-//        : Results.Problem("Failed to fetch data from the external API.");
-//});
+// Test SeedMetode
+app.MapPost("/api/feedback/seed", async (FeedbackProxy feedbackProxy) => await feedbackProxy.SeedData());
 
 app.Run();

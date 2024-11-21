@@ -1,4 +1,5 @@
 ﻿using DummyDb.Application.IQueries;
+using DummyDb.Infrastructure.ExternalServices;
 using DummyDb.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +12,8 @@ namespace DummyDb.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<ISchoolClassQuery, SchoolClassQuery>();
-
+            services.AddHttpClient();
+            services.AddScoped<FeedbackProxy>();
             services.AddDbContext<CRMContext>(options =>
             options.UseSqlServer(
                     configuration.GetConnectionString
@@ -20,6 +22,5 @@ namespace DummyDb.Infrastructure
 
             return services;
         }
-
     }
 }
