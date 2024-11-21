@@ -26,7 +26,7 @@ namespace FeedbackService.Infrastructure.Queries
                                 .Include(b => b.Feedback)
                                 .Include(c => c.Room)
                                 .Include(d => d.EditedTimes)
-                                .Include(e => e.Comments).ToListAsync()
+                                .Include(e => e.Comments)
                                 .Include(f => f.History)
                                 .FirstOrDefaultAsync(fp => fp.Id == feedbackpostGuid);
 
@@ -39,7 +39,8 @@ namespace FeedbackService.Infrastructure.Queries
             {
                 Id = post.Id,
                 Title = post.Title,
-                Question = post.Feedback.QuestionText, // Assuming Question has a property QuestionText
+                QuestionText = post.Feedback.QuestionText,
+                AnswerText = post.Feedback.AnswerText,
                 Author = post.Author.Name, // Assuming User has a property Name
                 Room = post.Room,
                 Likes = post.Likes,
@@ -53,7 +54,7 @@ namespace FeedbackService.Infrastructure.Queries
                 }).ToList(),
                 History = post.History.Select(h => new QuestionDto
                 {
-                    QuestionText = h.QuestionText,
+                    QuestionText = h.QuestionText
                     // Map other properties if needed
                 }).ToList()
             };

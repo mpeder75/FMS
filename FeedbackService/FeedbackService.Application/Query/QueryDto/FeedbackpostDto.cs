@@ -11,7 +11,8 @@ namespace FeedbackService.Application.Query.QueryDto
     {
         public Guid Id { get; init; }
         public string Title { get; init; }
-        public string Question { get; init; }
+        public string QuestionText { get; init; }
+        public string AnswerText { get; init; }
         public string Author { get; init; }
         public Room Room { get; init; }
         public int Likes { get; init; }
