@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Domain\DummyDb.Domain.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Application\DummyDb.Application.csproj" />
+    <ProjectReference Include="..\DummyDb.Domain\DummyDb.Domain.csproj" />
+    <ProjectReference Include="..\DummyDb.Application\DummyDb.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>

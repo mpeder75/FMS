@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Infrastructure\DummyDb.Infrastructure.csproj" />
+    <ProjectReference Include="..\DummyDb.Infrastructure\DummyDb.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

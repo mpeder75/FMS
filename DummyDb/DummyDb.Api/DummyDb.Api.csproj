@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -18,10 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CRMSyncService.Application\DummyDb.Application.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Domain\DummyDb.Domain.csproj" />
-    <ProjectReference Include="..\CRMSyncService.Infrastructure\DummyDb.Infrastructure.csproj" />
-    <ProjectReference Include="..\CRMSyncService.DatabaseMigration\DummyDb.DatabaseMigration.csproj" />
+    <ProjectReference Include="..\DummyDb.Application\DummyDb.Application.csproj" />
+    <ProjectReference Include="..\DummyDb.Domain\DummyDb.Domain.csproj" />
+    <ProjectReference Include="..\DummyDb.Infrastructure\DummyDb.Infrastructure.csproj" />
+    <ProjectReference Include="..\DummyDb.DatabaseMigration\DummyDb.DatabaseMigration.csproj" />
   </ItemGroup>
 
 </Project>
