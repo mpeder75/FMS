@@ -29,7 +29,7 @@ public class Feedbackpost : DomainEntity
     }
 
 
-    public static Feedbackpost Create(Student originalPoster, string title, Room room, Question feedback)
+    public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
     {
         return new Feedbackpost(originalPoster, title, room, feedback);
     }

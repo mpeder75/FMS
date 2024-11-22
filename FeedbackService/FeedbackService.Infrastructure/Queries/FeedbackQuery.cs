@@ -4,8 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using FeedbackService.Application;
 using FeedbackService.Application.Query;
 using FeedbackService.Application.Query.QueryDto;
+using FeedbackService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure.Queries
@@ -41,7 +43,7 @@ namespace FeedbackService.Infrastructure.Queries
                 Title = post.Title,
                 QuestionText = post.Feedback.QuestionText,
                 AnswerText = post.Feedback.AnswerText,
-                Author = post.Author.Name, // Assuming User has a property Name
+                AuthorId = post.Author.Id, // Assuming User has a property Name
                 Room = post.Room,
                 Likes = post.Likes,
                 Dislikes = post.Dislikes,
@@ -54,7 +56,7 @@ namespace FeedbackService.Infrastructure.Queries
                 }).ToList(),
                 History = post.History.Select(h => new QuestionDto
                 {
-                    QuestionText = h.QuestionText
+                    QuestionString = h.QuestionText
                     // Map other properties if needed
                 }).ToList()
             };
@@ -62,7 +64,12 @@ namespace FeedbackService.Infrastructure.Queries
 
         async Task<IEnumerable<FeedbackpostDto>> IFeedbackpostQuery.GetFeedbackposts()
         {
-            throw new NotImplementedException();
+            
+        }
+
+        async Task<List<Feedbackpost>> IFeedbackpostQuery.GetFeedbackpostsByRoom(Guid roomId)
+        {
+            return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
         }
     }
 }

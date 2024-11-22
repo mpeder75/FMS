@@ -1,6 +1,6 @@
 ﻿namespace FeedbackService.Domain.Entities
 {
-    public class Room
+    public class Room : DomainEntity
     {
         private Room(string name, string description)
         {

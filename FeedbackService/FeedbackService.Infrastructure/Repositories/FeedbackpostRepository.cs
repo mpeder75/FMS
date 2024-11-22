@@ -55,9 +55,6 @@ namespace FeedbackService.Infrastructure.Repositories
             }
         }
 
-        async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
-        {
-            return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
-        }
+        
     }
 }

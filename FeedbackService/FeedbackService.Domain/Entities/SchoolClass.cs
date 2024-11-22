@@ -1,6 +1,6 @@
 ﻿namespace FeedbackService.Domain.Entities;
 
-public class Course
+public class SchoolClass
 {
     private readonly List<Lesson> _lessons;
 
@@ -9,16 +9,16 @@ public class Course
 
     public IReadOnlyCollection<Lesson> Lessons => _lessons;
 
-    private Course(int term, Teacher teacher)
+    private SchoolClass(int term, Teacher teacher)
     {
         Term = term;
         Teacher = teacher;
         _lessons = new List<Lesson>();
     }
 
-    public static Course Create(int term, Teacher teacher)
+    public static SchoolClass Create(int term, Teacher teacher)
     {
-        return new Course(term, teacher);
+        return new SchoolClass(term, teacher);
     }
 
     public void AddLesson(Lesson lesson)

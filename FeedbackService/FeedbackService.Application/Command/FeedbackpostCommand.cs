@@ -21,8 +21,8 @@ public class FeedbackpostCommand : IFeedbackpostCommand
 
     async Task IFeedbackpostCommand.CreateAsync(CreateFeedbackpostDto createFeedbackpostDto)
     {
-        var author = _userRepository.Get(createFeedbackpostDto.AuthorId);
-        var room = _roomRepository.Get(createFeedbackpostDto.RoomId);
+        var author = await _userRepository.GetAsync(createFeedbackpostDto.AuthorId);
+        var room = await _roomRepository.GetAsync(createFeedbackpostDto.RoomId);
         var feedbackpost = Feedbackpost.Create(author, createFeedbackpostDto.Title, room, createFeedbackpostDto.Question);
         await _feedbackpostRepository.AddAsync(feedbackpost);
     }
@@ -35,7 +35,7 @@ public class FeedbackpostCommand : IFeedbackpostCommand
 
             var feedbackpost = await _feedbackpostRepository.GetAsync(updateFeedbackpostDto.Id);
 
-            feedbackpost.Update(updateFeedbackpostDto.Title, updateFeedbackpostDto.Question, updateFeedbackpostDto.Room);
+            feedbackpost.Update(updateFeedbackpostDto.Title, updateFeedbackpostDto.Feedback, updateFeedbackpostDto.Room);
 
             await _feedbackpostRepository.UpdateAsync(feedbackpost, updateFeedbackpostDto.RowVersion);
             _uow.Commit();
