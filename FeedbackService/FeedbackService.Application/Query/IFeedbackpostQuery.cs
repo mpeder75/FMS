@@ -8,6 +8,6 @@ public interface IFeedbackpostQuery
 {
     Task<FeedbackpostDto> GetFeedbackpost(Guid feedbackpostGuid);
     Task<IEnumerable<FeedbackpostDto>> GetFeedbackposts();
-    Task<List<Feedbackpost>> GetFeedbackpostsByRoom(Guid roomId);
+    Task<List<FeedbackpostDto>> GetFeedbackpostsByRoom(Guid roomId);
 
 }
