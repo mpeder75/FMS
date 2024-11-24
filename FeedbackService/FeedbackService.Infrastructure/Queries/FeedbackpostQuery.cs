@@ -14,14 +14,13 @@ namespace FeedbackService.Infrastructure.Queries
             _db = db;
         }
 
-        public async Task<List<FeedbackpostDto>> GetFeedbackpostsByTeacherAsync(Guid teacherId)
+        public async Task<List<FeedbackpostDto>> GetByTeacherIdAsync(Guid teacherId)
         {
             var feedbackposts = await _db.Feedbackposts
                 .Include(fp => fp.Comments)
-                .Include(fp => fp.Student)
-                .ThenInclude(s => s.SchoolClass)
-                .ThenInclude(sc => sc.Teacher)
-                .Where(fp => fp.Student.SchoolClass.Teacher.Id == teacherId)
+                .Include(fp => fp.Room)
+                .ThenInclude(r => r.Lessons)
+                .Where(fp => fp.Room.Lessons.Any(l => l.Teacher.Id == teacherId))
                 .ToListAsync();
 
             return feedbackposts.Select(fp => new FeedbackpostDto
@@ -32,6 +31,7 @@ namespace FeedbackService.Infrastructure.Queries
                 Likes = fp.Likes,
                 Dislikes = fp.Dislikes,
                 CreatedAt = fp.CreatedAt,
+                Author = null, // Anonymize the author
                 Comments = fp.Comments.Select(c => new CommentDto
                 {
                     Id = c.Id,

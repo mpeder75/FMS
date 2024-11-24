@@ -1,19 +1,22 @@
-﻿namespace FeedbackService.Domain.Entities
-{
-    public class Comment : DomainEntity
-    {
-        protected Comment()
-        {
-        }
-        private Comment(string commentString)
-        {
-            CommentString = commentString;
-        }
-        public string CommentString { get; protected set; }
+﻿using FeedbackService.Domain;
 
-        public static Comment Create(string commentString)
-        {
-            return new Comment(commentString);
-        }
+public class Comment : DomainEntity
+{
+    public string CommentString { get; set; }
+    public DateTime CreatedAt { get; set; }
+
+    protected Comment()
+    {
+    }
+
+    private Comment(string commentString)
+    {
+        CommentString = commentString;
+        CreatedAt = DateTime.Now;
+    }
+
+    public static Comment Create(string commentString)
+    {
+        return new Comment(commentString);
     }
 }

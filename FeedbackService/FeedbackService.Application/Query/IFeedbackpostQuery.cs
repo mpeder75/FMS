@@ -4,6 +4,5 @@ namespace FeedbackService.Application.Query;
 
 public interface IFeedbackpostQuery
 {
-    Task<List<FeedbackpostDto>> GetFeedbackpostsByTeacherAsync(Guid teacherId);
-
+    Task<List<FeedbackpostDto>> GetByTeacherIdAsync(Guid teacherId);
 }

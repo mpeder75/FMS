@@ -8,5 +8,6 @@ public record FeedbackpostDto
     public int Likes { get; set; }
     public int Dislikes { get; set; }
     public DateTime CreatedAt { get; set; }
-    public List<CommentDto> Comments { get; set; } = new();
+    public List<CommentDto> Comments { get; set; }
+    public string? Author { get; set; }
 }

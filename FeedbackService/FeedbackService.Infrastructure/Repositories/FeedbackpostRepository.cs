@@ -18,12 +18,12 @@ internal class FeedbackpostRepository : IFeedbackpostRepository
         return await _db.Feedbackposts.FirstOrDefaultAsync(x => x.Id == id);
     }
 
-    async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackposts()
+    async Task<List<Feedbackpost>> IFeedbackpostRepository.GetAllAsync()
     {
         return await _db.Feedbackposts.ToListAsync();
     }
 
-    public async Task<List<Feedbackpost>> GetFeedbackpostsByTeacher(Guid teacherId)
+    public async Task<List<Feedbackpost>> GetByTeacherIdAsync(Guid teacherId)
     {
         return await _db.Feedbackposts
             .Include(fp => fp.Student)
@@ -60,7 +60,7 @@ internal class FeedbackpostRepository : IFeedbackpostRepository
         }
     }
 
-    async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
+    async Task<List<Feedbackpost>> IFeedbackpostRepository.GetByRoomIdAsync(Guid roomId)
     {
         return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
     }
