@@ -39,10 +39,8 @@ public class ExitSlipCommand : IExitSlipCommand
         {
             _uow.BeginTransaction();
 
-            var exitSlip = _query.GetOneById(updateExitSlipDto.LessonId);
-            exitSlip.StudentId = updateExitSlipDto.StudentId;
-            exitSlip.TeacherComment = updateExitSlipDto.TeacherComment;
-            exitSlip.Questions = updateExitSlipDto.Questions;
+            ExitSlip exitSlip = _query.GetOneById(updateExitSlipDto.Id);
+            exitSlip.Update(updateExitSlipDto.Questions, updateExitSlipDto.TeacherComment, updateExitSlipDto.StudentId);
             _repository.Update(exitSlip);
 
             _uow.Commit();

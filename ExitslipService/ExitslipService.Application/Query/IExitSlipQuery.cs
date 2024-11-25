@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ExitslipService.Application.Query.QueryDto;
+using ExitslipService.Application.Query.ExitSlipDto;
 using ExitslipService.Domain.Entities;
+
 
 namespace ExitslipService.Application.Query
 {
     public interface IExitSlipQuery
     {
-        List<ExitSlip> GetAllByStudentId(Guid studentId);
+        List<ExitSlipDTO> GetAllByStudentId(Guid studentId);
 
-        List<ExitSlip> GetAllByLessonId(Guid lessonId);
+        List<ExitSlipDTO> GetAllByTeacherId(Guid teacherId);
 
-        QueryDTO GetOneById(Guid exitSlipId);
+        List<ExitSlipDTO> GetAllByLessonId(Guid lessonId);
+
+        ExitSlip GetOneById(Guid exitSlipId);
 
     }
 }

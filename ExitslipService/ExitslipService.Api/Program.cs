@@ -1,4 +1,7 @@
+using ExitslipService.Application.Command;
+using ExitslipService.Application.Command.CommandDto;
 using ExitslipService.Application.Interfaces;
+using ExitslipService.Application.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,18 +24,16 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //GetAll by teacher
-app.MapGet("/teacher/{id}/exitslips", (Guid id, IExitSlipQuery query => query.GetByTeacher(id));
+app.MapGet("/teacher/{id}/exitslips", (Guid id, IExitSlipQuery query) => query.GetAllByTeacherId(id));
 
 //GetAll by lesson
-app.MapGet("/lesson/{id}/exitslips", (Guid id, IExitSlipQuery query => query.GetByLesson(id));
+app.MapGet("/lesson/{id}/exitslips", (Guid id, IExitSlipQuery query) => query.GetAllByLessonId(id));
 
-//Create ExitSlip
-//app.MapPost
+//Create ExitSlip with questions and an authoring teacher
+app.MapPost("/exitslip", async (CreateExitSlipDTO exitslip, IExitSlipCommand command) => command.Create(exitslip));
 
-//Update ExitSlip
-//app.MapPut
-
-//
+//Update ExitSlip with answers and answering student.
+app.MapPut("/exitslip", async (UpdateExitSlipDTO exitslip, IExitSlipCommand command) => command.Update(exitslip));
 
 
 app.Run();

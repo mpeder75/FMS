@@ -15,19 +15,19 @@ namespace ExitSlipService.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
 
-            /*            // Database
+                        // Database
                         // https://github.com/dotnet/SqlClient/issues/2239
                         // https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects?tabs=dotnet-core-cli
                         // Add-Migration InitialMigration -Context BookMyHomeContext -Project OnionDemo.DatabaseMigration
                         // Update-Database -Context BookMyHomeContext -Project OnionDemo.DatabaseMigration
                         services.AddDbContext<ExitSlipContext>(options =>
                             options.UseSqlServer(
-                                configuration.GetConnectionString
-                                    ("BookMyHomeDbConnection"),
+                                configuration.GetConnectionString½½
+                                    ("ExitSlipDbConnection"),
                                 x =>
-                                    x.MigrationsAssembly("OnionDemo.DatabaseMigration")));
+                                    x.MigrationsAssembly("ExitslipService.DatabaseMigration")));
 
-            */
+            
             return services;
 
         }

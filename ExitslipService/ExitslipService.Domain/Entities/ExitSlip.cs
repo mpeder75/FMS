@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -27,24 +29,31 @@ namespace ExitslipService.Domain.Entities
             IsDistributed = isDistributed;
             TeacherComment = new Comment();
         }
-        public Guid LessonId { get; set; }
-
-        public Guid StudentId { get; set; }
-
-        public List<Question> Questions { get; set; }
-
-        public bool IsDistributed { get; set; }
-
-        public Comment TeacherComment { get; set; }
+        public Guid LessonId { get; protected set; }
+        public Guid StudentId { get; protected set; }
+        public List<Question> Questions { get; protected set; }
+        public bool IsDistributed { get; protected set; }
+        public Teacher Teacher {  get; protected set; }
+        public Comment TeacherComment { get; protected set; }
 
         public static ExitSlip Create(Guid lessonId, List<Question> questions, bool isDistributed = false)
         {
             var result = new ExitSlip(lessonId, questions, isDistributed);
             return result;
         }
+
+        public void Update(List<Question> questions, Comment teacherComment, Guid studentId)
+        {
+            this.Questions = questions;
+            this.TeacherComment = teacherComment;
+            this.StudentId = studentId;
+        }
+
+        public void Distribute()
+        {
+            this.IsDistributed = true;
+        }
     }
-
-
 
 
     public class Question : DomainEntity
@@ -55,7 +64,10 @@ namespace ExitslipService.Domain.Entities
     {
     }
 
+    public class Teacher : DomainEntity
+    {
 
+    }
 }
 
 
