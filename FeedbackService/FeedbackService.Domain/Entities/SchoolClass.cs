@@ -1,4 +1,4 @@
-﻿using FeedbackService.Domain.Entities;
+﻿namespace FeedbackService.Domain.Entities;
 
 public class SchoolClass
 {
@@ -6,9 +6,15 @@ public class SchoolClass
     private readonly List<Student> _students;
     private readonly List<Room> _rooms;
 
-    public SchoolClass(int term)
+    private readonly Teacher Teacher;
+    public int Term { get; protected set; }
+
+    public IReadOnlyCollection<Lesson> Lessons => _lessons;
+
+    private SchoolClass(int term, Teacher teacher)
     {
         Term = term;
+        Teacher = teacher;
         _lessons = new List<Lesson>();
         _students = new List<Student>();
         _rooms = new List<Room>();
@@ -20,8 +26,9 @@ public class SchoolClass
     public IReadOnlyCollection<Room> Rooms => _rooms;
 
     public static SchoolClass Create(int term)
+    public static SchoolClass Create(int term, Teacher teacher)
     {
-        return new SchoolClass(term);
+        return new SchoolClass(term, teacher);
     }
 
     public void AddLesson(Lesson lesson)

@@ -60,8 +60,9 @@ internal class FeedbackpostRepository : IFeedbackpostRepository
         }
     }
 
-    async Task<List<Feedbackpost>> IFeedbackpostRepository.GetByRoomIdAsync(Guid roomId)
-    {
-        return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
+        async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
+        {
+            return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
+        }
     }
 }

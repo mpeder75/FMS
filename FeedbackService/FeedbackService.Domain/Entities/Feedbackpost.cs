@@ -31,12 +31,9 @@ public class Feedbackpost : DomainEntity
         _history = new List<Question>();
     }
 
-    public static Feedbackpost Create(User author, string title, Room room, Question feedback)
-    {
-        return new Feedbackpost(author, title, room, feedback);
-    }
 
     public void Anonymize()
+    public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
     {
         Author = null;
     }
