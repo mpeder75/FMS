@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExitslipService.Application.Query.QueryDto
+namespace ExitslipService.Application.Query
 {
-    public class Class1
+    internal class ExitSlipQuery
     {
-
     }
 }

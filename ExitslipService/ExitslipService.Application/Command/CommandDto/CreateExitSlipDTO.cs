@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ExitslipService.Application.Command.CommandDto
 {
-    public class CreateDTO
+    public record CreateExitSlipDTO
     {
         public Guid Id { get; set; }
 

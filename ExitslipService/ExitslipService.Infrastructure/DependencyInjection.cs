@@ -1,5 +1,5 @@
 ﻿using ExitslipService.Application.UnitOfWork;
-using ExitslipService.Infrastructure.OnionDemo.Infrastructure;
+using ExitSlipService.Infrastructure.OnionDemo.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExitslipService.Infrastructure
+namespace ExitSlipService.Infrastructure
 {
     public static class ServiceCollectionExtension
     {

@@ -18,5 +18,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//MapPost
+//MapPut
+//MapGet
+//MapGet(All)
+
 
 app.Run();

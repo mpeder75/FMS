@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\ExitslipService.Infrastructure\ExitslipService.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExitslipService.Infrastructure\ExitSlipService.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
