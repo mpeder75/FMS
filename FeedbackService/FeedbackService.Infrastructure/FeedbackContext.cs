@@ -15,5 +15,7 @@ namespace FeedbackService.Infrastructure
         }
         public DbSet<Feedbackpost> Feedbackposts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

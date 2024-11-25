@@ -18,10 +18,12 @@ namespace FeedbackService.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IFeedbackpostRepository, FeedbackpostRepository>();
             services.AddScoped<IFeedbackpostQuery, FeedbackpostQuery>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFeedbackpostRepository, FeedbackpostRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<FeedbackContext>>();
 
 
@@ -31,8 +33,8 @@ namespace FeedbackService.Infrastructure
                         ("FeedbackDb"),
                     x =>
                         x.MigrationsAssembly("FeedbackService.DatabaseMigration")));
-           
-            
+
+            return services;
         }
     }
 }
