@@ -9,5 +9,4 @@ public interface IExitSlipRepository
 
     void Update(ExitSlip exitSlip);
 
-    ExitSlip Get(Guid id);
 }

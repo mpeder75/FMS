@@ -1,3 +1,5 @@
+using ExitslipService.Application.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,10 +20,19 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//MapPost
-//MapPut
-//MapGet
-//MapGet(All)
+//GetAll by teacher
+app.MapGet("/teacher/{id}/exitslips", (Guid id, IExitSlipQuery query => query.GetByTeacher(id));
+
+//GetAll by lesson
+app.MapGet("/lesson/{id}/exitslips", (Guid id, IExitSlipQuery query => query.GetByLesson(id));
+
+//Create ExitSlip
+//app.MapPost
+
+//Update ExitSlip
+//app.MapPut
+
+//
 
 
 app.Run();

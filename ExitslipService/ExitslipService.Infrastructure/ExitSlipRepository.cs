@@ -15,11 +15,6 @@ namespace ExitSlipService.Infrastructure
             throw new NotImplementedException();
         }
 
-        void IExitSlipRepository.Get(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
         void IExitSlipRepository.Update(ExitSlip exitSlip)
         {
             throw new NotImplementedException();
