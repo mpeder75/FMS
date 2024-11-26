@@ -7,7 +7,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\SharedKernel\SharedKernel.csproj" />
+	  <Compile Remove="ValueObjects\**" />
+	  <EmbeddedResource Remove="ValueObjects\**" />
+	  <None Remove="ValueObjects\**" />
 	</ItemGroup>
 
 </Project>
