@@ -35,5 +35,10 @@ app.MapGet("/teacher/{teacherId}/feedbackposts", async (Guid teacherId, IFeedbac
     var feedbackposts = await feedbackpostQuery.GetByTeacherIdAsync(teacherId);
     return Results.Ok(feedbackposts);
 });
+app.MapPost("/feedbackpost/{id}/comment", async (Guid id, [FromBody] AddFeedbackpostCommentDto addCommentDto, [FromServices] IFeedbackpostCommand command) =>
+{
+    await command.AddCommentAsync(id, addCommentDto);
+    return Results.Ok();
+});
 
 app.Run();

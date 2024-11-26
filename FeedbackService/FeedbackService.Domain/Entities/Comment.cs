@@ -1,9 +1,11 @@
 ﻿using FeedbackService.Domain;
+using FeedbackService.Domain.Entities;
 
 public class Comment : DomainEntity
 {
     public string CommentString { get; set; }
     public DateTime CreatedAt { get; set; }
+    public User Author { get; set; } // Add this property
 
     protected Comment()
     {
@@ -20,3 +22,5 @@ public class Comment : DomainEntity
         return new Comment(commentString);
     }
 }
+
+

@@ -50,5 +50,15 @@ public class FeedbackpostRepository : IFeedbackpostRepository
             await _db.SaveChangesAsync();
         }
     }
-   
+
+    public async Task AddCommentAsync(Guid feedbackpostId, Comment comment)
+    {
+        var feedbackpost = await ((IFeedbackpostRepository)this).GetAsync(feedbackpostId);
+        if (feedbackpost != null)
+        {
+            feedbackpost.AddComment(comment.CommentString);
+            await _db.SaveChangesAsync();
+        }
+    }
+
 }

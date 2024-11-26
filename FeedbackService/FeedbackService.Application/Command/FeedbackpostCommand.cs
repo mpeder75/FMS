@@ -75,4 +75,12 @@ public class FeedbackpostCommand : IFeedbackpostCommand
             throw;
         }
     }
+    
+    async Task IFeedbackpostCommand.AddCommentAsync(Guid feedbackpostId, AddFeedbackpostCommentDto addCommentDto)
+    {
+        var author = await _userRepository.GetAsync(addCommentDto.AuthorId);
+        var comment = Comment.Create(addCommentDto.CommentString);
+        comment.Author = author;
+        await _feedbackpostRepository.AddCommentAsync(feedbackpostId, comment);
+    }
 }

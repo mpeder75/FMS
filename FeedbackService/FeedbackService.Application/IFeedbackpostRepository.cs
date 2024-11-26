@@ -9,4 +9,5 @@ public interface IFeedbackpostRepository
     Task AddAsync(Feedbackpost feedbackpost);
     Task UpdateAsync(Feedbackpost post, byte[] rowversion);
     Task DeleteAsync(Guid postId);
+    Task AddCommentAsync(Guid feedbackpostId, Comment comment);
 }
