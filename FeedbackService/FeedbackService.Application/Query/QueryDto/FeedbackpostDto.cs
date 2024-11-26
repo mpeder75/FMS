@@ -1,34 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FeedbackService.Domain.Entities;
-namespace FeedbackService.Application.Query.QueryDto;
+﻿namespace FeedbackService.Application.Query.QueryDto;
 
-namespace FeedbackService.Application.Query.QueryDto
+public record FeedbackpostDto
 {
-    public record FeedbackpostDto
-    {
-        public Guid Id { get; init; }
-        public string Title { get; init; }
-        public string QuestionText { get; init; }
-        public string AnswerText { get; init; }
-        public Guid AuthorId { get; init; }
-        public Room Room { get; init; }
-        public string Feedback { get; set; }
-        public int Likes { get; init; }
-        public int Dislikes { get; init; }
-        public DateTime CreatedAt { get; init; }
-        public List<DateTime> EditedTimes { get; init; }
-        public List<CommentDto> Comments { get; init; }
-        public List<QuestionDto> History { get; init; }
-      
-        public DateTime CreatedAt { get; set; }
-        public string? Author { get; set; }
-    }
-   
-    
-    
-   
+    public Guid Id { get; init; }
+    public string Title { get; init; }
+    public string QuestionText { get; init; }
+    public string AnswerText { get; init; }
+    public Guid AuthorId { get; init; }
+    public Room Room { get; init; }
+    public string Feedback { get; set; }
+    public int Likes { get; init; }
+    public int Dislikes { get; init; }
+    public List<DateTime> EditedTimes { get; init; }
+    public List<CommentDto> Comments { get; init; }
+    public List<QuestionDto> History { get; init; }
+
+    public DateTime CreatedAt { get; set; }
+    public string? Author { get; set; }
 }

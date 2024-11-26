@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Domain.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Infrastructure", "ExitslipService\ExitslipService.Infrastructure\ExitslipService.Infrastructure.csproj", "{39E11618-453F-5D51-F7D0-3AC95604014E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FeedbackService", "FeedbackService", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FeeedbackService", "FeeedbackService", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackService.Api", "FeedbackService\FeedbackService.Api\FeedbackService.Api.csproj", "{7891AC64-53D0-2FBA-4AE4-EF912B17AA53}"
 EndProject

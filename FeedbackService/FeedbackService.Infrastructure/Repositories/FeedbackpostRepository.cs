@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure.Repositories;
 
-internal class FeedbackpostRepository : IFeedbackpostRepository
+public class FeedbackpostRepository : IFeedbackpostRepository
 {
     private readonly FeedbackContext _db;
 

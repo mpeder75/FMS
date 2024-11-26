@@ -33,9 +33,13 @@ public class Feedbackpost : DomainEntity
 
 
     public void Anonymize()
-    public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
     {
         Author = null;
+    }
+
+    public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
+    {
+        return new Feedbackpost(originalPoster, title, room, feedback);
     }
 
     public void Update(string title, Question question, Room room)
