@@ -1,12 +1,6 @@
-﻿using ExitslipService.Application.UnitOfWork;
-using ExitSlipService.Infrastructure.OnionDemo.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExitSlipService.Infrastructure
 {
@@ -22,14 +16,13 @@ namespace ExitSlipService.Infrastructure
                         // Update-Database -Context BookMyHomeContext -Project OnionDemo.DatabaseMigration
                         services.AddDbContext<ExitSlipContext>(options =>
                             options.UseSqlServer(
-                                configuration.GetConnectionString½½
+                                configuration.GetConnectionString
                                     ("ExitSlipDbConnection"),
                                 x =>
                                     x.MigrationsAssembly("ExitslipService.DatabaseMigration")));
 
             
             return services;
-
         }
     }
 }

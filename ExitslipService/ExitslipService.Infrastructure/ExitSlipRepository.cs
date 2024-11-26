@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace ExitSlipService.Infrastructure
 {
-    public class ExitSlipRepository : IExitSlipRepository
+    public class ExitSlipRepository(ExitSlipContext context, HttpClient client) : IExitSlipRepository
     {
         void IExitSlipRepository.Add(ExitSlip exitSlip)
         {
-            throw new NotImplementedException();
+            context.ExitSlips.Add(exitSlip);
+            context.SaveChanges();
         }
 
-        void IExitSlipRepository.Update(ExitSlip exitSlip)
+        void IExitSlipRepository.Update(ExitSlip exitSlip, byte[] rowVersion)
         {
-            throw new NotImplementedException();
+            context.Entry(exitSlip).Property(nameof(exitSlip.RowVersion)).OriginalValue = exitSlip.RowVersion;
+            context.SaveChanges();
         }
     }
 }

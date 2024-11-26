@@ -26,8 +26,10 @@ public class ExitSlipCommand : IExitSlipCommand
         {
             //This is for creating the ExitSlip and attaching it to a Lesson; For submission of answers, use Update.
             Guid lessonId = createExitSlipDto.LessonId; 
-            List<Question> questions = createExitSlipDto.Questions;
-            var exitSlip = ExitSlip.Create(lessonId, questions);
+            List<QuestionForm> questions = createExitSlipDto.Questions;
+            Teacher author = createExitSlipDto.Teacher;
+            var exitSlip = ExitSlip.Create(lessonId, author, questions);
+
             _repository.Add(exitSlip);
         }
     }
@@ -41,7 +43,9 @@ public class ExitSlipCommand : IExitSlipCommand
 
             ExitSlip exitSlip = _query.GetOneById(updateExitSlipDto.Id);
             exitSlip.Update(updateExitSlipDto.Questions, updateExitSlipDto.TeacherComment, updateExitSlipDto.StudentId);
-            _repository.Update(exitSlip);
+
+            var rowVersion = _uow.ConvertHexToByteArray(updateExitSlipDto.RowVersion);
+            _repository.Update(exitSlip, exitSlip.RowVersion);
 
             _uow.Commit();
         }

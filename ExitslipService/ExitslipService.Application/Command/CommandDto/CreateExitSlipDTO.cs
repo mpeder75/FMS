@@ -15,7 +15,7 @@ namespace ExitslipService.Application.Command.CommandDto
 
         public Guid LessonId { get; set; }
 
-        public List<Question> Questions { get; set; }
-
+        public List<QuestionForm> Questions { get; set; }
+        public Teacher Teacher { get; internal set; }
     }
 }

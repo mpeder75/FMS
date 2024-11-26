@@ -9,4 +9,6 @@ public interface IUnitOfWork
     void Rollback();
 
     void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.Serializable);
+
+    public byte[] ConvertHexToByteArray(string hex);
 }

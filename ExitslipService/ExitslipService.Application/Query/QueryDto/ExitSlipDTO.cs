@@ -9,8 +9,12 @@ namespace ExitslipService.Application.Query.ExitSlipDto
 {
     public class ExitSlipDTO
     {
-        public Guid StudentId { get; internal set; }
-        public Comment TeacherComment { get; internal set; }
-        public List<Question> Questions { get; internal set; }
+        public Guid LessonId { get; set; }
+        public Guid StudentId { get; set; }
+        public List<QuestionForm> Questions { get; set; }
+        public bool IsDistributed { get; set; }
+        public Teacher Teacher { get; set; }
+        public Comment TeacherComment { get; set; }
+        public byte[] RowVersion { get; set; }
     }
 }

@@ -11,40 +11,36 @@ namespace ExitslipService.Domain.Entities
 {
     public class ExitSlip : DomainEntity
     {
-        protected ExitSlip(){}
-
-        private ExitSlip(Guid lessonId, Guid studentId, List<Question> questions, bool isDistributed, Comment teacherComment)
+        private List<QuestionForm> _questions;
+        protected ExitSlip()
         {
-            LessonId = lessonId;
-            StudentId = studentId;
-            Questions = questions;
-            IsDistributed = isDistributed;
-            TeacherComment = teacherComment;
+            _questions = new List<QuestionForm>();
         }
-        private ExitSlip(Guid lessonId, List<Question> questions, bool isDistributed)
+        private ExitSlip(Guid lessonId, Teacher author, List<QuestionForm> questions, bool isDistributed)
         {
             LessonId = lessonId;
             StudentId = Guid.Empty;
-            Questions = questions;
+            _questions = questions;
             IsDistributed = isDistributed;
             TeacherComment = new Comment();
+            Teacher = author;
         }
         public Guid LessonId { get; protected set; }
         public Guid StudentId { get; protected set; }
-        public List<Question> Questions { get; protected set; }
+        public IReadOnlyCollection<QuestionForm> Questions => _questions;
         public bool IsDistributed { get; protected set; }
-        public Teacher Teacher {  get; protected set; }
+        public Teacher Teacher { get; protected set; }
         public Comment TeacherComment { get; protected set; }
 
-        public static ExitSlip Create(Guid lessonId, List<Question> questions, bool isDistributed = false)
+        public static ExitSlip Create(Guid lessonId, Teacher author, List<QuestionForm> questions, bool isDistributed = false)
         {
-            var result = new ExitSlip(lessonId, questions, isDistributed);
+            var result = new ExitSlip(lessonId, author, questions, isDistributed);
             return result;
         }
 
-        public void Update(List<Question> questions, Comment teacherComment, Guid studentId)
+        public void Update(List<QuestionForm> questions, Comment teacherComment, Guid studentId)
         {
-            this.Questions = questions;
+            this._questions = questions;
             this.TeacherComment = teacherComment;
             this.StudentId = studentId;
         }
@@ -54,18 +50,17 @@ namespace ExitslipService.Domain.Entities
             this.IsDistributed = true;
         }
     }
-
-
-    public class Question : DomainEntity
+    public class QuestionForm : DomainEntity
     {
+        public string Question { get; protected set; }
+        public string Answer { get; protected set; }
     }
-
     public class Comment : DomainEntity
     {
-    }
-
-    public class Teacher : DomainEntity
-    {
+        public string Content
+        {
+            get; protected set;
+        }
 
     }
 }
