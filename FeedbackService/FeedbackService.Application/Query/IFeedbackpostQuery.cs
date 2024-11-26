@@ -1,6 +1,4 @@
-﻿using FeedbackService.Application.Command.CommandDto;
-using FeedbackService.Application.Query.QueryDto;
-using FeedbackService.Domain.Entities;
+﻿using FeedbackService.Application.Query.QueryDto;
 
 namespace FeedbackService.Application.Query;
 

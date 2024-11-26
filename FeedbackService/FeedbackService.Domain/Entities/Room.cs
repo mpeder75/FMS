@@ -1,10 +1,17 @@
-﻿using FeedbackService.Domain.Entities;
+﻿using FeedbackService.Domain;
+using FeedbackService.Domain.Entities;
 
-public class Room
+public class Room : DomainEntity
 {
-    private readonly List<Lesson> _lessons;
     private readonly List<Feedbackpost> _feedbackposts;
+    private readonly List<Lesson> _lessons;
     private readonly List<SchoolClass> _schoolClasses;
+
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public IReadOnlyCollection<Lesson> Lessons => _lessons;
+    public IReadOnlyCollection<Feedbackpost> Feedbackposts => _feedbackposts;
+    public IReadOnlyCollection<SchoolClass> SchoolClasses => _schoolClasses;
 
     public Room()
     {
@@ -12,12 +19,6 @@ public class Room
         _feedbackposts = new List<Feedbackpost>();
         _schoolClasses = new List<SchoolClass>();
     }
-
-    public string Name { get; set; }
-    public string Description { get; set; }
-    public IReadOnlyCollection<Lesson> Lessons => _lessons;
-    public IReadOnlyCollection<Feedbackpost> Feedbackposts => _feedbackposts;
-    public IReadOnlyCollection<SchoolClass> SchoolClasses => _schoolClasses;
 
     public static Room Create(string name, string description)
     {

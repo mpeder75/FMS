@@ -39,7 +39,9 @@ public class Feedbackpost : DomainEntity
 
     public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
     {
-        return new Feedbackpost(originalPoster, title, room, feedback);
+        var feedbackpost = new Feedbackpost(originalPoster, title, room, feedback);
+        feedbackpost.Anonymize();
+        return feedbackpost;
     }
 
     public void Update(string title, Question question, Room room)

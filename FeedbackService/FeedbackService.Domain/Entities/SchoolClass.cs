@@ -8,7 +8,6 @@ public class SchoolClass
 
     private readonly Teacher Teacher;
 
-
     public int Term { get; set; }
     public IReadOnlyCollection<Lesson> Lessons => _lessons;
     public IReadOnlyCollection<Student> Students => _students;

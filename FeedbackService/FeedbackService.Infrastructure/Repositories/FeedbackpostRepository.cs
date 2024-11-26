@@ -22,16 +22,7 @@ public class FeedbackpostRepository : IFeedbackpostRepository
     {
         return await _db.Feedbackposts.ToListAsync();
     }
-
-    public async Task<List<Feedbackpost>> GetByTeacherIdAsync(Guid teacherId)
-    {
-        return await _db.Feedbackposts
-            .Include(fp => fp.Student)
-            .ThenInclude(s => s.SchoolClass)
-            .ThenInclude(sc => sc.Teacher)
-            .Where(fp => fp.Student.SchoolClass.Teacher.Id == teacherId)
-            .ToListAsync();
-    }
+   
 
     async Task IFeedbackpostRepository.AddAsync(Feedbackpost feedbackpost)
     {
@@ -59,10 +50,5 @@ public class FeedbackpostRepository : IFeedbackpostRepository
             await _db.SaveChangesAsync();
         }
     }
-
-        async Task<List<Feedbackpost>> IFeedbackpostRepository.GetFeedbackpostsByRoom(Guid roomId)
-        {
-            return await _db.Feedbackposts.Where(x => x.Room.Id == roomId).ToListAsync();
-        }
-    }
+   
 }
