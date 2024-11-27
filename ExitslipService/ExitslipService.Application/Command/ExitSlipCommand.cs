@@ -28,7 +28,7 @@ public class ExitSlipCommand : IExitSlipCommand
             Guid lessonId = createExitSlipDto.LessonId; 
             List<QuestionForm> questions = createExitSlipDto.Questions;
             Teacher author = createExitSlipDto.Teacher;
-            var exitSlip = ExitSlip.Create(lessonId, author, questions);
+            var exitSlip =  ExitSlip.Create(lessonId, author, questions);
 
             _repository.Add(exitSlip);
         }
@@ -41,7 +41,7 @@ public class ExitSlipCommand : IExitSlipCommand
         {
             _uow.BeginTransaction();
 
-            ExitSlip exitSlip = _query.GetOneById(updateExitSlipDto.Id);
+            ExitSlip exitSlip = await _query.GetOneById(updateExitSlipDto.Id);
             exitSlip.Update(updateExitSlipDto.Questions, updateExitSlipDto.TeacherComment, updateExitSlipDto.StudentId);
 
             var rowVersion = _uow.ConvertHexToByteArray(updateExitSlipDto.RowVersion);

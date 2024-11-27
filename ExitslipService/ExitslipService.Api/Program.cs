@@ -1,7 +1,10 @@
+using ExitslipService.Application;
 using ExitslipService.Application.Command;
 using ExitslipService.Application.Command.CommandDto;
 using ExitslipService.Application.Interfaces;
 using ExitslipService.Application.Query;
+using ExitSlipService.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -30,10 +38,10 @@ app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => q
 app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => query.GetAllByLessonId(id));
 
 //Create ExitSlip with questions and an authoring teacher
-app.MapPost("/exitslip", async (CreateExitSlipDTO exitslip, IExitSlipCommand command) => command.Create(exitslip));
+app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
 
 //Update ExitSlip with answers and answering student.
-app.MapPut("/exitslip", async (UpdateExitSlipDTO exitslip, IExitSlipCommand command) => command.Update(exitslip));
+app.MapPut("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Update(exitslip));
 
 
 app.Run();
