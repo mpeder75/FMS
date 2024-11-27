@@ -30,8 +30,7 @@ public class Feedbackpost : DomainEntity
         _editedTimes = new List<DateTime>();
         _history = new List<Question>();
     }
-
-
+    
     public void Anonymize()
     {
         Author = null;
