@@ -1,0 +1,6 @@
+services:
+  dummydb.api:
+    image: ${DOCKER_REGISTRY-}dummydbapi
+    build:
+      context: .
+      dockerfile: DummyDb/DummyDb.Api/Dockerfile
