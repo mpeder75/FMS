@@ -7,7 +7,9 @@ namespace DummyDb.Infrastructure
     public class CRMContext : DbContext
     {
         public CRMContext(DbContextOptions<CRMContext> options) : base(options)
-        { }
+        {
+            Database.EnsureCreated();
+        }
 
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Room> Rooms { get; set; }

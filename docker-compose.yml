@@ -4,3 +4,18 @@ services:
     build:
       context: .
       dockerfile: DummyDb/DummyDb.Api/Dockerfile
+
+  exitslipservice.api:
+    image: ${DOCKER_REGISTRY-}exitslipserviceapi
+    build:
+      context: .
+      dockerfile: ExitslipService/ExitslipService.Api/Dockerfile
+
+  feedbackservice.api:
+    image: ${DOCKER_REGISTRY-}feedbackserviceapi
+    build:
+      context: .
+      dockerfile: FeedbackService/FeedbackService.Api/Dockerfile
+
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
