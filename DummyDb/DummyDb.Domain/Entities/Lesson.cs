@@ -13,7 +13,7 @@
         public DateTime Date { get; protected set; }
         public Teacher? Teacher { get; protected set; }
         public Room? Room { get; protected set; }
-        public List<SchoolClass>? SchoolClasses { get; protected set; }
+        public SchoolClass? SchoolClass { get; protected set; }
 
         // ------------------------------------------- Validation ------------------------------------------------------------
 

@@ -11,13 +11,14 @@ namespace DummyDb.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<ISchoolClassQuery, SchoolClassQuery>();
             services.AddHttpClient();
-            services.AddScoped<FeedbackProxy>();
+            services.AddScoped<ISchoolClassQuery, SchoolClassQuery>();
+            services.AddScoped<ICRMClusterQuery, CRMClusterQuery>();
+            services.AddScoped<IFeedbackProxy, FeedbackProxy>();
             services.AddDbContext<CRMContext>(options =>
             options.UseSqlServer(
                     configuration.GetConnectionString
-                    ("LocalConnectionCRM"),
+                    ("DefaultConnectionCRM"),
                     x => x.MigrationsAssembly("DummyDb.DatabaseMigration")));
 
             return services;

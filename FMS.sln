@@ -36,7 +36,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DummyDb", "DummyDb", "{78005EC2-3B02-4E30-87D6-70EF918AA2EC}"
 	ProjectSection(SolutionItems) = preProject
 		DummyDataSQLQuery.txt = DummyDataSQLQuery.txt
-		HardcodedDataFromFMS.json = HardcodedDataFromFMS.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyDb.Api", "DummyDb\DummyDb.Api\DummyDb.Api.csproj", "{529E9E00-9254-3378-C640-72598B4B58BB}"

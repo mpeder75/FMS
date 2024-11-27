@@ -16,7 +16,7 @@ namespace DummyDb.Domain.Entities
         public string Name { get; protected set; }
         public string Description { get; protected set; }
         public List<Lesson>? Lessons { get; protected set; }
-        public SchoolClass? SchoolClass { get; protected set; }
+        public List<SchoolClass>? SchoolClasses { get; protected set; }
 
         // ------------------------------------------- Validation ------------------------------------------------------------
 

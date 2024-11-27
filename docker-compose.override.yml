@@ -1,9 +1,13 @@
 services:
   dummydb.api:
+    depends_on:
+      sql-server:
+        condition: service_healthy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       # - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__DefaultConnectionCRM=Server=sql-server,1433;Database=CRM;User Id=sa;Password=Password1234!;TrustServerCertificate=true
     ports:
       - "5001:8080"
       # - "8081"

@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public int Term { get; set; }
         public List<StudentDto> Students { get; set; }
+        public List<Guid> LessonIds { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DummyDb.DatabaseMigration.Migrations
 {
     [DbContext(typeof(CRMContext))]
-    [Migration("20241120175115_AllNullableMigration")]
-    partial class AllNullableMigration
+    [Migration("20241127140624_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,12 +37,17 @@ namespace DummyDb.DatabaseMigration.Migrations
                     b.Property<Guid?>("RoomId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SchoolClassId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoomId");
+
+                    b.HasIndex("SchoolClassId");
 
                     b.HasIndex("TeacherId");
 
@@ -63,12 +68,7 @@ namespace DummyDb.DatabaseMigration.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("SchoolClassId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SchoolClassId");
 
                     b.ToTable("Rooms");
                 });
@@ -142,19 +142,19 @@ namespace DummyDb.DatabaseMigration.Migrations
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("LessonSchoolClass", b =>
+            modelBuilder.Entity("RoomSchoolClass", b =>
                 {
-                    b.Property<Guid>("LessonsId")
+                    b.Property<Guid>("RoomsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("SchoolClassesId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("LessonsId", "SchoolClassesId");
+                    b.HasKey("RoomsId", "SchoolClassesId");
 
                     b.HasIndex("SchoolClassesId");
 
-                    b.ToTable("LessonSchoolClass");
+                    b.ToTable("RoomSchoolClass");
                 });
 
             modelBuilder.Entity("DummyDb.Domain.Entities.Lesson", b =>
@@ -163,22 +163,19 @@ namespace DummyDb.DatabaseMigration.Migrations
                         .WithMany("Lessons")
                         .HasForeignKey("RoomId");
 
+                    b.HasOne("DummyDb.Domain.Entities.SchoolClass", "SchoolClass")
+                        .WithMany("Lessons")
+                        .HasForeignKey("SchoolClassId");
+
                     b.HasOne("DummyDb.Domain.Entities.Teacher", "Teacher")
                         .WithMany("Lessons")
                         .HasForeignKey("TeacherId");
 
                     b.Navigation("Room");
 
-                    b.Navigation("Teacher");
-                });
-
-            modelBuilder.Entity("DummyDb.Domain.Entities.Room", b =>
-                {
-                    b.HasOne("DummyDb.Domain.Entities.SchoolClass", "SchoolClass")
-                        .WithMany("Rooms")
-                        .HasForeignKey("SchoolClassId");
-
                     b.Navigation("SchoolClass");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("DummyDb.Domain.Entities.Student", b =>
@@ -190,11 +187,11 @@ namespace DummyDb.DatabaseMigration.Migrations
                     b.Navigation("SchoolClass");
                 });
 
-            modelBuilder.Entity("LessonSchoolClass", b =>
+            modelBuilder.Entity("RoomSchoolClass", b =>
                 {
-                    b.HasOne("DummyDb.Domain.Entities.Lesson", null)
+                    b.HasOne("DummyDb.Domain.Entities.Room", null)
                         .WithMany()
-                        .HasForeignKey("LessonsId")
+                        .HasForeignKey("RoomsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -212,7 +209,7 @@ namespace DummyDb.DatabaseMigration.Migrations
 
             modelBuilder.Entity("DummyDb.Domain.Entities.SchoolClass", b =>
                 {
-                    b.Navigation("Rooms");
+                    b.Navigation("Lessons");
 
                     b.Navigation("Students");
                 });

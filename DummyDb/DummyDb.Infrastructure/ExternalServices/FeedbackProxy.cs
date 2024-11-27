@@ -1,27 +1,25 @@
-﻿using DummyDb.Application.Dto;
-using DummyDb.Application.IQueries;
+﻿using DummyDb.Application.IQueries;
 using System.Net.Http.Json;
-using System.Net.Http;
 
 namespace DummyDb.Infrastructure.ExternalServices
 {
-    public class FeedbackProxy
+    public class FeedbackProxy : IFeedbackProxy
     {
         private readonly IHttpClientFactory _clientFactory;
-        private readonly ISchoolClassQuery _query;
+        private readonly ICRMClusterQuery _query;
 
-        public FeedbackProxy(IHttpClientFactory clientFactory, ISchoolClassQuery query) 
-        { 
+        public FeedbackProxy(IHttpClientFactory clientFactory, ICRMClusterQuery query)
+        {
             _query = query;
             _clientFactory = clientFactory;
         }
 
-        public async Task SeedData()
+        async Task IFeedbackProxy.SeedData()
         {
             var client = _clientFactory.CreateClient();
-            client.BaseAddress = new Uri("https://localhost:7250"); // Localhost? Indtil Dockerized
-            var endpoint = "/api/fake-feedback";
-            var content = _query.GetSchoolClasses().ToList();
+            client.BaseAddress = new Uri("http://feedbackserviceapi:7001");
+            var endpoint = "/api/seeding";
+            var content = _query.GetCluster().ToList();
 
             try
             {
