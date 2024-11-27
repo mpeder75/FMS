@@ -1,4 +1,5 @@
-﻿using ExitslipService.Application.Query;
+﻿using ExitslipService.Application.Interfaces;
+using ExitslipService.Application.Query;
 using ExitSlipService.Infrastructure.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ namespace ExitSlipService.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IExitSlipQuery, ExitSlipQuery>();
+            services.AddScoped<IExitSlipRepository, ExitSlipRepository>();
 
             // Database
             // https://github.com/dotnet/SqlClient/issues/2239
