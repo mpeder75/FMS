@@ -36,4 +36,7 @@ app.MapGet("/teacher/{teacherId}/feedbackposts", async (Guid teacherId, IFeedbac
     return Results.Ok(feedbackposts);
 });
 
+// Seed incoming data
+//app.MapPost("/api/seeding", (CreateCRMClusterDto cluster, ICRMClusterCommand command) command.CreateAsync(CRMCluster));
+
 app.Run();
