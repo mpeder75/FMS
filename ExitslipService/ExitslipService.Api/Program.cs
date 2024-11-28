@@ -32,16 +32,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //GetAll by teacher
-app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => query.GetAllByTeacherId(id));
+app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByTeacherId(id));
 
 //GetAll by lesson
-app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => query.GetAllByLessonId(id));
+app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
 
 //Create ExitSlip with questions and an authoring teacher
 app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
 
 //Update ExitSlip with answers and answering student.
 app.MapPut("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Update(exitslip));
-
 
 app.Run();

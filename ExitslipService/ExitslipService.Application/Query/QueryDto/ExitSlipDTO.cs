@@ -1,9 +1,4 @@
-﻿using ExitslipService.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExitslipService.Application.Query.QueryDto;
 
 namespace ExitslipService.Application.Query.ExitSlipDto
 {
@@ -11,10 +6,10 @@ namespace ExitslipService.Application.Query.ExitSlipDto
     {
         public Guid LessonId { get; set; }
         public Guid StudentId { get; set; }
-        public List<QuestionForm> Questions { get; set; }
+        public List<QuestionFormDTO> Questions { get; set; }
         public bool IsDistributed { get; set; }
-        public Teacher Teacher { get; set; }
-        public Comment TeacherComment { get; set; }
+        public Guid TeacherId { get; set; }
+        public string TeacherComment { get; set; }
         public byte[] RowVersion { get; set; }
     }
 }
