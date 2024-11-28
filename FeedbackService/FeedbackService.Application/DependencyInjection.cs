@@ -1,4 +1,5 @@
 ﻿using FeedbackService.Application.Command;
+using FeedbackService.Domain.DomainServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FeedbackService.Application
@@ -9,6 +10,7 @@ namespace FeedbackService.Application
         {
             // Register application services here
             services.AddScoped<IFeedbackpostCommand, FeedbackpostCommand>();
+            services.AddScoped<FeedbackReportService>();
 
             return services;
         }
