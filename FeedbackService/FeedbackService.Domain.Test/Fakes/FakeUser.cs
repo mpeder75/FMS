@@ -1,13 +1,12 @@
 ﻿using FeedbackService.Domain.Entities;
 
-namespace FeedbackService.Domain.Test.Fakes;
-
-public class FakeUser : User
+namespace FeedbackService.Domain.Test.Fakes
 {
-    public FakeUser(string firstName, string lastName, string email)
+    public class FakeUser : User
     {
-        FirstName = firstName;
-        LastName = lastName;
-        Email = email;
+        public FakeUser(string firstName, string lastName, string email)
+            : base(firstName, lastName, email)
+        {
+        }
     }
 }

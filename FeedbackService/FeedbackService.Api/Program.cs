@@ -2,7 +2,10 @@ using FeedbackService.Application;
 using FeedbackService.Application.Command;
 using FeedbackService.Application.Command.CommandDto;
 using FeedbackService.Application.Query;
+using FeedbackService.Domain.DomainServices;
+using FeedbackService.Domain.Entities;
 using FeedbackService.Infrastructure;
+using FeedbackService.Infrastructure.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +37,18 @@ app.MapGet("/teacher/{teacherId}/feedbackposts", async (Guid teacherId, IFeedbac
 {
     var feedbackposts = await feedbackpostQuery.GetByTeacherIdAsync(teacherId);
     return Results.Ok(feedbackposts);
+});
+
+// New endpoint for generating feedback report
+app.MapGet("/teacher/{teacherId}/feedbackreport", async (Guid teacherId, [FromServices] IFeedbackpostQuery feedbackpostQuery, [FromServices] FeedbackReportService reportService) =>
+{
+    var teacher = await feedbackpostQuery.GetTeacherByIdAsync(teacherId);
+    if (teacher == null)
+    {
+        return Results.NotFound();
+    }
+    var report = reportService.GenerateFeedbackReport(teacher);
+    return Results.Ok(report);
 });
 
 app.Run();

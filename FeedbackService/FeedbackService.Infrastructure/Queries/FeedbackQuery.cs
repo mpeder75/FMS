@@ -1,5 +1,6 @@
 ﻿using FeedbackService.Application.Query;
 using FeedbackService.Application.Query.QueryDto;
+using FeedbackService.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure.Queries;
@@ -153,5 +154,12 @@ public class FeedbackpostQuery : IFeedbackpostQuery
                 CreatedAt = c.CreatedAt
             }).ToList()
         }).ToList();
+    }
+
+    public async Task<Teacher> GetTeacherByIdAsync(Guid teacherId)
+    {
+        return await _db.Teachers
+            .Include(t => t.Classes)
+            .FirstOrDefaultAsync(t => t.Id == teacherId);
     }
 }

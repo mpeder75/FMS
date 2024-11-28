@@ -13,7 +13,7 @@ public class SchoolClass
     public IReadOnlyCollection<Student> Students => _students;
     public IReadOnlyCollection<Room> Rooms => _rooms;
 
-    private SchoolClass(int term, Teacher teacher)
+    protected SchoolClass(int term, Teacher teacher)
     {
         Term = term;
         Teacher = teacher;

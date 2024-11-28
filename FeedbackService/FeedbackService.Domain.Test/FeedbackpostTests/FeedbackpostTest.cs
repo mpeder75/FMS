@@ -14,7 +14,7 @@ public class FeedbackpostTest
         var user = new FakeUser("John", "Doe", "john.doe@example.com");
         var room = new Room { Name = "Room 101", Description = "Description of Room 101" };
         var question = new Question
-            { QuestionText = "How was your experience?", AnswerText = "Please provide detailed feedback." };
+        { QuestionText = "How was your experience?", AnswerText = "Please provide detailed feedback." };
         var title = "Feedback Title";
 
         // Act
@@ -55,7 +55,7 @@ public class FeedbackpostTest
         var user = new FakeUser("Marge", "Simpson", "marge@aol.com");
         var room = new Room { Name = "Kitchen", Description = "Place where Simpsons eats" };
         var question = new Question
-            { QuestionText = "What is Marge's favorite food?", AnswerText = "Buttered noodles" };
+        { QuestionText = "What is Marge's favorite food?", AnswerText = "Buttered noodles" };
         var title = "Marge's Feedback";
         var feedbackpost = new FakeFeedbackpost(user, title, room, question);
 
@@ -74,7 +74,7 @@ public class FeedbackpostTest
         var user = new FakeUser("John", "Doe", "john.doe@example.com");
         var room = new Room { Name = "Room 101", Description = "Description of Room 101" };
         var question = new Question
-            { QuestionText = "How was your experience?", AnswerText = "Please provide detailed feedback." };
+        { QuestionText = "How was your experience?", AnswerText = "Please provide detailed feedback." };
         var title = "Feedback Title";
         var feedbackpost = new FakeFeedbackpost(user, title, room, question);
 
