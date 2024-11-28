@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using FeedbackService.Application;
 using FeedbackService.Application.Query;
 using FeedbackService.Application.UnitOfWork;
@@ -20,9 +14,7 @@ namespace FeedbackService.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IFeedbackpostQuery, FeedbackpostQuery>();
-            services.AddScoped<IRoomRepository, RoomRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IFeedbackPostQuery, FeedbackPostQuery>();
             services.AddScoped<IFeedbackpostRepository, FeedbackpostRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<FeedbackContext>>();
 
@@ -30,7 +22,7 @@ namespace FeedbackService.Infrastructure
             // Database
             services.AddDbContext<FeedbackContext>(options =>
                 options.UseSqlServer(
-                    configuration.GetConnectionString("FeedbackDbConnection"),
+                    configuration.GetConnectionString("DefaultConnectionFeedbackService"),
                     x => x.MigrationsAssembly("FeedbackService.DatabaseMigration")));
 
             return services;

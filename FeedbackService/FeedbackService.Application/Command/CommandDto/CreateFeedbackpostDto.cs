@@ -1,13 +1,10 @@
-﻿using FeedbackService.Domain.Entities;
+﻿namespace FeedbackService.Application.Command.CommandDto;
 
-namespace FeedbackService.Application.Command.CommandDto;
-
-public record CreateFeedbackpostDto
+public record CreateFeedbackPostDto
 {
-    public Guid AuthorId { get; init; }
-    public string Title { get; init; }
-    public Guid RoomId { get; init; }
-
-    public Question Question { get; init; }
-
+    public Guid RoomId { get; set; }
+    public Guid AuthorId { get; set; }
+    public string Title { get; set; }
+    public string IssueText { get; set; }
+    public string SolutionText { get; set; }
 }

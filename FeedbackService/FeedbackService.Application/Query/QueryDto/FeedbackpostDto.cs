@@ -1,20 +1,16 @@
 ﻿namespace FeedbackService.Application.Query.QueryDto;
 
-public record FeedbackpostDto
+public record FeedbackPostDto
 {
     public Guid Id { get; init; }
-    public string Title { get; init; }
-    public string QuestionText { get; init; }
-    public string AnswerText { get; init; }
-    public Guid AuthorId { get; init; }
-    public Room Room { get; init; }
-    public string Feedback { get; init; }
-    public int Likes { get; init; }
-    public int Dislikes { get; init; }
-    public List<DateTime> EditedTimes { get; init; }
-    public List<CommentDto> Comments { get; init; }
-    public List<QuestionDto> History { get; init; }
-
-    public DateTime CreatedAt { get; init; }
-    public string? Author { get; init; }
+    //---------------------------------------------------
+    public Guid RoomId { get; set; }
+    public Guid AuthorId { get; set; }
+    public string Title { get; set; }
+    public string IssueText { get; set; }
+    public string SolutionText { get; set; }
+    public int Likes { get; set; }
+    public int Dislikes { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public IReadOnlyCollection<CommentDto> Comments { get; init; } = new List<CommentDto>();
 }

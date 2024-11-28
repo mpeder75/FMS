@@ -2,10 +2,10 @@
 
 namespace FeedbackService.Application.Query;
 
-public interface IFeedbackpostQuery
+public interface IFeedbackPostQuery
 {
-    Task<FeedbackpostDto> GetFeedbackpost(Guid feedbackpostGuid);
-    Task<IEnumerable<FeedbackpostDto>> GetFeedbackposts();
-    Task<List<FeedbackpostDto>> GetFeedbackpostsByRoom(Guid roomId);
-    Task<List<FeedbackpostDto>> GetByTeacherIdAsync(Guid teacherId);
+    Task<FeedbackPostDto> GetFeedbackPostAsync(Guid feedbackpostGuid);
+    Task<IEnumerable<FeedbackPostDto>> GetFeedbackPostsAsync();
+    Task<IEnumerable<FeedbackPostDto>> GetFeedbackPostsByRoomAsync(Guid roomId);
+    //Task<List<FeedbackPostDto>> GetByTeacherIdAsync(Guid teacherId);
 }

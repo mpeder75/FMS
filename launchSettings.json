@@ -6,7 +6,8 @@
       "serviceActions": {
         "dummydb.api": "StartDebugging",
         "exitslipservice.api": "StartDebugging",
-        "feedbackservice.api": "StartDebugging"
+        "feedbackservice.api": "StartDebugging",
+        "apigateway": "StartDebugging"
       }
     }
   }

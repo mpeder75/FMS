@@ -5,12 +5,12 @@ namespace FeedbackService.Application.Command.CommandDto;
 public record UpdateFeedbackpostDto
 {
     public Guid Id { get; init; }
-    public string Title { get; init; }
-    public Question Feedback { get; init; }
-    public Room Room { get; init; }
-    public List<DateTime> EditedTimes { get; init; }
-    public List<Comment> Comments { get; init; }
-    public List<Question> History { get; init; }
     public byte[] RowVersion { get; init; } = null!;
+//---------------------------------------------------------------
+    public Guid RoomId { get; protected set; }
+    public Guid AuthorId { get; protected set; }
+    public string Title { get; protected set; }
+    public string IssueText { get; protected set; }
+    public string SolutionText { get; protected set; }
 
 }
