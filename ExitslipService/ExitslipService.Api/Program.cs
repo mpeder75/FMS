@@ -31,16 +31,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//GetAll by teacher
-app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByTeacherId(id));
+//GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
+
+//GetAll by teacher - Ikke relevant, underviseren tilgår de Exitslips som er relevante for ham gennem LessonId eller UserId.
+// app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByTeacherId(id));
 
 //GetAll by lesson
 app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
 
-//Create ExitSlip with questions and an authoring teacher
+//Create ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
 app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
 
-//Update ExitSlip with answers and answering student.
+//Update ExitSlip with answers and answering student. - Kun adgang for Students.
 app.MapPut("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Update(exitslip));
 
 app.Run();
