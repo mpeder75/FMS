@@ -1,54 +1,41 @@
 services:
-  dummydb.api:
-    depends_on:
-      sql-server:
-        condition: service_healthy
+  exitslipservice.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      # - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__DefaultConnectionCRM=Server=sql-server,1433;Database=CRM;User Id=sa;Password=Password1234!;TrustServerCertificate=true
+      - ConnectionStrings__ExitSlipDbConnection=Server=sql-serverServices,1433;Database=ExitslipService;User Id=sa;Password=Password1234!;TrustServerCertificate=true
     ports:
       - "5001:8080"
-      # - "8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
   
-  exitslipservice.api:
+  feedbackservice.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      # - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__DefaultConnectionFeedbackService=Server=sql-serverServices,1433;Database=FeedbackService;User Id=sa;Password=Password1234!;TrustServerCertificate=true
     ports:
       - "6001:8080"
-      # - "8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
-  feedbackservice.api:
+  apigateway:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      # - ASPNETCORE_HTTPS_PORTS=8081
-      - ConnectionStrings__DefaultConnectionFeedbackService=Server=sql-server,1433;Database=FeedbackService;User Id=sa;Password=Password1234!;TrustServerCertificate=true
+      - ConnectionStrings__DefaultConnectionGateway=Server=sql-serverGateway,1433;Database=ApiGateway;User Id=sa;Password=Password1234!;TrustServerCertificate=true
     ports:
       - "7001:8080"
-      # - "8081"
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
-  
-  sql-server:
+
+  sql-serverServices:
     healthcheck:
-      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Password1234! -Q 'SELECT 1'"]
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P Password1234! -Q 'SELECT 1'"]
       interval: 10s
       timeout: 10s
       retries: 5
@@ -60,10 +47,18 @@ services:
       - "11433:1433"
     networks:
       - default
-  apigateway:
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=8080
-    ports:
-      - "8080"
 
+  sql-serverGateway:
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P Password1234! -Q 'SELECT 1'"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password1234!"
+    ports:
+      - "11434:1433"
+    networks:
+      - default

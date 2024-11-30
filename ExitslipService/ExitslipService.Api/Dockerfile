@@ -15,8 +15,8 @@ WORKDIR /src
 COPY ["ExitslipService/ExitslipService.Api/ExitslipService.Api.csproj", "ExitslipService/ExitslipService.Api/"]
 COPY ["ExitslipService/ExitslipService.Application/ExitslipService.Application.csproj", "ExitslipService/ExitslipService.Application/"]
 COPY ["ExitslipService/ExitslipService.Domain/ExitslipService.Domain.csproj", "ExitslipService/ExitslipService.Domain/"]
-COPY ["ExitslipService/ExitslipService.Infrastructure/ExitslipService.Infrastructure.csproj", "ExitslipService/ExitslipService.Infrastructure/"]
 COPY ["ExitslipService/ExitslipService.DatabaseMigration/ExitslipService.DatabaseMigration.csproj", "ExitslipService/ExitslipService.DatabaseMigration/"]
+COPY ["ExitslipService/ExitslipService.Infrastructure/ExitslipService.Infrastructure.csproj", "ExitslipService/ExitslipService.Infrastructure/"]
 RUN dotnet restore "./ExitslipService/ExitslipService.Api/ExitslipService.Api.csproj"
 COPY . .
 WORKDIR "/src/ExitslipService/ExitslipService.Api"

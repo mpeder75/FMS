@@ -3,8 +3,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExitSlipService.Infrastructure;
 
-public class ExitSlipContext(DbContextOptions<ExitSlipContext> options) : DbContext(options)
+public class ExitSlipContext : DbContext
 {
     public DbSet<ExitSlip> ExitSlips { get; set; }
 
+    public ExitSlipContext(DbContextOptions<ExitSlipContext> options) : base(options)
+    {
+        Database.EnsureCreated();
+    }
 }

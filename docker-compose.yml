@@ -1,16 +1,4 @@
 services:
-  apigateway:
-    image: ${DOCKER_REGISTRY-}apigateway
-    build:
-      context: .
-      dockerfile: ApiGateway/Dockerfile
- 
-  dummydb.api:
-    image: ${DOCKER_REGISTRY-}dummydbapi
-    build:
-      context: .
-      dockerfile: DummyDb/DummyDb.Api/Dockerfile
-
   exitslipservice.api:
     image: ${DOCKER_REGISTRY-}exitslipserviceapi
     build:
@@ -23,6 +11,15 @@ services:
       context: .
       dockerfile: FeedbackService/FeedbackService.Api/Dockerfile
 
-  sql-server:
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  sql-serverServices:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+
+  sql-serverGateway:
     image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
 
