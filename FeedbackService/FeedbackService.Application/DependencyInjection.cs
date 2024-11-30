@@ -8,7 +8,7 @@ namespace FeedbackService.Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             // Register application services here
-            services.AddScoped<IFeedbackpostCommand, FeedbackpostCommand>();
+            services.AddScoped<IFeedbackPostCommand, FeedbackPostCommand>();
 
             return services;
         }

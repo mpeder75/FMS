@@ -25,6 +25,8 @@ public class FeedbackPost : DomainEntity
         Dislikes = 0;
         CreatedAt = DateTime.Now;
         _comments = new List<Comment>();
+        AssureTitleHaveContent();
+        AssureIssueAndSolutionHaveContent();
     }
 
     public static FeedbackPost Create(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
@@ -34,7 +36,9 @@ public class FeedbackPost : DomainEntity
 
     public void Update(string issueText, string solutionText)
     {
-        throw new NotImplementedException();
+        IssueText = issueText;
+        SolutionText = solutionText;
+        AssureIssueAndSolutionHaveContent();
     }
 
     public Comment CreateComment(string commentString, Guid authorId)
@@ -42,6 +46,21 @@ public class FeedbackPost : DomainEntity
         var comment = Comment.Create(commentString, authorId);
         _comments.Add(comment);
         return comment;
+    }
+
+    protected void AssureTitleHaveContent()
+    {
+        if (string.IsNullOrWhiteSpace(Title))
+            throw new Exception("Add a Title.");
+    }
+
+    protected void AssureIssueAndSolutionHaveContent()
+    {
+        if (string.IsNullOrWhiteSpace(IssueText))
+            throw new Exception("Describe an issue.");
+
+        if (string.IsNullOrWhiteSpace(SolutionText))
+            throw new Exception("Add a solution.");
     }
 
     public void IncrementLikes()

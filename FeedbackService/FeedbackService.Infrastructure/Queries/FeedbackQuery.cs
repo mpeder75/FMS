@@ -18,7 +18,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
     {
         var feedbackPost = await _db.FeedbackPosts.AsNoTracking()
         .Include(fp => fp.Comments)
-        .SingleAsync(x => x.Id == feedbackPostId);
+        .FirstOrDefaultAsync(x => x.Id == feedbackPostId);
         return new FeedbackPostDto()
         {
             Id = feedbackPost.Id,

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure.Repositories;
 
-public class FeedbackpostRepository : IFeedbackpostRepository
+public class FeedbackpostRepository : IFeedbackPostRepository
 {
     private readonly FeedbackContext _db;
 
@@ -13,41 +13,53 @@ public class FeedbackpostRepository : IFeedbackpostRepository
         _db = context;
     }
 
-    async Task<FeedbackPost> IFeedbackpostRepository.GetFeedbackPostAsync(Guid id)
+    async Task<bool> IFeedbackPostRepository.ExistsAsync(Guid id)
     {
-        return await _db.FeedbackPosts.FirstOrDefaultAsync(x => x.Id == id);
+        return await _db.Set<FeedbackPost>().AnyAsync(p => p.Id == id);
     }
 
-    async Task<List<FeedbackPost>> IFeedbackpostRepository.GetAllAsync()
+    async Task<FeedbackPost> IFeedbackPostRepository.GetFeedbackPostAsync(Guid id)
+    {
+        return await _db.FeedbackPosts
+            .Include(fp => fp.Comments)
+            .FirstOrDefaultAsync(x => x.Id == id);
+    }
+
+    async Task<List<FeedbackPost>> IFeedbackPostRepository.GetAllAsync()
     {
         return await _db.FeedbackPosts.ToListAsync();
     }
 
 
-    async Task IFeedbackpostRepository.AddFeedbackPostAsync(FeedbackPost feedbackPost)
+    async Task IFeedbackPostRepository.AddFeedbackPostAsync(FeedbackPost feedbackPost)
     {
         await _db.FeedbackPosts.AddAsync(feedbackPost); // "AddAsync" Is primarily beneficial when dealing with a large number of entities, a simple "Add" would be sufficient here
         await _db.SaveChangesAsync();
     }
 
-    async Task IFeedbackpostRepository.AddCommentAsync(Comment comment)
+    async Task IFeedbackPostRepository.AddCommentAsync(Comment comment)
     {
         await _db.Comments.AddAsync(comment);
         await _db.SaveChangesAsync();
     }
 
-    async Task IFeedbackpostRepository.DeleteAsync(Guid postId)
+    async Task IFeedbackPostRepository.DeleteAsync(Guid id)
     {
-        var feedbackpost = await _db.FeedbackPosts.FirstOrDefaultAsync(x => x.Id == postId);
+        var feedbackPost = await _db.FeedbackPosts
+            .Include(fp => fp.Comments)
+            .FirstOrDefaultAsync(x => x.Id == id);
 
-        if (feedbackpost != null)
+        if (feedbackPost == null)
         {
-            _db.FeedbackPosts.Remove(feedbackpost);
-            await _db.SaveChangesAsync();
+            throw new KeyNotFoundException($"Feedback post with ID {id} not found.");
         }
+
+        _db.Set<Comment>().RemoveRange(feedbackPost.Comments);
+        _db.Set<FeedbackPost>().Remove(feedbackPost);
+        await _db.SaveChangesAsync();
     }
 
-    async Task IFeedbackpostRepository.UpdateAsync(FeedbackPost post, byte[] rowversion)
+    async Task IFeedbackPostRepository.UpdateAsync(FeedbackPost post, byte[] rowversion)
     {
         var existingPost = await _db.FeedbackPosts.FirstOrDefaultAsync(x => x.Id == post.Id);
         if (existingPost != null)
@@ -56,5 +68,4 @@ public class FeedbackpostRepository : IFeedbackpostRepository
             await _db.SaveChangesAsync();
         }
     }
-
 }

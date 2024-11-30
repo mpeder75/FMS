@@ -2,7 +2,7 @@
 
 namespace FeedbackService.Application.Command;
 
-public interface IFeedbackpostCommand
+public interface IFeedbackPostCommand
 {
     Task CreateAsync(CreateFeedbackPostDto createFeedbackpostDto);
     Task UpdateAsync(UpdateFeedbackpostDto updateFeedbackpostDto);

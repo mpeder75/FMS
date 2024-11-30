@@ -2,8 +2,9 @@
 
 namespace FeedbackService.Application;
 
-public interface IFeedbackpostRepository
+public interface IFeedbackPostRepository
 {
+    Task<bool> ExistsAsync(Guid id);
     Task<FeedbackPost> GetFeedbackPostAsync(Guid id);
     Task<List<FeedbackPost>> GetAllAsync();
     Task AddFeedbackPostAsync(FeedbackPost feedbackpost);
