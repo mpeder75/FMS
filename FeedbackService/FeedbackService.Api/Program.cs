@@ -48,7 +48,7 @@ app.MapDelete("/feedbackPost{id}", ([FromBody] DeleteFeedbackpostDto feedbackpos
 // Endpoints --- Comment ----
 // Create Comment:
 app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand command) => await command.CreateCommentAsync(commentDto));
-// Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost:
+// Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost: Overflødig?
 
 
 // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
