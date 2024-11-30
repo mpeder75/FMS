@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ExitslipService.Application.Query.QueryDto
 {
-    internal class Class1
+    public class QuestionFormDTO
     {
+        public string Question {  get; set; }
+        public string Answer { get; set; }
     }
 }

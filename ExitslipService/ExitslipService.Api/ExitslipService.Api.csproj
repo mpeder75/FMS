@@ -25,7 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ExitslipService.Application\ExitslipService.Application.csproj" />
     <ProjectReference Include="..\ExitslipService.Domain\ExitslipService.Domain.csproj" />
-    <ProjectReference Include="..\ExitslipService.Infrastructure\ExitslipService.Infrastructure.csproj" />
+    <ProjectReference Include="..\ExitslipService.Infrastructure\ExitSlipService.Infrastructure.csproj" />
     <ProjectReference Include="..\ExitslipService.DatabaseMigration\ExitslipService.DatabaseMigration.csproj" />
   </ItemGroup>
 

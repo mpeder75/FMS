@@ -1,6 +1,10 @@
-﻿namespace ExitslipService.Infrastructure;
+﻿using ExitslipService.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-public class ExitslipContext
+namespace ExitSlipService.Infrastructure;
+
+public class ExitSlipContext(DbContextOptions<ExitSlipContext> options) : DbContext(options)
 {
+    public DbSet<ExitSlip> ExitSlips { get; set; }
 
 }
