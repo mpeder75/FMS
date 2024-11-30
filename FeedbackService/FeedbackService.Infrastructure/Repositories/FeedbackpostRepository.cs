@@ -30,7 +30,6 @@ public class FeedbackPostRepository : IFeedbackPostRepository
         return await _db.FeedbackPosts.ToListAsync();
     }
 
-
     async Task IFeedbackPostRepository.AddFeedbackPostAsync(FeedbackPost feedbackPost)
     {
         await _db.FeedbackPosts.AddAsync(feedbackPost); // "AddAsync" Is primarily beneficial when dealing with a large number of entities, a simple "Add" would be sufficient here
