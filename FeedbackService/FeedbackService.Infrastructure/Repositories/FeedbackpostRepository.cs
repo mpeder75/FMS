@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackService.Infrastructure.Repositories;
 
-public class FeedbackpostRepository : IFeedbackPostRepository
+public class FeedbackPostRepository : IFeedbackPostRepository
 {
     private readonly FeedbackContext _db;
 
-    public FeedbackpostRepository(FeedbackContext context)
+    public FeedbackPostRepository(FeedbackContext context)
     {
         _db = context;
     }

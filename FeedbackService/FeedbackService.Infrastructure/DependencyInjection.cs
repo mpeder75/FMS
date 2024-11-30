@@ -15,9 +15,8 @@ namespace FeedbackService.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IFeedbackPostQuery, FeedbackPostQuery>();
-            services.AddScoped<IFeedbackPostRepository, FeedbackpostRepository>();
+            services.AddScoped<IFeedbackPostRepository, FeedbackPostRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork<FeedbackContext>>();
-
 
             // Database
             services.AddDbContext<FeedbackContext>(options =>
