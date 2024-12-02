@@ -47,7 +47,7 @@ app.MapDelete("/feedbackPost{id}", async ([FromBody] DeleteFeedbackpostDto feedb
     => await command.DeleteAsync(feedbackpost));
 
 // Rapport - En filteret list af FeedbackPosts fra et specifikt Room i et given tidsrum (Demo: decending by comment.count).
-app.MapGet("/feedbackPost/byRoom/{roomId}/report", async (Guid roomId, DateTime startdate, DateTime endDate, IFeedbackPostQuery query) 
+app.MapGet("/feedbackPost/byRoom/{roomId}/report", async (Guid roomId, DateOnly startdate, DateOnly endDate, IFeedbackPostQuery query) 
     => await query.GetFeedbackPostsByRoomAndDateAsync(roomId, startdate, endDate));
 
 // Endpoints --- Comment ----

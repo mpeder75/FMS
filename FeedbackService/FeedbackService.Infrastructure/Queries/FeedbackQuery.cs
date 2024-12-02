@@ -95,10 +95,13 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         return feedbackPosts;
     }
 
-    async Task<IEnumerable<FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAndDateAsync(Guid roomId, DateTime startDate, DateTime endDate)
+    async Task<IEnumerable<FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAndDateAsync(Guid roomId, DateOnly startDate, DateOnly endDate)
     {
+        var start = startDate.ToDateTime(TimeOnly.MinValue); 
+        var end = endDate.ToDateTime(TimeOnly.MaxValue);
+
         var feedbackPosts = await _db.FeedbackPosts.AsNoTracking()
-        .Where(x => x.RoomId == roomId && x.CreatedAt >= startDate && x.CreatedAt <= endDate)
+        .Where(x => x.RoomId == roomId && x.CreatedAt >= start && x.CreatedAt <= end)
         .Include(fp => fp.Comments)
         .Select(x => new FeedbackPostDto
         {
@@ -119,7 +122,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
                 AuthorId = c.AuthorId
             }).ToList()
         })
-        .OrderByDescending(fp => fp.Comments.Count) // Only for demo
+        .OrderByDescending(fp => fp.Comments.Count) // This line only for demo
         .ToListAsync();
         return feedbackPosts;
     }
