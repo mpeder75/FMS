@@ -55,5 +55,4 @@ app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand
 
 // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
 
-
 app.Run();
