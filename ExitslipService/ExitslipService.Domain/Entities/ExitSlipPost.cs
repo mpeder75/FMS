@@ -4,27 +4,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ExitslipService.Domain.Entities
 {
-    public class ExitSlip : DomainEntity
+    public class ExitSlipPost : DomainEntity
     {
         private List<QuestionForm> _questions;
-        protected ExitSlip()
+        protected ExitSlipPost()
         {
             _questions = new List<QuestionForm>();
         }
-        private ExitSlip(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed)
+        private ExitSlipPost(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed)
         {
             LessonId = lessonId;
+            TeacherId = authorId;
             StudentId = Guid.Empty;
             _questions = questions;
             IsDistributed = isDistributed;
             TeacherComment = string.Empty;
-            TeacherId = authorId;
         }
         public Guid LessonId { get; protected set; }
         public Guid StudentId { get; protected set; }
@@ -33,10 +34,23 @@ namespace ExitslipService.Domain.Entities
         public Guid TeacherId { get; protected set; }
         public string TeacherComment { get; protected set; }
 
-        public static ExitSlip Create(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed = false)
+        public static ExitSlipPost Create(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed = false)
         {
-            var result = new ExitSlip(lessonId, authorId, questions, isDistributed);
+            var result = new ExitSlipPost(lessonId, authorId, questions, isDistributed);
             return result;
+        }
+
+        public ExitSlipPost CreateReply(Guid lessonId, Guid studentId, Guid teacherId, List<QuestionForm> questions, bool IsDistributed = true, string teacherComment)
+        {
+            ExitSlipPost reply = new ExitSlipPost
+            {
+                LessonId = lessonId,
+                TeacherId = teacherId,
+                StudentId = studentId,
+                _questions = questions,
+                TeacherComment = teacherComment
+            };
+            return reply;
         }
 
         public void Update(List<QuestionForm> questions, string teacherComment, Guid studentId)

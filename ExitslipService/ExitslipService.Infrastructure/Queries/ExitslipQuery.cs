@@ -55,7 +55,7 @@ namespace ExitSlipService.Infrastructure.Queries
         }
 
         //for internal use only, so no need to return a DTO here, for ease of use and all that.
-        async Task<ExitSlip> IExitSlipQuery.GetOneById(Guid exitSlipId)
+        async Task<ExitSlipPost> IExitSlipQuery.GetOneById(Guid exitSlipId)
         {
             var result = db.ExitSlips.AsNoTracking().SingleAsync(e => e.Id == exitSlipId);
             return await result;

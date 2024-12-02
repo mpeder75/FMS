@@ -5,8 +5,8 @@ namespace ExitslipService.Application.Interfaces;
 
 public interface IExitSlipRepository
 {
-    void Add(ExitSlip exitSlip);
+    void Add(ExitSlipPost exitSlip);
 
-    void Update(ExitSlip exitSlip, byte[] rowVersion);
+    void Update(ExitSlipPost exitSlip, byte[] rowVersion);
 
 }

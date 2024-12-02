@@ -17,7 +17,7 @@ namespace ExitslipService.Application.Query
 
         Task<List<ExitSlipDTO>> GetAllByLessonId(Guid lessonId);
 
-        Task<ExitSlip> GetOneById(Guid exitSlipId);
+        Task<ExitSlipPost> GetOneById(Guid exitSlipId);
 
     }
 }

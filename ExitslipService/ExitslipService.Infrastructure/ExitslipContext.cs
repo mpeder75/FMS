@@ -5,6 +5,6 @@ namespace ExitSlipService.Infrastructure;
 
 public class ExitSlipContext(DbContextOptions<ExitSlipContext> options) : DbContext(options)
 {
-    public DbSet<ExitSlip> ExitSlips { get; set; }
+    public DbSet<ExitSlipPost> ExitSlips { get; set; }
 
 }
