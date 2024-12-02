@@ -1,48 +1,66 @@
 ﻿namespace FeedbackService.Domain.Entities;
 
-public class Feedbackpost : DomainEntity
+public class FeedbackPost : DomainEntity
 {
     private readonly List<Comment> _comments;
-    private readonly List<DateTime> _editedTimes;
-    private readonly List<Question> _history;
 
-    public User Author { get; protected set; }
+    public Guid RoomId { get; protected set; }
+    public Guid AuthorId { get; protected set; }
     public string Title { get; protected set; }
-    public Question Feedback { get; protected set; }
+    public string IssueText { get; protected set; }
+    public string SolutionText { get; protected set; }
     public int Likes { get; protected set; }
     public int Dislikes { get; protected set; }
-    public Room Room { get; protected set; }
     public DateTime CreatedAt { get; protected set; }
-    public IReadOnlyCollection<DateTime> EditedTimes => _editedTimes;
     public IReadOnlyCollection<Comment> Comments => _comments;
-    public IReadOnlyCollection<Question> History => _history;
 
-    protected Feedbackpost(User author, string title, Room room, Question feedback)
+    protected FeedbackPost(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
     {
-        Author = author;
+        RoomId = roomId;
+        AuthorId = authorId;
         Title = title;
-        Room = room;
-        Feedback = feedback;
+        IssueText = issueText;
+        SolutionText = solutionText;
         Likes = 0;
         Dislikes = 0;
         CreatedAt = DateTime.Now;
+        _comments = new List<Comment>();
+        AssureTitleHaveContent();
+        AssureIssueAndSolutionHaveContent();
     }
 
-
-    public static Feedbackpost Create(User originalPoster, string title, Room room, Question feedback)
+    public static FeedbackPost Create(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
     {
-        return new Feedbackpost(originalPoster, title, room, feedback);
+        return new FeedbackPost(roomId, authorId, title, issueText, solutionText);
     }
 
-    public void Update(string title, Question question, Room room)
+    public void Update(string issueText, string solutionText)
     {
-        throw new NotImplementedException();
+        IssueText = issueText;
+        SolutionText = solutionText;
+        AssureIssueAndSolutionHaveContent();
     }
 
-    public void AddComment(string commentString)
+    public Comment CreateComment(string commentString, Guid authorId)
     {
-        var comment = Comment.Create(commentString);
+        var comment = Comment.Create(commentString, authorId);
         _comments.Add(comment);
+        return comment;
+    }
+
+    protected void AssureTitleHaveContent()
+    {
+        if (string.IsNullOrWhiteSpace(Title))
+            throw new Exception("Add a Title.");
+    }
+
+    protected void AssureIssueAndSolutionHaveContent()
+    {
+        if (string.IsNullOrWhiteSpace(IssueText))
+            throw new Exception("Describe an issue.");
+
+        if (string.IsNullOrWhiteSpace(SolutionText))
+            throw new Exception("Add a solution.");
     }
 
     public void IncrementLikes()

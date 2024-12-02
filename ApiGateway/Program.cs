@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+// Add YARP
+builder.Services.AddReverseProxy().LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
 builder.Services.AddAuthorization();
 builder.Services.AddAuthentication("Bearer")
@@ -35,16 +37,10 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    app.ApplyMigrations();
 }
 
 
-
-app.UseHttpsRedirection();
-
-app.MapIdentityApi<AppUser>();
-
+// YARP as a reverse proxy
+app.MapReverseProxy();
 
 app.Run();
-

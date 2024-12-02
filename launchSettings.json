@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "dummydb.api": "StartDebugging",
+        "exitslipservice.api": "StartDebugging",
+        "feedbackservice.api": "StartDebugging",
+        "apigateway": "StartDebugging"
+      }
+    }
+  }
+}

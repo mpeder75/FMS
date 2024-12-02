@@ -1,0 +1,25 @@
+services:
+  exitslipservice.api:
+    image: ${DOCKER_REGISTRY-}exitslipserviceapi
+    build:
+      context: .
+      dockerfile: ExitslipService/ExitslipService.Api/Dockerfile
+
+  feedbackservice.api:
+    image: ${DOCKER_REGISTRY-}feedbackserviceapi
+    build:
+      context: .
+      dockerfile: FeedbackService/FeedbackService.Api/Dockerfile
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+
+  sql-serverServices:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+
+  sql-serverGateway:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+

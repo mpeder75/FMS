@@ -2,7 +2,11 @@
 
 namespace FeedbackService.Application.Query.QueryDto;
 
-public record CommentDto
+public class CommentDto
 {
-    public string CommentString { get; init; }
+    public Guid Id { get; init; }
+    //---------------------------------------------------
+    public string CommentString { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public Guid AuthorId { get; set; }
 }

@@ -1,13 +1,10 @@
-﻿using FeedbackService.Application.Command.CommandDto;
-using FeedbackService.Application.Query.QueryDto;
-using FeedbackService.Domain.Entities;
+﻿using FeedbackService.Application.Query.QueryDto;
 
 namespace FeedbackService.Application.Query;
 
-public interface IFeedbackpostQuery
+public interface IFeedbackPostQuery
 {
-    Task<FeedbackpostDto> GetFeedbackpost(Guid feedbackpostGuid);
-    Task<IEnumerable<FeedbackpostDto>> GetFeedbackposts();
-    Task<List<FeedbackpostDto>> GetFeedbackpostsByRoom(Guid roomId);
-
+    Task<FeedbackPostDto> GetFeedbackPostAsync(Guid feedbackpostGuid);
+    Task<IEnumerable<FeedbackPostDto>> GetFeedbackPostsAsync();
+    Task<IEnumerable<FeedbackPostDto>> GetFeedbackPostsByRoomAsync(Guid roomId);
 }

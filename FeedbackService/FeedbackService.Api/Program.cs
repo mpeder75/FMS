@@ -2,20 +2,16 @@ using FeedbackService.Application;
 using FeedbackService.Application.Command;
 using FeedbackService.Application.Command.CommandDto;
 using FeedbackService.Application.Query;
+using FeedbackService.Domain.Entities;
 using FeedbackService.Infrastructure;
+using FeedbackService.Infrastructure.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
-
-
 
 builder.Services.AddApplication();
 builder.Services.AddAuthorization();
@@ -23,7 +19,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -31,16 +26,37 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGet("/feedbackpost", (IFeedbackpostQuery query) => query.GetFeedbackposts());
-app.MapGet("/feedbackpost{id}", (Guid id, IFeedbackpostQuery query) => query.GetFeedbackpost(id));
-app.MapPost("/feedbackpost", ([FromBody] CreateFeedbackpostDto feedbackpost, [FromServices] IFeedbackpostCommand command) => command.CreateAsync(feedbackpost));
-app.MapPut("/feedbackpost{id}", ([FromBody] UpdateFeedbackpostDto feedbackpost, [FromServices] IFeedbackpostCommand command) => command.UpdateAsync(feedbackpost));
-app.MapDelete("/feedbackpost{id}", ([FromBody] DeleteFeedbackpostDto feedbackpost, [FromServices] IFeedbackpostCommand command) => command.DeleteAsync(feedbackpost));
+// Endpoints --- FeedbackPost ----
+// Create FeedbackPost og Issue, da de ikke kan eksistere uden hinanden:
+app.MapPost("/feedbackPost", async ([FromBody] CreateFeedbackPostDto feedbackPostDto, [FromServices] IFeedbackPostCommand command) => await command.CreateAsync(feedbackPostDto));
 
+// Et Query på en liste af FeedbackPosts vil altid være i reletaion til et RoomId:
+app.MapGet("/feedbackPost/byRoom/{id}", async (Guid roomId, IFeedbackPostQuery query) => await query.GetFeedbackPostsByRoomAsync(roomId));
+
+//// Queries til test:
+app.MapGet("/feedbackPosts", async (IFeedbackPostQuery query) => await query.GetFeedbackPostsAsync());
+app.MapGet("/feedbackPost/{id}", async (Guid id, IFeedbackPostQuery query) => await query.GetFeedbackPostAsync(id));
+
+//// Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
+app.MapPut("/feedbackPost{id}", ([FromBody] UpdateFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command) => command.UpdateAsync(feedbackpost));
+app.MapDelete("/feedbackPost{id}", ([FromBody] DeleteFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command) => command.DeleteAsync(feedbackpost));
+
+//// Rapporten? - Der er en filteret list af FeedbackPost fra et specifikt Room?
+//app.MapGet("/teacher/{teacherId}/feedbackposts", async (Guid teacherId, IFeedbackPostQuery feedbackpostQuery) =>
+//{
+//    var feedbackposts = await feedbackpostQuery.GetByTeacherIdAsync(teacherId);
+//    return Results.Ok(feedbackposts);
+//});
+
+// Endpoints --- Comment ----
+// Create Comment:
+app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand command) => await command.CreateCommentAsync(commentDto));
+// Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost: Overflødig?
+
+
+// Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
 
 app.Run();
-

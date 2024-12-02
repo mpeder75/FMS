@@ -1,6 +1,16 @@
-﻿namespace ExitslipService.Application;
+﻿using ExitslipService.Application.Command;
+using ExitslipService.Application.Query;
+using Microsoft.Extensions.DependencyInjection;
 
-public class DependencyInjection
+namespace ExitslipService.Application;
+
+public static class ServiceCollectionExtension
 {
-    
+    public static IServiceCollection AddApplication(this IServiceCollection services)
+    {
+        services.AddScoped<IExitSlipCommand, ExitSlipCommand>();
+        return services;
+    }
+
 }
+    
