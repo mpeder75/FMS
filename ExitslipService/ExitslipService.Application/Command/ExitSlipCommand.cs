@@ -34,17 +34,9 @@ public class ExitSlipCommand : IExitSlipCommand
         }
     }
 
-    void IExitSlipCommand.CreateReply(ExitSlipReplyDTO replyDTO)
+    void IExitSlipCommand.CreateReply(UpdateExitSlipDTO updateExitSlipDTO)
     {
-        bool IsValid = true;
-        if (IsValid)
-        {
-            //This is for creating the ExitSlip and attaching it to a Lesson; For submission of answers, use Update.
-
-            var reply = ExitSlipReply.Create();
-
-            _repository.Add(reply);
-        }
+        throw new NotImplementedException();
     }
 
     async void IExitSlipCommand.Update(UpdateExitSlipDTO updateExitSlipDto)

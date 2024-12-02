@@ -7,6 +7,8 @@ public interface IExitSlipRepository
 {
     void Add(ExitSlipPost exitSlip);
 
+    void Add(ExitSlipReply exitSlip);
+
     void Update(ExitSlipPost exitSlip, byte[] rowVersion);
 
 }

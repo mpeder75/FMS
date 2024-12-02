@@ -12,7 +12,13 @@ namespace ExitSlipService.Infrastructure
     {
         void IExitSlipRepository.Add(ExitSlipPost exitSlip)
         {
-            context.ExitSlips.Add(exitSlip);
+            context.ExitSlipPosts.Add(exitSlip);
+            context.SaveChanges();
+        }
+
+        void IExitSlipRepository.Add(ExitSlipReply exitSlip)
+        {
+            context.ExitSlipReplies.Add(exitSlip);
             context.SaveChanges();
         }
 
