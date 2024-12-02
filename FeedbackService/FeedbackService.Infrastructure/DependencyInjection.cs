@@ -4,6 +4,7 @@ using FeedbackService.Application.Query;
 using FeedbackService.Application.UnitOfWork;
 using FeedbackService.Infrastructure.Queries;
 using FeedbackService.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;

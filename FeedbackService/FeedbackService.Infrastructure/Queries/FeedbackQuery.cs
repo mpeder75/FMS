@@ -94,32 +94,4 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         .ToListAsync();
         return feedbackPosts;
     }
-
-
-    //public async Task<List<FeedbackPostDto>> GetByTeacherIdAsync(Guid teacherId)
-    //{
-    //    var feedbackposts = await _db.FeedbackPosts
-    //        .Include(fp => fp.Comments)
-    //        .Include(fp => fp.Room)
-    //        .ThenInclude(r => r.Lessons)
-    //        .Where(fp => fp.Room.Lessons.Any(l => l.Teacher.Id == teacherId))
-    //        .ToListAsync();
-
-    //    return feedbackposts.Select(fp => new FeedbackPostDto
-    //    {
-    //        Id = fp.Id,
-    //        Title = fp.Title,
-    //        Feedback = fp.Feedback.ToString(),
-    //        Likes = fp.Likes,
-    //        Dislikes = fp.Dislikes,
-    //        CreatedAt = fp.CreatedAt,
-    //        Author = null, // Anonymize the author
-    //        Comments = fp.Comments.Select(c => new CommentDto
-    //        {
-    //            Id = c.Id,
-    //            CommentString = c.CommentString,
-    //            CreatedAt = c.CreatedAt
-    //        }).ToList()
-    //    }).ToList();
-    //}
 }

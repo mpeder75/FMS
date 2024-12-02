@@ -2,7 +2,10 @@ using FeedbackService.Application;
 using FeedbackService.Application.Command;
 using FeedbackService.Application.Command.CommandDto;
 using FeedbackService.Application.Query;
+using FeedbackService.Domain.DomainServices;
+using FeedbackService.Domain.Entities;
 using FeedbackService.Infrastructure;
+using FeedbackService.Infrastructure.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -53,5 +56,17 @@ app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand
 
 // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
 
+
+// New endpoint for generating feedback report
+app.MapGet("/teacher/{teacherId}/feedbackreport", async (Guid teacherId, [FromServices] IFeedbackpostQuery feedbackpostQuery, [FromServices] FeedbackReportService reportService) =>
+{
+    var teacher = await feedbackpostQuery.GetTeacherByIdAsync(teacherId);
+    if (teacher == null)
+    {
+        return Results.NotFound();
+    }
+    var report = reportService.GenerateFeedbackReport(teacher);
+    return Results.Ok(report);
+});
 
 app.Run();
