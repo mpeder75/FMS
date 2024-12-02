@@ -4,62 +4,37 @@ using FeedbackService.Domain.Entities;
 
 namespace FeedbackService.Application.Command;
 
-public class FeedbackpostCommand : IFeedbackpostCommand
+public class FeedbackPostCommand : IFeedbackPostCommand
 {
-    private readonly IFeedbackpostRepository _feedbackpostRepository;
-    private readonly IUserRepository _userRepository;
-    private readonly IRoomRepository _roomRepository;
+    private readonly IFeedbackPostRepository _feedbackPostRepository;
     private readonly IUnitOfWork _uow;
 
-    public FeedbackpostCommand(IFeedbackpostRepository feedbackpostRepository, IRoomRepository roomRepository, IUserRepository userRepository, IUnitOfWork uow)
+    public FeedbackPostCommand(IFeedbackPostRepository feedbackpostRepository, IUnitOfWork uow)
     {
-        _feedbackpostRepository = feedbackpostRepository;
-        _userRepository = userRepository;
-        _roomRepository = roomRepository;
+        _feedbackPostRepository = feedbackpostRepository;
         _uow = uow;
     }
 
-    async Task IFeedbackpostCommand.CreateAsync(CreateFeedbackpostDto createFeedbackpostDto)
+    async Task IFeedbackPostCommand.CreateAsync(CreateFeedbackPostDto feedbackPostDto)
     {
-        var author = await _userRepository.GetAsync(createFeedbackpostDto.AuthorId);
-        var room = await _roomRepository.GetAsync(createFeedbackpostDto.RoomId);
-        var feedbackpost = Feedbackpost.Create(author, createFeedbackpostDto.Title, room, createFeedbackpostDto.Question);
-        await _feedbackpostRepository.AddAsync(feedbackpost);
+        // Load
+        // Do
+        var feedbackpost = FeedbackPost.Create(feedbackPostDto.RoomId, feedbackPostDto.AuthorId, feedbackPostDto.Title, feedbackPostDto.IssueText, feedbackPostDto.SolutionText);
+        // Save
+        await _feedbackPostRepository.AddFeedbackPostAsync(feedbackpost);
     }
 
-    async Task IFeedbackpostCommand.UpdateAsync(UpdateFeedbackpostDto updateFeedbackpostDto)
+    async Task IFeedbackPostCommand.UpdateAsync(UpdateFeedbackpostDto updateFeedbackPostDto)
     {
         try
         {
             _uow.BeginTransaction();
-
-            var feedbackpost = await _feedbackpostRepository.GetAsync(updateFeedbackpostDto.Id);
-
-            feedbackpost.Update(updateFeedbackpostDto.Title, updateFeedbackpostDto.Feedback, updateFeedbackpostDto.Room);
-
-            await _feedbackpostRepository.UpdateAsync(feedbackpost, updateFeedbackpostDto.RowVersion);
-            _uow.Commit();
-        }
-        catch (Exception)
-        {
-            try
-            {
-                _uow.Rollback();
-            }
-            catch (Exception)
-            {
-                throw new Exception("Error while updating feedbackpost");
-            }
-            throw;
-        }
-    }
-
-    async Task IFeedbackpostCommand.DeleteAsync(DeleteFeedbackpostDto deleteFeedbackpostDto)
-    {
-        try
-        {
-            _uow.BeginTransaction();
-            await _feedbackpostRepository.DeleteAsync(deleteFeedbackpostDto.Id);
+            // Load
+            var feedbackpost = await _feedbackPostRepository.GetFeedbackPostAsync(updateFeedbackPostDto.Id);
+            // Do
+            feedbackpost.Update(updateFeedbackPostDto.IssueText, updateFeedbackPostDto.SolutionText);
+            // Save
+            await _feedbackPostRepository.UpdateAsync(feedbackpost, updateFeedbackPostDto.RowVersion);
             _uow.Commit();
         }
         catch (Exception e)
@@ -70,7 +45,58 @@ public class FeedbackpostCommand : IFeedbackpostCommand
             }
             catch (Exception)
             {
-                throw new Exception("Error while deleting feedbackpost");
+                throw new Exception($"Rollback failed while updating: {e.Message}", e);
+            }
+            throw;
+        }
+    }
+
+    async Task IFeedbackPostCommand.DeleteAsync(DeleteFeedbackpostDto deleteFeedbackpostDto)
+    {
+        try
+        {
+            _uow.BeginTransaction();
+            // Load
+            // Do & Save
+            await _feedbackPostRepository.DeleteAsync(deleteFeedbackpostDto.Id);
+            _uow.Commit();
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                _uow.Rollback();
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Rollback failed while deleting: {e.Message}", e);
+            }
+            throw;
+        }
+    }
+
+    async Task IFeedbackPostCommand.CreateCommentAsync(CreateCommentDto commentDto)
+    {
+        try
+        {
+            _uow.BeginTransaction();
+            // Load
+            FeedbackPost feedbackPost = await _feedbackPostRepository.GetFeedbackPostAsync(commentDto.FeedbackPostId);
+            // Do
+            var comment = feedbackPost.CreateComment(commentDto.CommentString, commentDto.AuthorId);
+            // Save
+            await _feedbackPostRepository.AddCommentAsync(comment);
+            _uow.Commit();
+        }
+        catch (Exception e)
+        {
+            try
+            {
+                _uow.Rollback();
+            }
+            catch (Exception)
+            {
+                throw new Exception($"Rollback failed while trying to add a Comment: {e.Message}", e);
             }
             throw;
         }

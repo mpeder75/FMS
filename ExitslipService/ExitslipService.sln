@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Domain", "ExitslipService.Domain\ExitslipService.Domain.csproj", "{A69EBC87-DDE4-48A9-9194-74EF19B4B0C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Domain.Test", "ExitslipService.Domain.Test\ExitslipService.Domain.Test.csproj", "{DCF3A7CD-B585-48D0-B1F1-509AC3625092}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitSlipService.Domain.Test", "ExitslipService.Domain.Test\ExitSlipService.Domain.Test.csproj", "{DCF3A7CD-B585-48D0-B1F1-509AC3625092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Infrastructure", "ExitslipService.Infrastructure\ExitslipService.Infrastructure.csproj", "{A6D39421-00A0-4DEB-BC67-DE273577C2F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitSlipService.Infrastructure", "ExitslipService.Infrastructure\ExitSlipService.Infrastructure.csproj", "{A6D39421-00A0-4DEB-BC67-DE273577C2F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.DatabaseMigration", "ExitslipService.DatabaseMigration\ExitslipService.DatabaseMigration.csproj", "{019D04CB-6826-4932-AC3B-FAA979DDB02D}"
 EndProject
@@ -19,9 +19,6 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{864D3DF5-E76B-4AF9-958E-1DF7084C7960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +45,8 @@ Global
 		{019D04CB-6826-4932-AC3B-FAA979DDB02D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019D04CB-6826-4932-AC3B-FAA979DDB02D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019D04CB-6826-4932-AC3B-FAA979DDB02D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

@@ -1,33 +1,31 @@
-﻿using FeedbackService.Application;
+﻿using Microsoft.EntityFrameworkCore;
+using FeedbackService.Application;
 using FeedbackService.Application.Query;
 using FeedbackService.Application.UnitOfWork;
-using FeedbackService.Domain.DomainServices;
 using FeedbackService.Infrastructure.Queries;
 using FeedbackService.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
-namespace FeedbackService.Infrastructure;
-
-public static class DependencyInjection
+namespace FeedbackService.Infrastructure
 {
-    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    public static class DependencyInjection
     {
-        services.AddScoped<IFeedbackpostQuery, FeedbackpostQuery>();
-        services.AddScoped<IRoomRepository, RoomRepository>();
-        services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IFeedbackpostRepository, FeedbackpostRepository>();
-        services.AddScoped<IUnitOfWork, UnitOfWork<FeedbackContext>>();
-        services.AddScoped<FeedbackReportService>();
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddScoped<IFeedbackPostQuery, FeedbackPostQuery>();
+            services.AddScoped<IFeedbackPostRepository, FeedbackPostRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork<FeedbackContext>>();
 
+            // Database
+            services.AddDbContext<FeedbackContext>(options =>
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnectionFeedbackService"),
+                    x => x.MigrationsAssembly("FeedbackService.DatabaseMigration")));
 
-        // Database
-        services.AddDbContext<FeedbackContext>(options =>
-            options.UseSqlServer(
-                configuration.GetConnectionString("FeedbackDbConnection"),
-                x => x.MigrationsAssembly("FeedbackService.DatabaseMigration")));
-
-        return services;
+            return services;
+        }
     }
 }

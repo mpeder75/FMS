@@ -1,0 +1,6 @@
+@DummyDb.Api_HostAddress = http://localhost:5165
+
+GET {{DummyDb.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

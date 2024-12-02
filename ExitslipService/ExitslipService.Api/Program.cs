@@ -1,3 +1,11 @@
+using ExitslipService.Application;
+using ExitslipService.Application.Command;
+using ExitslipService.Application.Command.CommandDto;
+using ExitslipService.Application.Interfaces;
+using ExitslipService.Application.Query;
+using ExitSlipService.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,7 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
+
+//purpose is to service the ExitSlip object for all intents and purposes and have endpoints to make said services' output retrievable.
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -16,29 +31,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+//GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+//GetAll by teacher - Ikke relevant, underviseren tilgår de Exitslips som er relevante for ham gennem LessonId eller UserId.
+// app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByTeacherId(id));
+
+//GetAll by lesson
+app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
+
+//Create ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
+app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
+
+//Update ExitSlip with answers and answering student. - Kun adgang for Students.
+app.MapPut("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Update(exitslip));
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
