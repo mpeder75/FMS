@@ -148,13 +148,13 @@ namespace ExitslipService.DatabaseMigration.Migrations
             modelBuilder.Entity("ExitslipService.Domain.Entities.QuestionForm", b =>
                 {
                     b.HasOne("ExitslipService.Domain.Entities.ExitSlip", null)
-                        .WithMany("Questions")
+                        .WithMany("Questionnaire")
                         .HasForeignKey("ExitSlipId");
                 });
 
             modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlip", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("Questionnaire");
                 });
 #pragma warning restore 612, 618
         }

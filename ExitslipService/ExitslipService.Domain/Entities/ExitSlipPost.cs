@@ -13,23 +13,20 @@ namespace ExitslipService.Domain.Entities
 {
     public class ExitSlipPost : DomainEntity
     {
-        private List<QuestionForm> _questions;
+        private List<QuestionForm> _questionnaire;
         protected ExitSlipPost()
         {
-            _questions = new List<QuestionForm>();
+            _questionnaire = new List<QuestionForm>();
         }
         private ExitSlipPost(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed)
         {
             LessonId = lessonId;
             TeacherId = authorId;
-            StudentId = Guid.Empty;
-            _questions = questions;
+            _questionnaire = questions;
             IsDistributed = isDistributed;
-            TeacherComment = string.Empty;
         }
         public Guid LessonId { get; protected set; }
-        public Guid StudentId { get; protected set; }
-        public IReadOnlyCollection<QuestionForm> Questions => _questions;
+        public IReadOnlyCollection<QuestionForm> Questionnaire => _questionnaire;
         public bool IsDistributed { get; protected set; }
         public Guid TeacherId { get; protected set; }
         public string TeacherComment { get; protected set; }
@@ -40,24 +37,10 @@ namespace ExitslipService.Domain.Entities
             return result;
         }
 
-        public ExitSlipPost CreateReply(Guid lessonId, Guid studentId, Guid teacherId, List<QuestionForm> questions, bool IsDistributed = true, string teacherComment)
-        {
-            ExitSlipPost reply = new ExitSlipPost
-            {
-                LessonId = lessonId,
-                TeacherId = teacherId,
-                StudentId = studentId,
-                _questions = questions,
-                TeacherComment = teacherComment
-            };
-            return reply;
-        }
-
         public void Update(List<QuestionForm> questions, string teacherComment, Guid studentId)
         {
-            this._questions = questions;
+            this._questionnaire = questions;
             this.TeacherComment = teacherComment;
-            this.StudentId = studentId;
         }
 
         public void Distribute()

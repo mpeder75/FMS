@@ -30,7 +30,7 @@ namespace ExitSlipService.Infrastructure.Queries
             {
                 StudentId = exitSlip.StudentId,
                 LessonId = exitSlip.LessonId,
-                Questions = (List<QuestionFormDTO>)exitSlip.Questions,
+                Questions = (List<QuestionFormDTO>)exitSlip.Questionnaire,
                 IsDistributed = exitSlip.IsDistributed,
                 TeacherId = exitSlip.TeacherId,
                 TeacherComment = exitSlip.TeacherComment,
@@ -45,7 +45,7 @@ namespace ExitSlipService.Infrastructure.Queries
             {
                 StudentId = exitSlip.StudentId,
                 LessonId = exitSlip.LessonId,
-                Questions = (List<QuestionFormDTO>)exitSlip.Questions,
+                Questions = (List<QuestionFormDTO>)exitSlip.Questionnaire,
                 IsDistributed = exitSlip.IsDistributed,
                 TeacherId = exitSlip.TeacherId,
                 TeacherComment = exitSlip.TeacherComment,
