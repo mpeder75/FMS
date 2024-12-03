@@ -20,6 +20,7 @@ namespace ExitSlipService.Infrastructure
         {
             context.Entry(exitSlip).Property(nameof(exitSlip.RowVersion)).OriginalValue = exitSlip.RowVersion;
             context.SaveChanges();
+            
         }
     }
 }
