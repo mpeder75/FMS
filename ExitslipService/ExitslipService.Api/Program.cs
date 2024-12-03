@@ -39,10 +39,10 @@ app.MapGet("/student/{id}/exitslips", async (Guid id, IExitSlipQuery query) => a
 //GetAll by lesson
 app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
 
-//Create ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
-app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
+//CreatePost ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
+app.MapPost("/exitslip/post", async ([FromBody]CreateExitSlipPostDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreatePost(exitslip));
 
 //Update ExitSlip with answers and answering student. - Kun adgang for Students.
-app.MapPost("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreateReply(exitslip));
+app.MapPost("/exitslip/reply", async ([FromBody]CreateExitSlipReplyDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreateReply(exitslip));
 
 app.Run();

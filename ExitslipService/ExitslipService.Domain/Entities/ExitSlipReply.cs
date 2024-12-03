@@ -23,21 +23,13 @@ namespace ExitslipService.Domain.Entities
         public Guid PostId { get; protected set; }
         public Guid StudentId { get; protected set; }
         public Guid LessonId { get; protected set; }
-        
-        //List of questions with associated answers.
         public List<QuestionForm> Questionnaire { get; protected set; }
-        public string Comment { get; protected set; }
+        public string? Comment { get; protected set; }
 
         public static ExitSlipReply Create(Guid lessonId, Guid postId, Guid studentId, List<QuestionForm> questions, string comment)
         {
             var result = new ExitSlipReply(lessonId, postId, studentId, questions, comment);
             return result;
-        }
-        public void Update(List<QuestionForm> questions, Guid studentId, string comment)
-        {
-            this._questionnaire = questions;
-            this.Comment = comment;
-            this.StudentId = studentId;
         }
     }
 }

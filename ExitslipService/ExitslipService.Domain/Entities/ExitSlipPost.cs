@@ -29,7 +29,6 @@ namespace ExitslipService.Domain.Entities
         public IReadOnlyCollection<QuestionForm> Questionnaire => _questionnaire;
         public bool IsDistributed { get; protected set; }
         public Guid TeacherId { get; protected set; }
-        public string TeacherComment { get; protected set; }
 
         public static ExitSlipPost Create(Guid lessonId, Guid authorId, List<QuestionForm> questions, bool isDistributed = false)
         {
@@ -40,9 +39,7 @@ namespace ExitslipService.Domain.Entities
         public void Update(List<QuestionForm> questions, string teacherComment, Guid studentId)
         {
             this._questionnaire = questions;
-            this.TeacherComment = teacherComment;
         }
-
         public void Distribute()
         {
             this.IsDistributed = true;
@@ -50,8 +47,8 @@ namespace ExitslipService.Domain.Entities
     }
     public class QuestionForm : DomainEntity
     {
-        public string Question { get; protected set; }
-        public string Answer { get; protected set; }
+        public string Question { get; set; }
+        public string Answer { get; set; }
     }
 }
 

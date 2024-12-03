@@ -13,8 +13,6 @@ namespace ExitslipService.Application.Query
     {
         Task<List<ExitSlipReplyDTO>> GetAllByStudentId(Guid studentId);
 
-        Task<List<ExitSlipReplyDTO>> GetAllByTeacherId(Guid teacherId);
-
         Task<List<ExitSlipReplyDTO>> GetAllByLessonId(Guid lessonId);
 
         Task<ExitSlipPost> GetOneById(Guid exitSlipId);
