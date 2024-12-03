@@ -33,8 +33,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services
     .AddIdentityApiEndpoints<AppUser>() //Gude linje
-    .AddEntityFrameworkStores<IdentityDbContext>() //Gude linje
-    .AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<IdentityDbContext>(); //Gude linje
+                                                    //.AddDefaultTokenProviders();
 
 /*builder.Services.AddIdentity<AppUser, IdentityRole>()
     .AddEntityFrameworkStores<IdentityDbContext>()
@@ -46,6 +46,15 @@ builder.Services.AddAuthorization();
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("userPolicy", policy =>
+        policy.RequireAuthenticatedUser());
+
+    options.AddPolicy("adminPolicy", policy =>
+        policy.RequireClaim("adminClaim"));
+});
 
 
 
@@ -69,14 +78,6 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("userPolicy", policy =>
-        policy.RequireAuthenticatedUser());
-
-    options.AddPolicy("adminPolicy", policy =>
-        policy.RequireClaim("adminClaim"));
-});
 
 var app = builder.Build();
 
