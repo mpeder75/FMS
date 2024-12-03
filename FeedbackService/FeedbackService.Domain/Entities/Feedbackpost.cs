@@ -1,4 +1,7 @@
-﻿namespace FeedbackService.Domain.Entities;
+﻿using FeedbackService.Domain.DomainService;
+using FeedbackService.Domain.DomainService.DomainServiceDto;
+
+namespace FeedbackService.Domain.Entities;
 
 public class FeedbackPost : DomainEntity
 {
@@ -68,11 +71,16 @@ public class FeedbackPost : DomainEntity
         Likes++;
     }
 
-    public void DecrementLikes()
+    public async Task IncrementLikesAsync(IFeedbackPostDomainService domainService)
     {
-        Likes--;
+        IncrementLikes();
+        if (Likes == 20)
+        {
+            var roomIdDto = new RoomIdDto { RoomId = this.RoomId };
+            await domainService.NotifyApiAsync(roomIdDto);
+        }
     }
-
+    
     public void IncrementDislikes()
     {
         Dislikes++;

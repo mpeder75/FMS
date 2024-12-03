@@ -2,6 +2,7 @@ using FeedbackService.Application;
 using FeedbackService.Application.Command;
 using FeedbackService.Application.Command.CommandDto;
 using FeedbackService.Application.Query;
+using FeedbackService.Domain.DomainService.DomainServiceDto;
 using FeedbackService.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
@@ -55,5 +56,13 @@ app.MapDelete("/feedbackPost{id}",
 // Create Comment:
 app.MapPost("/comment",
     async (CreateCommentDto commentDto, IFeedbackPostCommand command) => await command.CreateCommentAsync(commentDto));
+// endpoint der sender RoomId til Fake email SMTP Server
+app.MapPost("/notify", async (RoomIdDto roomIdDto) =>
+{
+    // Here you would handle the notification and send RoomId to the external project
+    // For now, we will just simulate this with a console output
+    Console.WriteLine($"RoomId {roomIdDto.RoomId} has been notified.");
+    return Results.Ok();
+});
 
 app.Run();
