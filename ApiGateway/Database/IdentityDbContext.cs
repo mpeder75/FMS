@@ -1,16 +1,15 @@
 ﻿using ApiGateway.Entities;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiGateway;
+namespace ApiGateway.Database;
 
 public class IdentityDbContext : IdentityDbContext<AppUser>
 {
-    public IdentityDbContext(DbContextOptions<IdentityDbContext> options) 
+    public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
         : base(options)
     {
-        Database.EnsureCreated();
+        //Database.EnsureCreated();
     }
 
     public DbSet<AppUser> AppUsers { get; set; }

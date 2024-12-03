@@ -4,5 +4,5 @@ namespace ApiGateway.Entities;
 
 public class AppUser : IdentityUser
 {
-    
+
 }

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ApiGateway.Database;
 
 namespace ApiGateway.Extensions;
 
