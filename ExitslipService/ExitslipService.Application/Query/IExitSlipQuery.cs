@@ -11,13 +11,13 @@ namespace ExitslipService.Application.Query
 {
     public interface IExitSlipQuery
     {
-        IEnumerable<ExitSlipDTO> GetAllByStudentId(Guid studentId);
+        Task<List<ExitSlipReplyDTO>> GetAllByStudentId(Guid studentId);
 
-        IEnumerable<ExitSlipDTO> GetAllByTeacherId(Guid teacherId);
+        Task<List<ExitSlipReplyDTO>> GetAllByTeacherId(Guid teacherId);
 
-        IEnumerable<ExitSlipDTO> GetAllByLessonId(Guid lessonId);
+        Task<List<ExitSlipReplyDTO>> GetAllByLessonId(Guid lessonId);
 
-        ExitSlip GetOneById(Guid exitSlipId);
+        Task<ExitSlipPost> GetOneById(Guid exitSlipId);
 
     }
 }

@@ -4,7 +4,8 @@ namespace ExitslipService.Application.Command;
 
 public interface IExitSlipCommand
 {
-    void Create(CreateExitSlipDTO createExitSlipExitSlipDto);
+    void Create(CreateExitSlipDTO createExitSlipDto);
 
-    void Update(UpdateExitSlipDTO updateExitSlipExitSlipDto);
+    void CreateReply(UpdateExitSlipDTO updateExitSlipDTO);
+    void Update(UpdateExitSlipDTO updateExitSlipDto);
 }

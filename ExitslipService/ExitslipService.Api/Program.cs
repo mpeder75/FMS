@@ -1,7 +1,10 @@
+using ExitslipService.Application;
 using ExitslipService.Application.Command;
 using ExitslipService.Application.Command.CommandDto;
 using ExitslipService.Application.Interfaces;
 using ExitslipService.Application.Query;
+using ExitSlipService.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -23,17 +31,18 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
+
 //GetAll by teacher
-app.MapGet("/teacher/{id}/exitslips", async (Guid id, IExitSlipQuery query) => query.GetAllByTeacherId(id));
+app.MapGet("/student/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByStudentId(id));
 
 //GetAll by lesson
-app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => query.GetAllByLessonId(id));
+app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
 
-//Create ExitSlip with questions and an authoring teacher
-app.MapPost("/exitslip", async (CreateExitSlipDTO exitslip, IExitSlipCommand command) => command.Create(exitslip));
+//Create ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
+app.MapPost("/exitslip", async ([FromBody]CreateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.Create(exitslip));
 
-//Update ExitSlip with answers and answering student.
-app.MapPut("/exitslip", async (UpdateExitSlipDTO exitslip, IExitSlipCommand command) => command.Update(exitslip));
-
+//Update ExitSlip with answers and answering student. - Kun adgang for Students.
+app.MapPost("/exitslip", async ([FromBody]UpdateExitSlipDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreateReply(exitslip));
 
 app.Run();

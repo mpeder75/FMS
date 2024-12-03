@@ -10,13 +10,19 @@ namespace ExitSlipService.Infrastructure
 {
     public class ExitSlipRepository(ExitSlipContext context, HttpClient client) : IExitSlipRepository
     {
-        void IExitSlipRepository.Add(ExitSlip exitSlip)
+        void IExitSlipRepository.Add(ExitSlipPost exitSlip)
         {
-            context.ExitSlips.Add(exitSlip);
+            context.ExitSlipPosts.Add(exitSlip);
             context.SaveChanges();
         }
 
-        void IExitSlipRepository.Update(ExitSlip exitSlip, byte[] rowVersion)
+        void IExitSlipRepository.Add(ExitSlipReply exitSlip)
+        {
+            context.ExitSlipReplies.Add(exitSlip);
+            context.SaveChanges();
+        }
+
+        void IExitSlipRepository.Update(ExitSlipPost exitSlip, byte[] rowVersion)
         {
             context.Entry(exitSlip).Property(nameof(exitSlip.RowVersion)).OriginalValue = exitSlip.RowVersion;
             context.SaveChanges();
