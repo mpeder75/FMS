@@ -1,13 +1,12 @@
-﻿
-using FeedbackService.Domain.Test.Fakes;
+﻿using FeedbackService.Domain.Test.Fakes;
 
-namespace FeedbackService.Domain.Test
+namespace FeedbackService.Domain.Test.DomainTests
 {
-    public class FeedbackPostAssureSolutionHaveContent
+    public class FeedbackPostAssureIssueHaveContent
     {
-// ------------- Testing success scenario -------------
+        // ------------- Testing success scenario -------------
         [Fact]
-        public void Given_Solution_Have_Content__Then_Dont_Throw_Exception()
+        public void Given_Issue_Have_Content__Then_Dont_Throw_Exception()
         {
             // Arrange
             var roomId = Guid.NewGuid();
@@ -17,52 +16,50 @@ namespace FeedbackService.Domain.Test
             var solutionText = "Some solution text";
             var createdAt = DateTime.Now;
 
-            // Valid Solution
+            // Valid Issue
             var feedbackPost = new FakeFeedbackPost(roomId, authorId, title, issueText, solutionText, createdAt);
 
             // Act & Assert
-            feedbackPost.AssureSolutionHaveContent();
+            feedbackPost.AssureIssueHaveContent();
         }
 
-// ------------- Testing alternative paths -------------
+        // ------------- Testing alternative paths -------------
         [Fact]
-        public void Given_Solution_Is_Whitespace__Then_Throw_Exception()
+        public void Given_Issue_Is_Whitespace__Then_Throw_Exception()
         {
             // Arrange
             var roomId = Guid.NewGuid();
             var authorId = Guid.NewGuid();
             var title = "Some title";
-            var issueText = "Valid issue text";
-            var solutionText = " ";
+            var issueText = " ";
+            var solutionText = "Some solution text";
             var createdAt = DateTime.Now;
 
-            // Use an empty Solution to trigger the exception
+            // Use Issue with whitespace to trigger the exception
             var feedbackPost = new FakeFeedbackPost(roomId, authorId, title, issueText, solutionText, createdAt);
 
             // Act & Assert
-            var exception = Assert.Throws<Exception>(() => feedbackPost.AssureSolutionHaveContent());
-            Assert.Equal("Add a solution.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => feedbackPost.AssureIssueHaveContent());
+            Assert.Equal("Describe an issue.", exception.Message);
         }
 
         [Fact]
-        public void Given_Solution_Is_Empty__Then_Throw_Exception()
+        public void Given_Issue_Is_Empty__Then_Throw_Exception()
         {
             // Arrange
             var roomId = Guid.NewGuid();
             var authorId = Guid.NewGuid();
             var title = "Some title";
-            var issueText = "Valid issue text";
-            var solutionText = "";
+            var issueText = "";
+            var solutionText = "Some solution text";
             var createdAt = DateTime.Now;
 
-            // Use an empty Solution to trigger the exception
+            // Use an empty Issue to trigger the exception
             var feedbackPost = new FakeFeedbackPost(roomId, authorId, title, issueText, solutionText, createdAt);
 
             // Act & Assert
-            var exception = Assert.Throws<Exception>(() => feedbackPost.AssureSolutionHaveContent());
-            Assert.Equal("Add a solution.", exception.Message);
+            var exception = Assert.Throws<Exception>(() => feedbackPost.AssureIssueHaveContent());
+            Assert.Equal("Describe an issue.", exception.Message);
         }
-
-
     }
 }

@@ -1,10 +1,10 @@
 ﻿using FeedbackService.Domain.Test.Fakes;
 
-namespace FeedbackService.Domain.Test
+namespace FeedbackService.Domain.Test.DomainTests
 {
     public class FeedbackPostAssureTitleHaveContent
     {
-// ------------- Testing success scenario -------------
+        // ------------- Testing success scenario -------------
         [Fact]
         public void Given_Title_Have_Content__Then_Dont_Throw_Exception()
         {
@@ -22,8 +22,8 @@ namespace FeedbackService.Domain.Test
             // Act & Assert
             feedbackPost.AssureTitleHaveContent();
         }
-        
-// ------------- Testing alternative paths -------------
+
+        // ------------- Testing alternative paths -------------
         [Fact]
         public void Given_Title_Is_Whitespace__Then_Throw_Exception()
         {
@@ -35,7 +35,7 @@ namespace FeedbackService.Domain.Test
             var solutionText = "Some solution text";
             var createdAt = DateTime.Now;
 
-            // Use an empty title to trigger the exception
+            // Use title with whitespace to trigger the exception
             var feedbackPost = new FakeFeedbackPost(roomId, authorId, title, issueText, solutionText, createdAt);
 
             // Act & Assert

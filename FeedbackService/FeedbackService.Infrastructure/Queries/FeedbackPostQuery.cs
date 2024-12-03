@@ -14,12 +14,12 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         _db = db;
     }
 
-    async Task<FeedbackPostDto> IFeedbackPostQuery.GetFeedbackPostAsync(Guid feedbackPostId)
+    async Task<Application.Query.QueryDto.FeedbackPostDto> IFeedbackPostQuery.GetFeedbackPostAsync(Guid feedbackPostId)
     {
         var feedbackPost = await _db.FeedbackPosts.AsNoTracking()
         .Include(fp => fp.Comments)
         .FirstOrDefaultAsync(x => x.Id == feedbackPostId);
-        return new FeedbackPostDto()
+        return new Application.Query.QueryDto.FeedbackPostDto()
         {
             Id = feedbackPost.Id,
             RoomId = feedbackPost.RoomId,
@@ -40,7 +40,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         };
     }
 
-    async Task<IEnumerable<FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsAsync()
+    async Task<IEnumerable<Application.Query.QueryDto.FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsAsync()
     {
         var feedbackPosts = await _db.FeedbackPosts.AsNoTracking()
         .Include(fp => fp.Comments)
@@ -67,7 +67,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         return feedbackPosts;
     }
 
-    async Task<IEnumerable<FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAsync(Guid roomId)
+    async Task<IEnumerable<Application.Query.QueryDto.FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAsync(Guid roomId)
     {
         var feedbackPosts = await _db.FeedbackPosts.AsNoTracking()
         .Where(x => x.RoomId == roomId)
@@ -95,7 +95,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
         return feedbackPosts;
     }
 
-    async Task<IEnumerable<FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAndDateAsync(Guid roomId, DateOnly startDate, DateOnly endDate)
+    async Task<IEnumerable<Application.Query.QueryDto.FeedbackPostDto>> IFeedbackPostQuery.GetFeedbackPostsByRoomAndDateAsync(Guid roomId, DateOnly startDate, DateOnly endDate)
     {
         var start = startDate.ToDateTime(TimeOnly.MinValue); 
         var end = endDate.ToDateTime(TimeOnly.MaxValue);
@@ -122,7 +122,7 @@ public class FeedbackPostQuery : IFeedbackPostQuery
                 AuthorId = c.AuthorId
             }).ToList()
         })
-        .OrderByDescending(fp => fp.Comments.Count) // This line only for demo
+        .OrderByDescending(fp => fp.Comments.Count) // This line is only for demo.
         .ToListAsync();
         return feedbackPosts;
     }

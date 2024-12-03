@@ -17,6 +17,7 @@ public class FakeFeedbackPost : FeedbackPost
         Dislikes = 0;
         CreatedAt = createdAt;
         _comments = new List<FakeComment>();
+        RowVersion = new byte[0];
     }
 
     public new void AssureTitleHaveContent()
