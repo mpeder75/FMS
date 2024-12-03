@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{716AAA9D-03AA-4243-831F-FD8D81208B1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway.Api", "ApiGateway\ApiGateway.Api.csproj", "{716AAA9D-03AA-4243-831F-FD8D81208B1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FeedbackService", "FeedbackService", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Domain", "ExitslipService\ExitslipService.Domain\ExitslipService.Domain.csproj", "{21666D6E-0E21-4AA8-80CD-A2F529B88622}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExitslipService.Domain.Test", "ExitslipService\ExitslipService.Domain.Test\ExitslipService.Domain.Test.csproj", "{2047CADD-6A48-D07A-1E72-B4F2C433AF00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{88FCFEFC-393D-4EF7-9C28-DD4724B059E7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +104,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{716AAA9D-03AA-4243-831F-FD8D81208B1B} = {88FCFEFC-393D-4EF7-9C28-DD4724B059E7}
 		{7891AC64-53D0-2FBA-4AE4-EF912B17AA53} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6B223A36-D987-31D0-41B8-976807CE72A7} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{DC9E71C3-144F-517E-F589-F5E008095D10} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
