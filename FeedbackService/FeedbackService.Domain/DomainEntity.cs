@@ -2,7 +2,7 @@
 
 namespace FeedbackService.Domain;
 
-public class DomainEntity
+public abstract class DomainEntity
 {
     public Guid Id { get; protected set; } = Guid.NewGuid();
     [Timestamp]
