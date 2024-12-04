@@ -73,7 +73,6 @@ public class FeedbackPost : DomainEntity
 
     public async Task IncrementLikesAsync(IFeedbackPostDomainService domainService)
     {
-        IncrementLikes();
         if (Likes == 20)
         {
             var roomIdDto = new RoomIdDto { RoomId = this.RoomId };

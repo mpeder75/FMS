@@ -19,17 +19,22 @@ if (app.Environment.IsDevelopment())
 var mailingList = new FakeMalingList();
 var emailSender = app.Services.GetRequiredService<EmailSender>();
 
+
+// [frombody] deserializer JSON payload til et RoomIdDto objekt
 app.MapPost("/send-email", async ([FromBody] RoomIdDto roomIdDto) =>
 {
     var teachersToNotify = mailingList.GetTeachersByRoomId(roomIdDto.RoomId);
+    var sentEmails = new List<string>();
+
     foreach (var teacher in teachersToNotify)
     {
-        var message = $"Dear {teacher.FirstName} {teacher.LastName},\n\n" +
-                      $"There is high activity on feedbackpost made in room: {roomIdDto.RoomId}";
+        var message = $"Dear {teacher.FirstName} {teacher.LastName}, there is high activity on feedbackpost made in room: {roomIdDto.RoomId}";
         
         await emailSender.SendEmailAsync(teacher.Email, message);
+        sentEmails.Add($"Email sent to: {teacher.Email} with message: {message}");
     }
-    return Results.Ok();
+
+    return Results.Ok(sentEmails);
 });
 
 app.Run();
