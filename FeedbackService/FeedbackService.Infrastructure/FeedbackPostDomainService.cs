@@ -16,7 +16,7 @@ public class FeedbackPostDomainService : IFeedbackPostDomainService
     public async Task NotifyApiAsync(RoomIdDto roomIdDto)
     {
         var client = _httpClientFactory.CreateClient();
-        var response = await client.PostAsJsonAsync("http://localhost:5000/notify", roomIdDto);
+        var response = await client.PostAsJsonAsync("http://fakesmtpserver:8080/send-email", roomIdDto);
         response.EnsureSuccessStatusCode();
     }
 }

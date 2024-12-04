@@ -7,7 +7,8 @@
         "dummydb.api": "StartDebugging",
         "exitslipservice.api": "StartDebugging",
         "feedbackservice.api": "StartDebugging",
-        "apigateway": "StartDebugging"
+        "apigateway": "StartDebugging",
+        "fakesmtpserver": "StartDebugging"
       }
     }
   }
