@@ -33,7 +33,7 @@ app.UseHttpsRedirection();
 
 //GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
 
-//GetAll by teacher
+//GetAll by student
 app.MapGet("/student/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByStudentId(id));
 
 //GetAll by lesson
