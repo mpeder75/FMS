@@ -3,7 +3,7 @@ using ArchUnitNET.Fluent;
 using ArchUnitNET.Loader;
 using FeedbackService.Domain.ArchUnitNet;
 
-namespace FeedbackService.Domain.Test
+namespace FeedbackService.Domain.Test.ArchUnitNet
 {
     public abstract class ArchUnitBaseTest : BaseTest
     {
