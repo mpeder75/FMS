@@ -19,7 +19,7 @@ public class AuthController : ControllerBase
         _signInManager = signInManager;
     }
 
-    [HttpPost("Login")]
+    [HttpPost("Login2")]
     public async Task<IActionResult> Login([FromBody] LoginModel model)
     {
         var user = await _userManager.FindByNameAsync(model.Username);

@@ -78,6 +78,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -89,13 +90,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapGroup("/account").MapIdentityApi<AppUser>(); //Gude linje
 
-
 // YARP as a reverse proxy
 app.MapReverseProxy();
-
+app.MapControllers();
 app.Run();
