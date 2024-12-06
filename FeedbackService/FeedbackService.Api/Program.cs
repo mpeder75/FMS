@@ -41,12 +41,14 @@ public class Program
         // Queries til test:
         app.MapGet("/feedbackPosts", async (IFeedbackPostQuery query)
             => await query.GetFeedbackPostsAsync());
+
         app.MapGet("/feedbackPost/{id}", async (Guid id, IFeedbackPostQuery query)
             => await query.GetFeedbackPostAsync(id));
 
         // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
         app.MapPut("/feedbackPost{id}", async ([FromBody] UpdateFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command)
             => await command.UpdateAsync(feedbackpost));
+
         app.MapDelete("/feedbackPost{id}", async ([FromBody] DeleteFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command)
             => await command.DeleteAsync(feedbackpost));
 
@@ -59,10 +61,6 @@ public class Program
         app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand command)
             => await command.CreateCommentAsync(commentDto));
 
-        // Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost: Overflødig?
-
-        // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
-        // endpoint der sender RoomId til Fake email SMTP Server
         app.MapPost("/notify", async (RoomIdDto roomIdDto) =>
         {
             Console.WriteLine($"RoomId {roomIdDto.RoomId} has been notified.");

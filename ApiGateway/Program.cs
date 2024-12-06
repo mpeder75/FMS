@@ -1,19 +1,13 @@
-
+using System.Security.Claims;
 using ApiGateway.Database;
 using ApiGateway.Entities;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
-using System.Text;
-using Microsoft.AspNetCore.Authentication.BearerToken;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -41,7 +35,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            new string[] { }
         }
     });
 });
@@ -70,20 +64,15 @@ builder.Services.Configure<IdentityOptions>(options =>
 builder.Services
     .AddIdentityApiEndpoints<AppUser>() //Gude linje
     .AddEntityFrameworkStores<IdentityDbContext>(); //Gude linje
-                                                    //.AddDefaultTokenProviders();
-
-
-//builder.Services.AddAuthorization();
-
+//.AddDefaultTokenProviders();
 // Add YARP
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
 
-
 builder.Services.AddAuthorization(options =>
 {
-    /*options.AddPolicy("userPolicy", policy =>
-        policy.RequireAuthenticatedUser());*/
+    options.AddPolicy("userPolicy", policy =>
+        policy.RequireAuthenticatedUser());
 
     options.AddPolicy("adminPolicy", policy =>
         policy.RequireClaim("ClaimTypes.Role"));
@@ -98,34 +87,7 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("IsKasten"));
 });
 
-
-
-/*var key = Encoding.ASCII.GetBytes("VerySecretKey");
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = "fms",
-        ValidAudience = "fms",
-        IssuerSigningKey = new SymmetricSecurityKey(key)
-    };
-});
-*/
-
-
-
-
 var app = builder.Build();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -148,38 +110,23 @@ app.UseAuthorization();
 
 app.MapGroup("/account").MapIdentityApi<AppUser>(); //Gude linje
 
-
-
 app.MapPost("/addClaimToUser",
     [Authorize(Policy = "RequiresKasten")]
-async (string userId, string claimType, string claimValue, UserManager<AppUser> userManager) =>
+    async (string userId, string claimType, string claimValue, UserManager<AppUser> userManager) =>
     {
         var user = await userManager.FindByIdAsync(userId);
-        if (user == null)
-        {
-            return Results.NotFound("User not found");
-        }
+        if (user == null) return Results.NotFound("User not found");
 
         var claim = new Claim(claimType, claimValue);
         var result = await userManager.AddClaimAsync(user, claim);
 
         if (result.Succeeded)
-        {
             return Results.Ok("Claim added successfully");
-        }
-        else
-        {
-            return Results.BadRequest(result.Errors);
-        }
+        return Results.BadRequest(result.Errors);
     });
-
-
-
-// YARP as a reverse proxy
 
 app.MapReverseProxy();
 app.Run();
-
 
 internal record ClaimDto(string Type, string Value);
 
@@ -188,4 +135,3 @@ public record EmailDto
     public string ToAddress { get; init; }
     public string Message { get; init; }
 }
-

@@ -8,9 +8,8 @@
         "exitslipservice.api": "StartDebugging",
         "feedbackservice.api": "StartDebugging",
         "apigateway": "StartDebugging",
-        "sql-serverServices": "StartWithoutDebugging"
+        "sql-serverServices": "StartWithoutDebugging",
         "fakesmtpserver": "StartDebugging"
-
       }
     }
   }
