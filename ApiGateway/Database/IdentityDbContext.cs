@@ -9,7 +9,7 @@ public class IdentityDbContext : IdentityDbContext<AppUser>
     public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
         : base(options)
     {
-        //Database.EnsureCreated();
+        Database.EnsureCreated();
     }
 
     public DbSet<AppUser> AppUsers { get; set; }
