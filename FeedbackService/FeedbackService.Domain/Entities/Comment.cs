@@ -6,7 +6,9 @@ public class Comment : DomainEntity
     public DateTime CreatedAt { get; protected set; }
     public Guid AuthorId { get; protected set; }
 
-    protected Comment(string commentString, Guid authorId)
+    protected Comment() { } // Used in Test project.
+
+    private Comment(string commentString, Guid authorId)
     {
         CommentString = commentString;
         CreatedAt = DateTime.Now;

@@ -17,7 +17,9 @@ public class FeedbackPost : DomainEntity
     public DateTime CreatedAt { get; protected set; }
     public IReadOnlyCollection<Comment> Comments => _comments;
 
-    protected FeedbackPost(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
+    protected FeedbackPost() {} // Used in Test project.
+
+    private FeedbackPost(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
     {
         RoomId = roomId;
         AuthorId = authorId;
@@ -29,7 +31,8 @@ public class FeedbackPost : DomainEntity
         CreatedAt = DateTime.Now;
         _comments = new List<Comment>();
         AssureTitleHaveContent();
-        AssureIssueAndSolutionHaveContent();
+        AssureIssueHaveContent();
+        AssureSolutionHaveContent();
     }
 
     public static FeedbackPost Create(Guid roomId, Guid authorId, string title, string issueText, string solutionText)
@@ -41,7 +44,8 @@ public class FeedbackPost : DomainEntity
     {
         IssueText = issueText;
         SolutionText = solutionText;
-        AssureIssueAndSolutionHaveContent();
+        AssureIssueHaveContent();
+        AssureSolutionHaveContent();
     }
 
     public Comment CreateComment(string commentString, Guid authorId)
@@ -57,11 +61,14 @@ public class FeedbackPost : DomainEntity
             throw new Exception("Add a Title.");
     }
 
-    protected void AssureIssueAndSolutionHaveContent()
+    protected void AssureIssueHaveContent()
     {
         if (string.IsNullOrWhiteSpace(IssueText))
             throw new Exception("Describe an issue.");
+    }
 
+    protected void AssureSolutionHaveContent()
+    {
         if (string.IsNullOrWhiteSpace(SolutionText))
             throw new Exception("Add a solution.");
     }
