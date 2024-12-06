@@ -62,3 +62,10 @@ services:
       - "11434:1433"
     networks:
       - default
+
+  fakesmtpserver:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+    ports:
+      - "8001:8080"

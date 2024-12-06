@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExitslipService.DatabaseMigration.Migrations
 {
     [DbContext(typeof(ExitSlipContext))]
-    [Migration("20241127142208_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20241203104533_TwoObject")]
+    partial class TwoObject
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,28 +25,7 @@ namespace ExitslipService.DatabaseMigration.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ExitslipService.Domain.Entities.Comment", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Comment");
-                });
-
-            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlip", b =>
+            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlipPost", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -64,22 +43,46 @@ namespace ExitslipService.DatabaseMigration.Migrations
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("rowversion");
 
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TeacherCommentId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TeacherComment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("TeacherId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherCommentId");
+                    b.ToTable("ExitSlipPosts");
+                });
 
-                    b.HasIndex("TeacherId");
+            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlipReply", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
-                    b.ToTable("ExitSlips");
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("LessonId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExitSlipReplies");
                 });
 
             modelBuilder.Entity("ExitslipService.Domain.Entities.QuestionForm", b =>
@@ -92,7 +95,10 @@ namespace ExitslipService.DatabaseMigration.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ExitSlipId")
+                    b.Property<Guid?>("ExitSlipPostId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ExitSlipReplyId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Question")
@@ -107,57 +113,32 @@ namespace ExitslipService.DatabaseMigration.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExitSlipId");
+                    b.HasIndex("ExitSlipPostId");
+
+                    b.HasIndex("ExitSlipReplyId");
 
                     b.ToTable("QuestionForm");
                 });
 
-            modelBuilder.Entity("ExitslipService.Domain.Entities.Teacher", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Teacher");
-                });
-
-            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlip", b =>
-                {
-                    b.HasOne("ExitslipService.Domain.Entities.Comment", "TeacherComment")
-                        .WithMany()
-                        .HasForeignKey("TeacherCommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ExitslipService.Domain.Entities.Teacher", "Teacher")
-                        .WithMany()
-                        .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Teacher");
-
-                    b.Navigation("TeacherComment");
-                });
-
             modelBuilder.Entity("ExitslipService.Domain.Entities.QuestionForm", b =>
                 {
-                    b.HasOne("ExitslipService.Domain.Entities.ExitSlip", null)
-                        .WithMany("Questions")
-                        .HasForeignKey("ExitSlipId");
+                    b.HasOne("ExitslipService.Domain.Entities.ExitSlipPost", null)
+                        .WithMany("Questionnaire")
+                        .HasForeignKey("ExitSlipPostId");
+
+                    b.HasOne("ExitslipService.Domain.Entities.ExitSlipReply", null)
+                        .WithMany("Questionnaire")
+                        .HasForeignKey("ExitSlipReplyId");
                 });
 
-            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlip", b =>
+            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlipPost", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("Questionnaire");
+                });
+
+            modelBuilder.Entity("ExitslipService.Domain.Entities.ExitSlipReply", b =>
+                {
+                    b.Navigation("Questionnaire");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,6 +9,8 @@
         "feedbackservice.api": "StartDebugging",
         "apigateway": "StartDebugging",
         "sql-serverServices": "StartWithoutDebugging"
+        "fakesmtpserver": "StartDebugging"
+
       }
     }
   }

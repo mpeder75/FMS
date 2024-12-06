@@ -1,3 +1,4 @@
+
 using ApiGateway.Database;
 using ApiGateway.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -132,6 +134,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapPost("/receive-email", async ([FromBody] EmailDto emailDto) =>
+{
+    // Simuler at modtage en e-mail ved at skrive beskeden til konsollen
+    Console.WriteLine($"Received email for {emailDto.ToAddress}");
+    Console.WriteLine("Message:");
+    Console.WriteLine(emailDto.Message);
+    return Results.Ok();
+});
 
 app.UseAuthentication();
 app.UseAuthorization();
@@ -166,8 +176,16 @@ async (string userId, string claimType, string claimValue, UserManager<AppUser> 
 
 
 // YARP as a reverse proxy
+
 app.MapReverseProxy();
 app.Run();
 
 
 internal record ClaimDto(string Type, string Value);
+
+public record EmailDto
+{
+    public string ToAddress { get; init; }
+    public string Message { get; init; }
+}
+

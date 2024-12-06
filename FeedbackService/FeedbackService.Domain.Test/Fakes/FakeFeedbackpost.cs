@@ -2,45 +2,36 @@
 
 namespace FeedbackService.Domain.Test.Fakes;
 
-public class FakeFeedbackpost : Feedbackpost
+public class FakeFeedbackPost : FeedbackPost
 {
-    public FakeFeedbackpost(User author, string title, Room room, Question feedback)
-        : base(author, title, room, feedback)
+    private readonly List<FakeComment> _comments;
+
+    public FakeFeedbackPost(Guid roomId, Guid authorId, string title, string issueText, string solutionText, DateTime createdAt)
     {
+        RoomId = roomId;
+        AuthorId = authorId;
+        Title = title;
+        IssueText = issueText;
+        SolutionText = solutionText;
+        Likes = 0;
+        Dislikes = 0;
+        CreatedAt = createdAt;
+        _comments = new List<FakeComment>();
+        RowVersion = new byte[0];
     }
 
-    public new void Anonymize()
+    public new void AssureTitleHaveContent()
     {
-        base.Anonymize();
+        base.AssureTitleHaveContent();
     }
 
-    public new void Update(string title, Question question, Room room)
+    public new void AssureIssueHaveContent()
     {
-        base.Update(title, question, room);
+        base.AssureIssueHaveContent();
     }
 
-    public new void AddComment(string commentString)
+    public new void AssureSolutionHaveContent()
     {
-        base.AddComment(commentString);
-    }
-
-    public new void IncrementLikes()
-    {
-        base.IncrementLikes();
-    }
-
-    public new void DecrementLikes()
-    {
-        base.DecrementLikes();
-    }
-
-    public new void IncrementDislikes()
-    {
-        base.IncrementDislikes();
-    }
-
-    public new void DecrementDislikes()
-    {
-        base.DecrementDislikes();
+        base.AssureSolutionHaveContent();
     }
 }
