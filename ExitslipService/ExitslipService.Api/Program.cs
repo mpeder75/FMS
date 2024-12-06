@@ -1,7 +1,6 @@
 using ExitslipService.Application;
 using ExitslipService.Application.Command;
 using ExitslipService.Application.Command.CommandDto;
-using ExitslipService.Application.Interfaces;
 using ExitslipService.Application.Query;
 using ExitSlipService.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
@@ -29,9 +28,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
 
-//GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
+//app.UseHttpsRedirection();
+
+//GetAll/Update -> En student skal kunne tilgÃ¥ alle sine Exitslips og kunne Ã¦ndre i dem:
 
 //GetAll by student
 app.MapGet("/student/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByStudentId(id));
@@ -39,10 +39,12 @@ app.MapGet("/student/{id}/exitslips", async (Guid id, IExitSlipQuery query) => a
 //GetAll by lesson
 app.MapGet("/lesson/{id}/exitslips", async (Guid id, IExitSlipQuery query) => await query.GetAllByLessonId(id));
 
+
 //CreatePost ExitSlip with questions in relation to a specific LessonId - Det er kun Teacher som har adgang til denne funktion.
 app.MapPost("/exitslip/post", async ([FromBody]CreateExitSlipPostDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreatePost(exitslip));
 
 //Update ExitSlip with answers and answering student. - Kun adgang for Students.
 app.MapPost("/exitslip/reply", async ([FromBody]CreateExitSlipReplyDTO exitslip,[FromServices] IExitSlipCommand command) => command.CreateReply(exitslip));
+
 
 app.Run();

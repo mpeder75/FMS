@@ -1,44 +1,59 @@
+using FeedbackService.Application;
+using FeedbackService.Application.Command;
+using FeedbackService.Application.Command.CommandDto;
+using FeedbackService.Application.Query;
+using FeedbackService.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// Endpoints --- FeedbackPost ----
+// Create FeedbackPost og Issue, da de ikke kan eksistere uden hinanden:
+app.MapPost("/feedbackPost",
+    async ([FromBody] CreateFeedbackPostDto feedbackPostDto, [FromServices] IFeedbackPostCommand command) =>
+    await command.CreateAsync(feedbackPostDto));
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+// Et Query på en liste af FeedbackPosts vil altid være i reletaion til et RoomId:
+app.MapGet("/feedbackPost/byRoom/{id}",
+    async (Guid roomId, IFeedbackPostQuery query) => await query.GetFeedbackPostsByRoomAsync(roomId));
+
+//// Queries til test:
+app.MapGet("/feedbackPosts", async (IFeedbackPostQuery query) => await query.GetFeedbackPostsAsync());
+app.MapGet("/feedbackPost/{id}", async (Guid id, IFeedbackPostQuery query) => await query.GetFeedbackPostAsync(id));
+
+//// Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
+app.MapPut("/feedbackPost{id}",
+    ([FromBody] UpdateFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command) =>
+        command.UpdateAsync(feedbackpost));
+app.MapDelete("/feedbackPost{id}",
+    ([FromBody] DeleteFeedbackpostDto feedbackpost, [FromServices] IFeedbackPostCommand command) =>
+        command.DeleteAsync(feedbackpost));
+
+//// Rapporten? - Der er en filteret list af FeedbackPost fra et specifikt Room?
+//app.MapGet("/teacher/{teacherId}/feedbackposts", async (Guid teacherId, IFeedbackPostQuery feedbackpostQuery) =>
+//{
+//    var feedbackposts = await feedbackpostQuery.GetByTeacherIdAsync(teacherId);
+//    return Results.Ok(feedbackposts);
+//});
+
+// Endpoints --- Comment ----
+// Create Comment:
+app.MapPost("/comment",
+    async (CreateCommentDto commentDto, IFeedbackPostCommand command) => await command.CreateCommentAsync(commentDto));
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

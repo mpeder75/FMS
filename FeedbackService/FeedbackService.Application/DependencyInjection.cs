@@ -1,6 +1,16 @@
-﻿namespace FeedbackService.Application;
+﻿using FeedbackService.Application.Command;
+using Microsoft.Extensions.DependencyInjection;
 
-public class DependencyInjection
+namespace FeedbackService.Application
 {
+    public static class DependencyInjection
+    {
+        public static IServiceCollection AddApplication(this IServiceCollection services)
+        {
+            // Register application services here
+            services.AddScoped<IFeedbackPostCommand, FeedbackPostCommand>();
 
+            return services;
+        }
+    }
 }

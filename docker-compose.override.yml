@@ -1,0 +1,64 @@
+services:
+  exitslipservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__ExitSlipDbConnection=Server=sql-serverServices,1433;Database=ExitslipService;User Id=sa;Password=Password1234!;TrustServerCertificate=true
+    ports:
+      - "5001:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  
+  feedbackservice.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__DefaultConnectionFeedbackService=Server=sql-serverServices,1433;Database=FeedbackService;User Id=sa;Password=Password1234!;TrustServerCertificate=true
+    ports:
+      - "6001:8080"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  apigateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__DefaultConnectionGateway=Server=sql-serverGateway,1433;Database=ApiGateway;User Id=sa;Password=Password1234!;TrustServerCertificate=true
+    ports:
+      - "7001:8080"
+
+  sql-serverServices:
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P Password1234! -Q 'SELECT 1'"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password1234!"
+    ports:
+      - "11433:1433"
+    networks:
+      - default
+
+  sql-serverGateway:
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S 127.0.0.1 -U sa -P Password1234! -Q 'SELECT 1'"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password1234!"
+    ports:
+      - "11434:1433"
+    networks:
+      - default
