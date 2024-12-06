@@ -40,7 +40,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 builder.Services.AddScoped<UserManager<AppUser>>();
 builder.Services.AddDbContext<IdentityDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionGateway")));
@@ -62,9 +61,9 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 builder.Services
-    .AddIdentityApiEndpoints<AppUser>() //Gude linje
-    .AddEntityFrameworkStores<IdentityDbContext>(); //Gude linje
-//.AddDefaultTokenProviders();
+    .AddIdentityApiEndpoints<AppUser>()
+    .AddEntityFrameworkStores<IdentityDbContext>();
+
 // Add YARP
 builder.Services.AddReverseProxy()
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"));
@@ -87,6 +86,8 @@ builder.Services.AddAuthorization(options =>
         policy.RequireClaim("IsKasten"));
 });
 
+builder.Services.AddHttpClient(); // Add HttpClient factory
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -98,7 +99,7 @@ if (app.Environment.IsDevelopment())
 
 app.MapPost("/receive-email", async ([FromBody] EmailDto emailDto) =>
 {
-    // Simuler at modtage en e-mail ved at skrive beskeden til konsollen
+    // Simulate receiving an email by writing the message to the console
     Console.WriteLine($"Received email for {emailDto.ToAddress}");
     Console.WriteLine("Message:");
     Console.WriteLine(emailDto.Message);
@@ -108,11 +109,11 @@ app.MapPost("/receive-email", async ([FromBody] EmailDto emailDto) =>
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGroup("/account").MapIdentityApi<AppUser>(); //Gude linje
+app.MapGroup("/account").MapIdentityApi<AppUser>();
 
 app.MapPost("/addClaimToUser",
-    [Authorize(Policy = "RequiresKasten")]
-    async (string userId, string claimType, string claimValue, UserManager<AppUser> userManager) =>
+     [Authorize(Policy = "userPolicy")]
+async (string userId, string claimType, string claimValue, UserManager<AppUser> userManager) =>
     {
         var user = await userManager.FindByIdAsync(userId);
         if (user == null) return Results.NotFound("User not found");
@@ -124,6 +125,125 @@ app.MapPost("/addClaimToUser",
             return Results.Ok("Claim added successfully");
         return Results.BadRequest(result.Errors);
     });
+/*
+// New endpoints based on appsettings.json
+app.MapGet("/lesson/{id}/exitslips",
+    [Authorize(Policy = "RequiresTeacher")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.GetAsync($"http://exitslipservice.api:8080{httpContext.Request.Path}");
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapGet("/student/{id}/exitslips",
+    [Authorize(Policy = "RequiresStudent")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync($"http://exitslipservice.api:8080{httpContext.Request.Path}", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/exitslip/post",
+    [Authorize(Policy = "RequiresTeacher")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync("http://exitslipservice.api:8080/exitslip/post", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/exitslip/reply",
+    [Authorize(Policy = "RequiresStudent")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync("http://exitslipservice.api:8080/exitslip/reply", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/feedbackPost",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync("http://feedbackservice.api:8080/feedbackPost", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapGet("/feedbackPost/byRoom/{id}",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.GetAsync($"http://feedbackservice.api:8080{httpContext.Request.Path}");
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapGet("/feedbackPosts",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.GetAsync("http://feedbackservice.api:8080/feedbackPosts");
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapGet("/feedbackPost/{id}",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.GetAsync($"http://feedbackservice.api:8080{httpContext.Request.Path}");
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPut("/feedbackPost/{id}",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PutAsync($"http://feedbackservice.api:8080{httpContext.Request.Path}", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapDelete("/feedbackPost/{id}",
+    [Authorize(Policy = "adminPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.DeleteAsync($"http://feedbackservice.api:8080{httpContext.Request.Path}");
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/feedbackPost/byRoom/{roomId}/report",
+    [Authorize(Policy = "RequiresTeacher")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync($"http://feedbackservice.api:8080{httpContext.Request.Path}", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/comment",
+    [Authorize(Policy = "userPolicy")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync("http://feedbackservice.api:8080/comment", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+
+app.MapPost("/send-email",
+    [Authorize(Policy = "RequiresTeacher")]
+async (HttpContext httpContext) =>
+    {
+        var client = httpContext.RequestServices.GetRequiredService<IHttpClientFactory>().CreateClient();
+        var response = await client.PostAsync("http://fakesmtpserver:8080/send-email", new StreamContent(httpContext.Request.Body));
+        return Results.StatusCode((int)response.StatusCode);
+    });
+*/
 
 app.MapReverseProxy();
 app.Run();
