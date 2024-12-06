@@ -29,3 +29,6 @@ services:
       context: .
       dockerfile: FakeSmtpServer/Dockerfile
 
+volumes:
+  sql-data-services:
+  sql-data-gateway:
