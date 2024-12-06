@@ -1,0 +1,6 @@
+@FakeSmtpServer_HostAddress = http://localhost:5007
+
+GET {{FakeSmtpServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

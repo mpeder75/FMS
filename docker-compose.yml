@@ -23,3 +23,9 @@ services:
   sql-serverGateway:
     image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
 
+  fakesmtpserver:
+    image: ${DOCKER_REGISTRY-}fakesmtpserver
+    build:
+      context: .
+      dockerfile: FakeSmtpServer/Dockerfile
+

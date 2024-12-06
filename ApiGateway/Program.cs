@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Mvc;
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -15,8 +17,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapPost("/receive-email", async ([FromBody] EmailDto emailDto) =>
+{
+    // Simuler at modtage en e-mail ved at skrive beskeden til konsollen
+    Console.WriteLine($"Received email for {emailDto.ToAddress}");
+    Console.WriteLine("Message:");
+    Console.WriteLine(emailDto.Message);
+    return Results.Ok();
+});
 
-// YARP as a reverse proxy
 app.MapReverseProxy();
 
 app.Run();
+
+public record EmailDto
+{
+    public string ToAddress { get; init; }
+    public string Message { get; init; }
+}

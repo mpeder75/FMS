@@ -2,6 +2,7 @@ using FeedbackService.Application;
 using FeedbackService.Application.Command;
 using FeedbackService.Application.Command.CommandDto;
 using FeedbackService.Application.Query;
+using FeedbackService.Domain.DomainService.DomainServiceDto;
 using FeedbackService.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 namespace FeedbackService.Api;
@@ -33,7 +34,7 @@ public class Program
         app.MapPost("/feedbackPost", async ([FromBody] CreateFeedbackPostDto feedbackPostDto, [FromServices] IFeedbackPostCommand command)
             => await command.CreateAsync(feedbackPostDto));
 
-        // Et Query på en liste af FeedbackPosts vil altid være i reletaion til et RoomId:
+        // Et Query pÃ¥ en liste af FeedbackPosts vil altid vÃ¦re i reletaion til et RoomId:
         app.MapGet("/feedbackPost/byRoom/{id}", async (Guid roomId, IFeedbackPostQuery query)
             => await query.GetFeedbackPostsByRoomAsync(roomId));
 
@@ -58,9 +59,15 @@ public class Program
         app.MapPost("/comment", async (CreateCommentDto commentDto, IFeedbackPostCommand command)
             => await command.CreateCommentAsync(commentDto));
 
-        // Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost: Overflødig?
+        // Queries -> Skal kunne returner en liste af Comments fra et FeedbackPost: OverflÃ¸dig?
 
         // Update og Delete - Dette er funktioner kun Author (UserId) har adgang til:
+        // endpoint der sender RoomId til Fake email SMTP Server
+        app.MapPost("/notify", async (RoomIdDto roomIdDto) =>
+        {
+        Console.WriteLine($"RoomId {roomIdDto.RoomId} has been notified.");
+        return Results.Ok();
+        });
 
         app.Run();
     }
