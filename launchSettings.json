@@ -4,11 +4,13 @@
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
       "serviceActions": {
-        "dummydb.api": "StartDebugging",
+        "sql-serverGateway": "StartWithoutDebugging",
         "exitslipservice.api": "StartDebugging",
         "feedbackservice.api": "StartDebugging",
         "apigateway": "StartDebugging",
+        "sql-serverServices": "StartWithoutDebugging"
         "fakesmtpserver": "StartDebugging"
+
       }
     }
   }

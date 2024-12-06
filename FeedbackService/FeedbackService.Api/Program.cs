@@ -5,6 +5,7 @@ using FeedbackService.Application.Query;
 using FeedbackService.Domain.DomainService.DomainServiceDto;
 using FeedbackService.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authentication.Cookies;
 namespace FeedbackService.Api;
 
 public class Program
@@ -16,8 +17,10 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        builder.Services.AddApplication();
-        builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
+builder.Services.AddAuthorization();
+builder.Services.AddInfrastructure(builder.Configuration);
+
 
         var app = builder.Build();
 
@@ -27,7 +30,11 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
 
         // Endpoints --- FeedbackPost ----
         // Create FeedbackPost og Issue, da de ikke kan eksistere uden hinanden:
