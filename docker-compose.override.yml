@@ -47,6 +47,8 @@ services:
       - "11433:1433"
     networks:
       - default
+    volumes:
+      - sql-data-services:/var/opt/mssql
 
   sql-serverGateway:
     healthcheck:
@@ -62,6 +64,8 @@ services:
       - "11434:1433"
     networks:
       - default
+    volumes:
+      - sql-data-gateway:/var/opt/mssql
 
   fakesmtpserver:
     environment:
@@ -69,3 +73,6 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
     ports:
       - "8001:8080"
+volumes:
+  sql-data-services:
+  sql-data-gateway:

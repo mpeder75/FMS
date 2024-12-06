@@ -11,7 +11,7 @@ namespace ExitSlipService.Infrastructure.Queries
     {
         async Task<List<ExitSlipReplyDTO>> IExitSlipQuery.GetAllByStudentId(Guid studentId)
         {
-            var result = db.ExitSlipReplies.Where(e => e.StudentId == studentId).Select(exitSlip => new ExitSlipReplyDTO
+            var result = db.ExitSlipReplies.Where(e => e.StudentId == studentId).Include(e => e.Questionnaire).Select(exitSlip => new ExitSlipReplyDTO
             {
                 PostId = exitSlip.PostId,
                 StudentId = exitSlip.StudentId,
@@ -25,7 +25,7 @@ namespace ExitSlipService.Infrastructure.Queries
 
         async Task<List<ExitSlipReplyDTO>> IExitSlipQuery.GetAllByLessonId(Guid lessonId)
         {
-            var result = db.ExitSlipReplies.Where(e => e.LessonId == lessonId).Select(exitSlip => new ExitSlipReplyDTO
+            var result = db.ExitSlipReplies.Where(e => e.LessonId == lessonId).Include(e => e.Questionnaire).Select(exitSlip => new ExitSlipReplyDTO
             {
                 PostId = exitSlip.PostId,
                 StudentId = exitSlip.StudentId,
