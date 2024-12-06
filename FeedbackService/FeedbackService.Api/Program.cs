@@ -17,9 +17,8 @@ public class Program
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-builder.Services.AddApplication();
-builder.Services.AddAuthorization();
-builder.Services.AddInfrastructure(builder.Configuration);
+        builder.Services.AddApplication();
+        builder.Services.AddInfrastructure(builder.Configuration);
 
 
         var app = builder.Build();
@@ -29,12 +28,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
             app.UseSwagger();
             app.UseSwaggerUI();
         }
-
-
-app.UseHttpsRedirection();
-app.UseAuthentication();
-app.UseAuthorization();
-
 
         // Endpoints --- FeedbackPost ----
         // Create FeedbackPost og Issue, da de ikke kan eksistere uden hinanden:
@@ -72,8 +65,8 @@ app.UseAuthorization();
         // endpoint der sender RoomId til Fake email SMTP Server
         app.MapPost("/notify", async (RoomIdDto roomIdDto) =>
         {
-        Console.WriteLine($"RoomId {roomIdDto.RoomId} has been notified.");
-        return Results.Ok();
+            Console.WriteLine($"RoomId {roomIdDto.RoomId} has been notified.");
+            return Results.Ok();
         });
 
         app.Run();

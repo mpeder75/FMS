@@ -29,8 +29,6 @@ if (app.Environment.IsDevelopment())
 }
 
 
-//app.UseHttpsRedirection();
-
 //GetAll/Update -> En student skal kunne tilgå alle sine Exitslips og kunne ændre i dem:
 
 //GetAll by student
