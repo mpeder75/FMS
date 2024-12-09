@@ -9,5 +9,4 @@ public record UpdateFeedbackpostDto
 //---------------------------------------------------------------
     public string IssueText { get; set; }
     public string SolutionText { get; set; }
-
 }

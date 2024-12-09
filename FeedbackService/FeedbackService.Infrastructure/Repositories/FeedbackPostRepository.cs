@@ -50,7 +50,7 @@ public class FeedbackPostRepository : IFeedbackPostRepository
 
         if (feedbackPost == null)
         {
-            throw new KeyNotFoundException($"Feedback post with ID {id} not found.");
+            throw new KeyNotFoundException($"Feedback newPost with ID {id} not found.");
         }
 
         _db.Set<Comment>().RemoveRange(feedbackPost.Comments);
@@ -58,13 +58,26 @@ public class FeedbackPostRepository : IFeedbackPostRepository
         await _db.SaveChangesAsync();
     }
 
-    async Task IFeedbackPostRepository.UpdateAsync(FeedbackPost post, byte[] rowversion)
+    async Task IFeedbackPostRepository.UpdateAsync(FeedbackPost newPost, byte[] rowversion)
     {
-        var existingPost = await _db.FeedbackPosts.FirstOrDefaultAsync(x => x.Id == post.Id);
+        var existingPost = await _db.FeedbackPosts.FirstOrDefaultAsync(x => x.Id == newPost.Id);
         if (existingPost != null)
         {
-            _db.Entry(existingPost).CurrentValues.SetValues(post);
-            await _db.SaveChangesAsync();
+            // Set the original RowVersion to enforce concurrency check
+            _db.Entry(existingPost).OriginalValues["RowVersion"] = rowversion;
+
+            // Update the entity's values
+            _db.Entry(existingPost).CurrentValues.SetValues(newPost);
+
+            try
+            {
+                await _db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                // Handle concurrency conflict
+                throw new Exception("Concurrency conflict occurred. The record has been modified by another user.");
+            }
         }
     }
 }
