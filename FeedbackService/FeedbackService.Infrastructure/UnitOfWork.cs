@@ -34,5 +34,18 @@ namespace FeedbackService.Infrastructure
             _transaction.Rollback();
             _transaction.Dispose();
         }
+
+        public byte[] ConvertHexToByteArray(string hex)
+        {
+            // Remove the "0x" prefix if it exists
+            if (hex.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
+            {
+                hex = hex.Substring(2);
+            }
+
+            return Enumerable.Range(0, hex.Length / 2)
+                .Select(x => Convert.ToByte(hex.Substring(x * 2,2),16))
+                .ToArray();
+        }
     }
 }

@@ -31,10 +31,11 @@ public class FeedbackPostCommand : IFeedbackPostCommand
             _uow.BeginTransaction();
             // Load
             var feedbackpost = await _feedbackPostRepository.GetFeedbackPostAsync(updateFeedbackPostDto.Id);
+            var rowVersion = _uow.ConvertHexToByteArray(updateFeedbackPostDto.RowVersion);
             // Do
             feedbackpost.Update(updateFeedbackPostDto.IssueText, updateFeedbackPostDto.SolutionText);
             // Save
-            await _feedbackPostRepository.UpdateAsync(feedbackpost, updateFeedbackPostDto.RowVersion);
+            await _feedbackPostRepository.UpdateAsync(feedbackpost, rowVersion);
             _uow.Commit();
         }
         catch (Exception e)

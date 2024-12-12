@@ -74,13 +74,13 @@ builder.Services.AddAuthorization(options =>
         policy.RequireAuthenticatedUser());
 
     options.AddPolicy("adminPolicy", policy =>
-        policy.RequireClaim("ClaimTypes.Role"));
+        policy.RequireClaim("IsAdmin"));
 
     options.AddPolicy("RequiresTeacher", policy =>
         policy.RequireClaim("IsTeacher"));
 
     options.AddPolicy("RequiresStudent", policy =>
-        policy.RequireClaim("Student"));
+        policy.RequireClaim("IsStudent"));
 
     options.AddPolicy("RequiresKasten", policy =>
         policy.RequireClaim("IsKasten"));
