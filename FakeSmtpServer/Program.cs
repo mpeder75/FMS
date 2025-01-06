@@ -1,35 +1,34 @@
-using FakeSmtpServer;
-using FakeSmtpServer.FakeMalingList;
+using FakeSmtpServer.Dto;
+using FakeSmtpServer.Interfaces;
+using FakeSmtpServer.MockData;
+using FakeSmtpServer.Services;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configure services
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddHttpClient<EmailSender>(); 
+builder.Services.AddTransient<IEmailSender, EmailSender>(); // Use interface for DI
+builder.Services.AddSingleton<IMailList, FakeMailList>(); // Inject mailing list as singleton
 
 var app = builder.Build();
 
+// Configure middlewares
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-var mailingList = new FakeMalingList();
-var emailSender = app.Services.GetRequiredService<EmailSender>();
-
-
-// [frombody] deserializer JSON payload til et RoomIdDto objekt
-app.MapPost("/send-email", async ([FromBody] RoomIdDto roomIdDto) =>
+app.MapPost("/send-email", async ([FromBody] RoomDto roomDto, IMailList mailingList, IEmailSender emailSender) =>
 {
-    var teachersToNotify = mailingList.GetTeachersByRoomId(roomIdDto.RoomId);
+    var teachersToNotify = mailingList.GetTeachersByRoomId(roomDto.RoomId);
     var sentEmails = new List<string>();
 
     foreach (var teacher in teachersToNotify)
     {
-        var message = $"Dear {teacher.FirstName} {teacher.LastName}, there is high activity on feedbackpost made in room: {roomIdDto.RoomId}";
-        
+        var message = $"Dear {teacher.FirstName} {teacher.LastName}, there is high activity on feedbackpost made in room: {roomDto.RoomId}";
         await emailSender.SendEmailAsync(teacher.Email, message);
         sentEmails.Add($"Email sent to: {teacher.Email} with message: {message}");
     }
@@ -38,8 +37,3 @@ app.MapPost("/send-email", async ([FromBody] RoomIdDto roomIdDto) =>
 });
 
 app.Run();
-
-public record RoomIdDto
-{
-    public Guid RoomId { get; init; }
-}
